@@ -1,0 +1,117 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+:root {
+/*
+ * Typography
+ * ======================================================================== */
+/* 'Vesterbro' */
+--font-family-base: 'PTSans', 'Segoe UI', 'HelveticaNeue-Light', sans-serif;
+--font-display-base: 'Panton', sans-serif;
+--font-size-base: 16px;
+--line-height-base:1;
+--font-size-sm:0.8rem;
+
+--dt-font-weight:bold;
+
+
+/*Colors*/
+/* https://www.w3schools.com/colors/colors_converter.asp */
+/* https://www.w3schools.com/colors/colors_hsl.asp */
+
+--hueAccent: 190;
+--huePrimary: 305;
+--hueSecondary: 20;
+
+--saturationAccent: 96%;
+--saturationPrimary: 25%;
+--saturationSecondary: 55%;
+
+--lightnessAccent: 26%;
+--lightnessPrimary: 90%;
+--lightnessSecondary: 81%;
+
+--colorOverAccent: #ffffff;
+--colorOverPrimary: #000000;
+
+--error-hue:340;
+--l-fork: 50%;
+--header-color:0, 0%, 0%, 1;
+--body-bg-color:#efefef;
+
+--black:0, 0, 0;
+--white:255, 255, 255;
+--body-txt-color:0, 0%, 0%;
+--hr-border-color:#ccc;
+--text-muted: #8c8c8c;
+
+
+/*Links*/
+--link-decoration:none;
+--link-hover-color:#004ead;
+--link-hover-decoration:none;
+
+--color-primary-txt:309, 19%, 44%;
+--color-secondary-txt:11, 23%, 58%;
+--color-accent-txt:0, 0%, 100%;
+
+
+/*Tables*/
+--table-bg:#fff;
+--table-cell-padding:15px;
+
+
+/*Buttons*/
+--font-size-btn: 16px;
+--btn-font-weight: normal;
+--btn-border-radius: 0.15;
+--input-btn-padding-y: .5rem;
+--input-btn-padding-x: .75rem;
+--input-btn-line-height: 1.15rem;
+--input-btn-border-width: 1px 1px 1px 1px;
+--input-btn-padding-y-sm:0.3rem;
+--input-btn-padding-x-sm:0.3rem;
+--input-btn-padding-x-lg:1rem;
+--input-btn-padding-y-lg:1rem;
+
+/*appbar*/
+--appbar-height:60px;
+--appbar-bg: 187, 0%, 90%, 0.5;
+--appbar-txt: #000000;
+/*z-index*/
+
+--appbar-z:1060;
+--modal-scroll:1050;
+--modal-backdrop:1040;
+--modal-wrap:1060;
+
+--h1-font-size: 2.5rem;
+--h2-font-size: 2rem;
+--h3-font-size: 1.75rem;
+--h4-font-size: 1.5rem;
+--h5-font-size: 1.25rem;
+--h6-font-size: 1rem;
+--dysplay-text-transform: uppercase;
+--dysplay-letter-spacing: 0.8rem;
+
+--icon-line-width: 2px;
+--icon-edge-width: 2px;
+--icon-primary-color:var(--color-primary-start);
+--icon-secondary-color:var(--color-secondary-start);
+
+
+--theme-txt-color-gradient: #ffffff;
+--theme-txt-color-img: #ffffff;
+--theme-bg-img:url("/assets/identity/bg.jpg") 50% 50% / cover no-repeat;
+--theme-txt-color-primary:#000b49;
+--theme-bg-card:hsla(0, 0%, 100%, 0.6);
+
+--map-marker:url("/assets/identity/style/marker-icon.png");
+
+}

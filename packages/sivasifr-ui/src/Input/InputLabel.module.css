@@ -1,0 +1,35 @@
+.label{
+  &-input {
+    transform-origin: top left;
+    position: absolute;
+    left: 0;
+    color: currentColor;
+    top: 0;
+    z-index: 1;
+     /*slight alteration to spec spacing to match visual spec result*/
+    transform: translate(0, 10px) scale(1);
+  }
+  &-formControl {
+    position: absolute;
+    left: 0;
+    top: 0;
+     /*slight alteration to spec spacing to match visual spec result*/
+    transform: translate(5px, 15px) scale(1);
+  }
+  &-shrink {
+    transform: translate(5px, 3px) scale(0.75);
+    transform-origin: top left;
+    color:hsla(var(--color-secondary-txt), 1);
+  }
+  &-animated {
+    transition: all 0.3s ease 0s;
+    pointer-events: none;
+  }
+  &-dense {
+    /*Compensation for the `Input.inputDense` style.*/
+    transform: translate(0, 10px) scale(1);
+  }
+  &-disabled {
+    color: #ccc;
+  }
+}

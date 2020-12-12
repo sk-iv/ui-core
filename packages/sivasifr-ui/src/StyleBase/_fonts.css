@@ -1,0 +1,34 @@
+/* https://medium.com/clear-left-thinking/how-to-use-variable-fonts-in-the-real-world-e6d73065a604 */
+/* http://wakamaifondue.com/ */
+/* @font-face {
+  font-family: 'Vesterbro';
+  src: url('/assets/fonts/VesterbroVariable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: 'SourceSans';
+  src: url('/assets/fonts/SourceSansVariable-Roman.ttf')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'PTSans';
+  src: url('/assets/fonts/pt-sans/PTSans-Regular.woff')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panton';
+  src: url('/assets/fonts/panton/Panton-Black.woff')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* @font-face {
+  font-family: 'DIN';
+  src: url('/assets/fonts/ff-din/FF-DIN-Round-Pro-Black.woff')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */

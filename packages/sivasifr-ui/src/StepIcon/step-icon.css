@@ -1,0 +1,23 @@
+/* Styles applied to the root element. */
+.step-icon-root {
+  display: block;
+  color: #ccc;
+  
+  &.active{
+    color:#ccc;
+  }
+
+  &.completed{
+    color:#ccc;
+  }
+
+  &.error{
+    color:#ccc;
+  }
+}
+
+/* Styles applied to the SVG text element. */
+.step-icon-text {
+  fill: #ccc;
+  font-size: 16px;
+}

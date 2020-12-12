@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <defs>
+    <!-- shadow -->
+    <!-- <filter id="filter1" x="0" y="0">
+			<feOffset result="offOut" in="SourceGraphic" dx="3" dy="3" />
+			<feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.7 0 0 0 0 0 0.7 0 0 0 0 0 0.7 0 0 0 0 0 1 0" />
+			<feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="1" />
+			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter> -->
+
+    <filter id="filter1" filterUnits="objectBoundingBox" x="0%" y="0%" width="110%" height="110%">
+      <feComposite in="SourceGraphic" operator="atop" result="comp"/>
+    </filter>
+    <filter id="dropshadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> <!-- stdDeviation is how much to blur -->
+      <feOffset dx="2" dy="2" result="offsetblur"/> <!-- how much to offset -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/> <!-- slope is the opacity of the shadow -->
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/> <!-- this contains the offset blurred image -->
+        <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+      </feMerge>
+    </filter>
+    <desc>
+      фон как картинка 110px 110px
+    </desc>
+    <pattern id="pattern" patternUnits="userSpaceOnUse" width="100%" height="100%">
+      <image xlink:href="pattern.png" width="200" height="200" />
+    </pattern>
+    <path fill="none" stroke-width='2' stroke='hsl(var(--primary-hue), 35%, 90%)' id="shape" d="M26,22c0,1.7-1.3,3-3,3s-3-1.3-3-3s1.3-3,3-3S26,20.3,26,22z M36,19c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3
+	S37.7,19,36,19z M49,19c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S50.7,19,49,19z M62,19c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3
+	S63.7,19,62,19z M75,19c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S76.7,19,75,19z M36,84c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3
+	S37.7,84,36,84z M49,84c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S50.7,84,49,84z M62,84c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3
+	S63.7,84,62,84z M75,84c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S76.7,84,75,84z M88,19c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3
+	S89.7,19,88,19z M26,35c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3S26,36.7,26,35z M26,48c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3
+	S26,49.7,26,48z M26,61c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3S26,62.7,26,61z M26,74c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3
+	S26,75.7,26,74z M26,87c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3S26,88.7,26,87z M91,35c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3
+	S91,36.7,91,35z M91,48c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3S91,49.7,91,48z M91,61c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3
+	S91,62.7,91,61z M91,74c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3S91,75.7,91,74z M91,87c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3
+	S91,88.7,91,87z M23,19v-9 M36,19v-9 M49,19v-9 M62,19v-9 M75,19v-9 M88,19v-9 M23,99v-9 M36,99v-9 M49,99v-9 M62,99v-9 M75,99v-9
+	 M88,99v-9 M11,35h9 M11,48h9 M11,61h9 M11,74h9 M91,35h9 M91,48h9 M91,61h9 M91,74h9"/>
+  </defs>
+</svg>

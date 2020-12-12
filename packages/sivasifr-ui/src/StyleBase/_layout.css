@@ -1,0 +1,115 @@
+
+
+
+#app {
+  /* padding-top: var(--appbar-height); */
+  min-height: 100%;
+  transition: margin-left 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .drawer--left #header {
+    left: 240px;
+  }
+  .drawer--left #app {
+    margin-left: 240px;
+  }
+
+
+  .drawer--hide.drawer--left #app {
+    margin-left: 0px;
+  }
+  .drawer--hide.drawer--left .drawer{
+    left: -240px;
+  }
+  .drawer--hide.drawer--left #footer {
+    margin-left: 0px;
+  }
+
+  .drawer--right #header {
+    right: 240px;
+  }
+  /* .drawer--right #app {
+    margin-right: 240px;
+  }
+  .drawer--right #footer {
+    margin-right: 240px;
+  }
+  .drawer--right .drawer {
+    transform: translate(240px);
+    right: 240px;
+  } */
+
+  .drawer--hide.drawer--right #app {
+    margin-right: 0px;
+  }
+  .drawer--hide.drawer--right #footer {
+    margin-right: 0px;
+  }
+  .drawer--hide.drawer--right #header {
+    right: 0px;
+  }
+  .drawer--hide.drawer--right .drawer {
+    transform: translate(0px);
+    right: -240px;
+  }
+}
+.drawer, #header, #footer, #app {
+  transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  transition: 0.25s;
+}
+
+@media (min-width: 992px) {
+  /**
+   * Toggle Sidedrawer
+   */
+  .drawer--right .drawer {
+    right: -240px;
+  }
+  .drawer--right .drawer.active {
+    transform: translate(240px);
+    right: 240px;
+  }
+}
+/**
+ * Header CSS
+ */
+.toggle {
+  cursor: pointer;
+}
+.toggle.active {
+  color: red;
+}
+
+/**
+ * Sidedrawer CSS
+ */
+.nav-sidebar .active:after {
+  content: '';
+  background-color: #ccc;
+  position: absolute;
+  left: -1rem;
+  right: -1rem;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.nav-sidebar .nav-item {
+  position: relative;
+  padding-top: .2rem;
+  padding-bottom: .4rem;
+}
+.nav-sidebar .nav-link {
+  line-height: 1;
+  border-bottom: 1px solid  #ccc;
+  display: inline;
+}
+.nav-sidebar .nav-link:hover {
+  border-bottom: 1px solid  red;
+}
+/*Footer bottom*/
+#footer{
+  flex: none;
+}

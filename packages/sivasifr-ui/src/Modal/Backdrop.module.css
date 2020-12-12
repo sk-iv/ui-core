@@ -1,0 +1,27 @@
+.backdrop {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  touch-action: none;
+ /*Remove grey highlight*/
+  -webkit-tap-highlight-color: transparent;
+  background-color:  rgba(0,0,0,.5);
+  transition: opacity 1s ease-out 0.5s;
+  will-change: opacity;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNq01kEKgzAQBdCAWBAXRvQILtQr9kylpduewLW38Aa2kTRfmmKhapIZswmo+Q/FTEYIM+I4Pkkp72mangXDQE6e5xeTG4kPEBVFcWuaZjTzSIWwPsuyV13Xz7IsrzMEEcAwDLrve02BLNB1nUYecpE/30AwAIxQaAn8zaFCu8DywRDIGQiFvAFfKBhwhcjAHpQkyYMF2IKqqlJswBqklOIF7MAnMmVCWWCaJt22rcJ1wVXslm8C4NBPhRlvQC1BTn8XR61z2ickyGfHB0EhtcsLolRhp3Uc58nmes6TcTWH+4y30M8Zj24CXQVnt4Ic5H27FdsWQTyq73oLMADN2Uye53WjqAAAAABJRU5ErkJggg==), auto;
+  /* Styles applied to the root element if `invisible={true}`. */
+  &-invisible {
+    background-color: transparent !important;
+  }
+}
+.isPortal #app{
+  filter: blur(2px);
+}

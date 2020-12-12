@@ -1,0 +1,12 @@
+.step{
+  /* Styles applied to the root element if `orientation="horizontal"`. */
+  &-horizontal {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  /* Styles applied to the root element if `alternativeLabel={true}`. */
+  &-alternativeLabel {
+    flex: 1;
+    position: relative;
+  }
+}

@@ -1,0 +1,13 @@
+.step-content{
+  &-root {
+    margin-top: 8px;
+    margin-left: 12px;
+    padding-left: 20px;
+    padding-right: 8px;
+    border-left: 1px solid #ccc;
+  }
+  /* Styles applied to the root element if `last={true}` (controlled by `Step`). */
+  &-last {
+    border-left: none;
+  }
+}

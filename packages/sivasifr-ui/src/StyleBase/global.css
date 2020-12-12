@@ -1,0 +1,83 @@
+@import '_variables.css';
+@import '_fonts.css';
+@import '_reboot.css';
+@import '_layout.css';
+@import '_grid.css';
+@import '_color.css';
+@import '_spacing.css';
+@import '_border.css';
+@import '_paper.css';
+@import '_flex.css';
+@import '_type.css';
+@import '_animation.css';
+@import '_display.css';
+@import '_nav.css';
+@import '_icon.css';
+@import '_mapbox-gl.css';
+
+
+.route-wrap{
+  /* padding-top: var(--appbar-height); */
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+}
+html{
+  background-color: var(--body-bg-color);
+}
+html, body{
+  height: 100%  !important;
+}
+/* #app{
+  display: flex;
+  flex: 1 0 auto;
+} */
+.pos-a{
+  position: absolute !important;
+}
+.pos-s-top{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.pos-s-bottom{
+  position: sticky;
+  bottom:0;
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  .pos-sm-a{
+    position: absolute !important;
+  }
+}
+.pos-a-center{
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  transform: translate(-50%, -50%);
+}
+.pos-r{
+  position: relative;
+}
+.h-100{
+  height: 100% !important;
+}
+.w-100{
+  width: 100% !important;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.token-del{
+  background-color: #ff3000;
+  color: #fff;
+  text-decoration: none;
+}
+.token-ins{
+  background-color: #9bf0b1;
+}
+#root{
+  display: flex;
+  justify-content: center;
+}

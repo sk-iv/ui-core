@@ -1,0 +1,96 @@
+.icon-btn {
+  text-align: center;
+  flex: 0 0 auto;
+  font-size: 1em;
+  border-radius: 50%;
+  /*для того чтобы иконки не срезались*/
+  overflow: visible;
+  color: #b9b9b9;
+  transition: all 0.1s;
+}
+
+.icon-btn:hover {
+  background-color: hsla(var(--color-primary-txt), 1);
+  color: #ffffff;
+  /* // Reset on touch devices; it doesnt add specificity */
+  /* @media (hover: none): {
+    backgroundColor: transparent;
+  }; */
+}
+
+.icon-btn.icon-btn-disabled {
+  background-color: transparent;
+  color: #dadada;
+}
+
+/* Styles applied to the root element if `size="small"`. */
+.sizeSmall {
+  padding: 3px;
+  font-size: 18px;
+}
+
+.edgeStart {
+  margin-left: -12px;
+
+}
+
+.edgeStart .icon-btn-sizeSmall {
+  margin-left: -3px;
+}
+
+/* Styles applied to the root element if `edge="end"`. */
+.edgeEnd {
+  margin-right: -12px;
+
+}
+
+/* Styles applied to the root element if `color="inherit"`. */
+.colorInherit {
+  color: inherit;
+}
+
+/* Styles applied to the root element if `color="primary"`. */
+.colorPrimary {
+  color: hsl(var(--color-primary-txt));
+}
+
+.colorAccent {
+  color: hsl(var(--color-accent-start));
+  /* // Reset on touch devices; it doesnt add specificity
+  @media (hover: none): {
+    backgroundColor: transparent;
+  }; */
+}
+
+.colorPrimary:hover {
+  background-color: hsl(var(--color-primary-start));
+  /* // Reset on touch devices; it doesnt add specificity
+  @media (hover: none): {
+    backgroundColor: transparent;
+  }; */
+}
+
+/* Styles applied to the root element if `color="secondary"`. */
+.colorSecondary {
+  color: hsl(var(--color-secondary-start));
+
+}
+
+.colorSecondary:hover {
+  background-color: hsl(var(--color-primary-start));
+  /* // Reset on touch devices; it doesnt add specificity
+  @media (hover: none): {
+    backgroundColor: transparent;
+  }; */
+}
+
+/* Pseudo-class applied to the root element if `disabled={true}`. */
+/* .icon-btn-disabled {} */
+
+/* Styles applied to the children container element. */
+.label {
+  width: 100%;
+  display: flex;
+  align-items: inherit;
+  justify-content: inherit;
+}

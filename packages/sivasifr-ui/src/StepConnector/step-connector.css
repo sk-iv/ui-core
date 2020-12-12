@@ -1,0 +1,36 @@
+.step-connector{
+  /* Styles applied to the root element. */
+  .step-connector-root {
+    flex: 1 1 auto;
+  }
+
+  /* Styles applied to the root element if `orientation="vertical"`. */
+  &-vertical {
+    margin-left: 12px;
+    padding: 0 0 8px;
+  }
+  /* Styles applied to the root element if `alternativeLabel={true}`. */
+  &-alternativeLabel {
+    position: absolute;
+    top: 12px;
+    left: calc(-50% + 20px);
+    right: calc(50% + 20px);
+  }
+
+  /* Styles applied to the line element. */
+  &-line {
+    display: block;
+    border-color: #ccc;
+  }
+  /* Styles applied to the root element if `orientation="horizontal"`. */
+  &-lineHorizontal {
+    border-top-style: solid;
+    border-top-width: 1px;
+  }
+  /* Styles applied to the root element if `orientation="vertical"`. */
+  &-lineVertical {
+    border-left-style: solid;
+    border-left-width: 1px;
+    min-height: 24px;
+  }
+}

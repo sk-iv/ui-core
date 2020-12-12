@@ -1,0 +1,18 @@
+.text-muted{
+  color:hsla(0, 0%, var(--l-fork), 0.7) !important;
+}
+.text-primary{
+  color:hsl(var(--color-primary-txt)) !important;
+}
+.text-white{
+  color:hsl(0, 0%, 100%) !important;
+}
+.bg-primary{
+  background-color: hsla(var(--color-primary-start), 1) !important;
+}
+.bg-white{
+  background-color: hsl(0, 0%, 100%);
+}
+.bg-light{
+  background-color: hsl(0, 0%, calc(var(--l-fork)*1.9)) !important;
+}

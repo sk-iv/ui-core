@@ -1,0 +1,91 @@
+.text {
+  margin: 0;
+
+  &-bold {
+    font-weight: bold;
+  }
+}
+
+/* Styles applied to the root element if `align="left"`. */
+.align-left {
+  text-align: left;
+}
+
+/* Styles applied to the root element if `align="center"`. */
+.align-center {
+  text-align: center;
+}
+
+/* Styles applied to the root element if `align="right"`. */
+.align-right {
+  text-align: right;
+}
+
+/* Styles applied to the root element if `align="justify"`. */
+.align-justify {
+  text-align: justify;
+}
+
+/* Styles applied to the root element if `nowrap={true}`. */
+.no-wrap {
+  overflow: hidden;
+  text-Overflow: ellipsis;
+  white-Space: nowrap;
+}
+
+/* Styles applied to the root element if `gutterBottom={true}`. */
+.gutter-bottom {
+  margin-bottom: 0.35em;
+}
+
+/* Styles applied to the root element if `paragraph={true}`. */
+.paragraph {
+  margin-bottom: 16px;
+}
+
+/* Styles applied to the root element if `color="inherit"`. */
+.color-inherit {
+  color: inherit;
+}
+
+/* Styles applied to the root element if `color="primary"`. */
+.color-primary {
+  /*color: theme.palette.primary.main;*/
+}
+
+/* Styles applied to the root element if `color="secondary"`. */
+.color-secondary {
+  /*color: theme.palette.secondary.main;*/
+}
+
+/* Styles applied to the root element if `color="textPrimary"`. */
+.color-text-primary {
+  /*color: theme.palette.text.primary;*/
+}
+
+/* Styles applied to the root element if `color="textSecondary"`. */
+.color-text-secondary {
+  /*color: theme.palette.text.secondary;*/
+}
+
+/* Styles applied to the root element if `color="error"`. */
+.color-error {
+  /*color: theme.palette.error.main;*/
+}
+
+/* Styles applied to the root element if `display="inline"`. */
+.display-inline {
+  display: inline;
+}
+
+/* Styles applied to the root element if `display="block"`. */
+.display-block {
+  display: block;
+}
+
+.txt-outline{
+  text-shadow:1px 1px 0 hsl(var(--color-primary-txt)),
+  -1px -1px 0 hsl(var(--color-primary-txt)), 1px -1px 0 hsl(var(--color-primary-txt)), -1px 1px 0 hsl(var(--color-primary-txt)), 1px 1px 0 hsl(var(--color-primary-txt)), 2px 2px 2px hsl(var(--color-primary-txt));
+  color: #fff;
+  font-weight: bold;
+}

@@ -1,0 +1,22 @@
+.d-flex{
+  display: flex !important;
+}
+@media (min-width: 1200px) {
+  .d-flex-xl{
+    display: flex;
+  }
+}
+@media (min-width: 992px) {
+  .d-flex-lg{
+    display: flex;
+  }
+}
+.d-inline-flex{
+  display: inline-flex;
+}
+.flex-grow{
+	flex: 1 0 auto;
+}
+.flex-column{
+  flex-direction: column !important;
+}

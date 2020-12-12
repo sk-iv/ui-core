@@ -1,0 +1,51 @@
+.select {
+  /* Remove Firefox custom style */
+  -moz-appearance: none;
+  /* Fix SSR issue */
+  -webkit-appearance: none;
+  /* Reset */
+  appearance: none;
+  /* When interacting quickly; the text can end up selected.
+  Native select cant be selected either. */
+  user-select: none;
+  width: 200px;
+  min-width: 200px;
+  cursor: pointer;
+
+  &-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  &:focus {
+    /*// Show that its not an text input*/
+    background: #ddd;
+    border-radius: 0; /*// Reset Chrome style*/
+  }
+  /*// Remove Firefox focus border*/
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+  /*// Remove IE11 arrow*/
+  &::-ms-expand {
+    display: none;
+  }
+  &-selectMenu {
+    width: auto; /*// Fix Safari textOverflow*/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1;
+  }
+  &-disabled {
+    cursor: default;
+  }
+  &--icon {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    color: #ddd;
+    pointer-events: none; /*// Dont block pinter events on the select under the icon.*/
+  }
+}

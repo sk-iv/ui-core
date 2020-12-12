@@ -1,0 +1,45 @@
+.markdown a, .link {
+  transition: all 0.3s ease 0s;
+  border-bottom-color: hsla(var(--body-txt-color), 0.3);
+  border-bottom-width: 1px;
+  cursor: pointer;
+}
+
+.markdown a:hover, .link:hover {
+  cursor: pointer;
+  color: hsla(var(--color-accent-start), 1);
+  border-bottom-color: hsla(var(--color-accent-start), 0.5);
+}
+
+.link-primary {
+  color: hsla(var(--color-primary-txt), 1);
+}
+
+.link-white {
+  color: hsla(0, 100%, 100%, 1);
+}
+
+.more-link:after {
+  content: ">";
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0 5px 5px 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.link-solid {
+  border-bottom-style: solid;
+}
+
+.link-dashed {
+  border-bottom-style: dashed;
+}
+
+.anchor:before {
+  content: "";
+  display: block;
+  height: var(--appbar-height);
+  margin-top: -(var(--appbar-height));
+}

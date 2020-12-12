@@ -1,0 +1,20 @@
+.collapse{
+  &--container {
+    height: 0;
+    /*overflow: hidden;*/
+    /*transition: theme.transitions.create(height);*/
+  }
+
+  &--entered {
+    height: auto;
+  }
+
+  /* Hack to get children with a negative margin to not falsify the height computation. */
+  &--wrapper {
+    display: flex;
+  }
+  
+  &--wrapper-inner {
+    width: 100%;
+  }
+}

@@ -1,0 +1,102 @@
+/* export const styles = theme => {
+  const 16px = theme.spacing.unit * 3;
+  const top = { top: 0 };
+  const bottom = { bottom: 0 };
+  const right = { justifyContent: flex-end };
+  const left = { justifyContent: flex-start };
+  const topSpace = { top: 16px };
+  const bottomSpace = { bottom: 16px };
+  const rightSpace = { right: 16px };
+  const leftSpace = { left: 16px };
+  const center = {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  };
+
+  return {
+
+  };
+}; */
+
+.snackbar {
+  z-index: 1000;
+  position: fixed;
+  display: flex;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+
+  &--anchorOriginTopCenter {
+    top: 0;
+  }
+  &--anchorOriginBottomCenter {
+    bottom: 0;
+  }
+  &--anchorOriginTopRight {
+    top: 0;
+    justify-content: flex-end;
+  }
+  &--anchorOriginBottomRight {
+    bottom: 0;
+    justify-content: flex-end;
+  }
+  &--anchorOriginTopLeft {
+    top: 0;
+    justify-content: flex-start;
+  }
+  &--anchorOriginBottomLeft {
+    bottom: 0;
+    justify-content: flex-start;
+
+  }
+}
+
+@media (min-width: 768px) {
+  .snackbar--anchorOriginTopCenter {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 768px) {
+  .snackbar--anchorOriginBottomCenter {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 768px) {
+  .snackbar--anchorOriginTopRight{
+    left: auto;
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .snackbar--anchorOriginBottomRight {
+    left: auto;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .snackbar--anchorOriginTopLeft {
+    right: auto;
+    top: 16px;
+    left: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .snackbar--anchorOriginBottomLeft {
+    right: auto;
+    bottom: 16px;
+    left: 16px;
+  }
+}

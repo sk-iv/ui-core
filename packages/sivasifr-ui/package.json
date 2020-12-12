@@ -1,0 +1,56 @@
+{
+  "name": "@sivasifr/ui-core",
+  "version": "1.0.0",
+  "private": false,
+  "author": "Svetlana Ivannikova",
+  "main": "./src/index.js",
+  "description": "React components that implement Google's Material Design.",
+  "keywords": [
+    "react",
+    "material design"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mui-org/material-ui.git",
+    "directory": "packages/siva-ui"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mui-org/material-ui/issues"
+  },
+  "homepage": "https://material-ui.com/",
+  "scripts": {
+    "build": "yarn build:legacy && yarn build:modern && yarn build:node && yarn build:stable && yarn build:umd && yarn build:types && yarn build:copy-files",
+    "prebuild": "rimraf build tsconfig.build.tsbuildinfo",
+    "release": "yarn build && npm publish build --tag next"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.8.6 || ^17.0.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.4",
+    "@popperjs/core": "^2.4.4",
+    "@types/react-transition-group": "^4.2.0",
+    "clsx": "^1.0.4",
+    "csstype": "^3.0.2",
+    "hoist-non-react-statics": "^3.3.2",
+    "prop-types": "^15.7.2",
+    "react-is": "^16.8.0 || ^17.0.0",
+    "react-transition-group": "^4.4.0"
+  },
+  "devDependencies": {},
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

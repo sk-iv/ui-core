@@ -1,0 +1,25 @@
+.form-control {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  /*Reset fieldset default style*/
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  &--marginNormal {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  &--marginDense {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  &--fullWidth {
+    width: 100%;
+  }
+  &-error .form-label, &-error .form-helper-text{
+    color: hsl(var(--error-hue), 100%, 52%);
+  }
+}

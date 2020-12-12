@@ -1,0 +1,24 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { withKnobs, color } from '@storybook/addon-knobs';
+import {theme} from './snippets';
+
+<Meta title="Basic/Colors" />
+
+
+# Colors
+
+It's a classic decor rule that helps create a color palette for a space. It states that 60% of the room should be a dominant color, 30% should be the secondary color or texture and the last 10% should be an accent.
+
+The 60% is the overall color of the surface, the background color if you will.
+
+The 30%. It will become the secondary color in your space and will support the main color, but be different enough to give the room interest. Think of it this way, you'll be using half as much of this color as you did for your main color.
+
+The 10%; your accent color. It can be more bold or more subtle depending on what look you want. The 10% can be what gives the room character or keeps it that much more neutral, it's really up to you.
+
+<Story name="variants" decorators={[withKnobs]}>
+  <div style={{display: "flex", height: "50px"}}>
+    <div style={{background:`linear-gradient(to right, ${color("Primary start", "hsl(var(--color-primary-start))", "Primary color")}, hsl(var(--color-primary-end)))`, width:"60%", float:"left"}}>60%</div>
+    <div style={{background:theme.gradient.secondary, width:"30%", float:"left"}}>30%</div>
+    <div style={{background:theme.gradient.accent, width:"10%", float:"left"}}>10%</div>
+  </div>
+</Story>

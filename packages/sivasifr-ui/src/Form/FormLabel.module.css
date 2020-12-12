@@ -1,0 +1,22 @@
+.form-label {
+  color: currentColor;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+.focused {
+  color: hsl(var(--color-secondary-start));
+}
+
+.error {
+  color: #ddd;
+}
+
+.disabled {
+  color: #ddd;
+}
+
+.error.asterisk:after {
+  content: "*"
+}

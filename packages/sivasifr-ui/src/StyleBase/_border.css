@@ -1,0 +1,15 @@
+.border-b{
+  border-bottom: 1px solid color(#ccc a(50%));
+}
+.border-t{
+  border-top: 1px solid color(#ccc a(50%));
+}
+.border-r{
+  border-right: 1px solid color(#ccc a(50%));
+}
+.rounded-circle{
+  border-radius: 50%;
+}
+.border-dashed{
+  border: 1px dashed color(#ccc a(50%));
+}

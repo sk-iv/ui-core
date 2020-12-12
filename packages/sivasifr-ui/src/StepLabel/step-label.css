@@ -1,0 +1,30 @@
+.step-label{
+  &-root {
+    display: flex;
+    align-items: center;
+    /* &$alternativeLabel: {
+      flexDirection: column;
+    }
+    &$disabled: {
+      cursor: default;
+    } */
+  }
+
+  /* Styles applied to the `Typography` component which wraps `children`. */
+  &-label {
+    color: #ccc;
+  }
+
+  /* Styles applied to the `icon` container element. */
+  &-iconContainer {
+    /* Fix IE 11 issue */
+    flex-shrink: 0;
+    display: flex;
+    padding-right: 8px;
+  }
+
+  /* Styles applied to the container element which wraps `Typography` and `optional`. */
+  &-labelContainer {
+    width: 100%;
+  }
+}
