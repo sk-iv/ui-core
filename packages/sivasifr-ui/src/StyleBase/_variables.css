@@ -102,16 +102,10 @@
 
 --icon-line-width: 2px;
 --icon-edge-width: 2px;
---icon-primary-color:var(--color-primary-start);
---icon-secondary-color:var(--color-secondary-start);
-
 
 --theme-txt-color-gradient: #ffffff;
 --theme-txt-color-img: #ffffff;
---theme-bg-img:url("/assets/identity/bg.jpg") 50% 50% / cover no-repeat;
 --theme-txt-color-primary:#000b49;
 --theme-bg-card:hsla(0, 0%, 100%, 0.6);
-
---map-marker:url("/assets/identity/style/marker-icon.png");
 
 }

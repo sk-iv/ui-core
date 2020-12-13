@@ -144,7 +144,7 @@ const Chip = React.forwardRef((props, ref) => {
         {
           [styles.disabled]: disabled,
           [styles.sizeSmall]: small,
-          [styles[`color-${color}`]]: color !== 'default',
+          [styles[`color${capitalize(color)}`]]: color !== 'default',
           [styles.clickable]: clickable,
           [styles[`clickableColor${capitalize(color)}`]]: clickable && color !== 'default',
           [styles.deletable]: onDelete,
@@ -247,6 +247,6 @@ Chip.propTypes = {
     * The variant to use.
     */
   variant: PropTypes.oneOf(['default', 'outlined']),
-};
+}
 
-export default Chip;
+export default Chip

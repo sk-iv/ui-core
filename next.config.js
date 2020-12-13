@@ -1,21 +1,9 @@
-const withCSS = require('@zeit/next-css')
 
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
 })
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'mdx'],
-})
-
-module.exports = withCSS({
-  cssModules: true,
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: "[name]_[local]__[hash:base64:5]",
-  },
-  postcssLoaderOptions: {
-    parser: true,
-  },
 })
 
 module.exports = {
@@ -26,6 +14,21 @@ module.exports = {
         test: /\.(js|ts)x?$/,
       },
       use: ['@svgr/webpack'],
+    });
+    //https://github.com/vercel/next.js/discussions/15818
+    config.module.rules[1].oneOf.forEach((moduleLoader) => {
+      Array.isArray(moduleLoader.use) &&
+      moduleLoader.use.forEach((l) => {
+        if (l.loader.includes('css-loader') && !l.loader.includes('postcss-loader')) {
+          delete l.options.modules.getLocalIdent;
+          l.options.modules = {
+            ...l.options.modules,
+            // Your custom css-modules options below.
+            localIdentName: '[name]_[local]_[hash:base64:5]',
+            exportLocalsConvention: "dashesOnly",
+          };
+        }
+      });
     });
 
     return config;
