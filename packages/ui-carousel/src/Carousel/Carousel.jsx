@@ -7,8 +7,9 @@ import { CarouselContext } from "./CarouselContextProvider"
 import styles from './Carousel.module.css'
 
 // https://tsh.io/blog/react-state-management-react-hooks-vs-redux/
-const Carousel = ({ children }) => {
+const Carousel = ({ children, containerWidth }) => {
   const refContainer = useRef(0)
+  const refItem = useRef(0)
 
   const [state, dispatch] = useContext(CarouselContext)
   //const dragOffset = useRef(state.cursorIndex)
@@ -25,7 +26,7 @@ const Carousel = ({ children }) => {
   }, [state.cursorIndex])
 
   const [springs, set] = useSprings(children.length, (i) => ({
-    x: i * 800,
+    x: i * containerWidth,
     display: 'block',
   }))
 
@@ -41,7 +42,7 @@ const Carousel = ({ children }) => {
       cancel()
     }
 
-    if (down && distance > refContainer.current.offsetWidth / 2) {
+    if (down && distance > refItem.current.offsetWidth / 2) {
       dispatch({
         type: "SET_CURRENT_INDEX",
         payload: xDir > 0 ? -1 : 1,
@@ -55,7 +56,7 @@ const Carousel = ({ children }) => {
   const setSwipe = (down, mx) => {
     set((i) => {
       if (i < state.cursorIndex - 1 || i > state.cursorIndex + 1) return { display: 'none' }
-      const x = (i - state.cursorIndex) * refContainer.current.offsetWidth + (down ? mx : 0)
+      const x = (i - state.cursorIndex) * refItem.current.offsetWidth + (down ? mx : 0)
       return { x, display: 'block' }
     })
   }
@@ -65,8 +66,9 @@ const Carousel = ({ children }) => {
       {
         springs.map(({ x, display, scale }, i) => (
           <animated.div
+            ref={refItem}
             {...bind()}
-            key={Math.random().toString(36).substr(2, 9)}
+            key={i}
             style={{ display, transform: x.interpolate((g) => `translate3d(${g}px, 0, 0)`) }}
             className={styles.wrapper}
           >

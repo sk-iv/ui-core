@@ -2,10 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-//const DeclarationBundlerPlugin = require('declaration-bundler-webpack-plugin')
-
 
 // Try the environment variable, otherwise use root
 // argv.mode !== 'production' ? '/' : 'assets/'
@@ -35,7 +32,7 @@ module.exports = (env, argv) => ({
           loader: 'babel-loader',
           options: {
             presets: [
-              '@babel/preset-env',
+              //'@babel/preset-env',
               "@babel/preset-react"
             ]
           }
