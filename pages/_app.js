@@ -1,8 +1,32 @@
-import '../styles/globals.css'
-import '../packages/sivasifr-ui/src/StyleBase/_variables.css'
+import * as React from 'react'
+import {Pagination} from "@sivasifr/ui-carousel/Pagination"
+import {Button} from "@sivasifr/ui-core/Button"
+import {Carousel, CarouselContextProvider} from "@sivasifr/ui-carousel/Carousel"
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-
-export default MyApp
+const App = () => (
+  <>
+    <CarouselContextProvider>
+      <Pagination
+        arrowNext={<Button>Next</Button>}
+        arrowPrev={<Button>Prev</Button>}
+      />
+      <Carousel>
+        {
+          [
+            'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
+            'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
+          ].map((item) => (
+            <img
+              key={item}
+              src={item}
+              alt=""
+              height={300}
+              width={770}
+            />
+          ))
+        }
+      </Carousel>
+    </CarouselContextProvider>
+  </>
+)
+export default App

@@ -40,15 +40,12 @@ const Button = React.forwardRef((props, ref) => {
       className={clsx(
         styles.btn,
         {
-          [styles['btn--default']]: color === 'default',
-          [styles['btn--primary']]: color === 'primary',
-          [styles['btn--secondary']]: color === 'secondary',
-          [styles['btn--accent']]: color === 'accent',
+          [styles[`color${capitalize(color)}`]]: color === 'default',
           [styles['btn--sm']]: size === 'small',
           [styles['btn--lg']]: size === 'large',
-          [styles['btn--disabled']]: disabled,
-          [styles['btn-outlined']]: variant === 'outlined',
-          [styles['btn--contained']]: variant === 'contained',
+          [styles.disabled]: disabled,
+          [styles.outlined]: variant === 'outlined',
+          [styles.contained]: variant === 'contained',
           [styles['w-100']]: fullWidth,
         },
         className,
@@ -56,12 +53,12 @@ const Button = React.forwardRef((props, ref) => {
       component={component}
       disabled={disabled}
       focusRipple={!disableFocusRipple}
-      focusVisibleClassName={clsx('btn--focusVisible', focusVisibleClassName)}
+      focusVisibleClassName={clsx(styles.focusVisible, focusVisibleClassName)}
       ref={ref}
       type={type}
       {...other}
     >
-      <span className="btn--label">
+      <span className={styles.label}>
         {startIcon}
         {children}
         {endIcon}
