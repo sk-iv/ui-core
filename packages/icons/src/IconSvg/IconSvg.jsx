@@ -1,12 +1,12 @@
 import React from 'react'
 import clsx from 'clsx'
-import icons24 from './icons/24/icons-24.svg'
-// import icons96 from './icons/96/icons-96.svg'
-import styles from './SvgIcon.module.css'
 
-function SvgUse({
-  name, size, bgImg, color, style, className, outline,
-}) {
+import icons24 from '../glyphs/24/icons-24.svg'
+import styles from './IconSvg.module.css'
+
+const IconSvg = ({
+  name, size = 'sm', bgImg, color = 'inherit', style, className, outline,
+}) => {
   const type = {
     xs: {
       size: 18,
@@ -18,7 +18,7 @@ function SvgUse({
     },
     lg: {
       size: 96,
-      path: `/assets/icons/96/${name}.svg#ill`,
+      path: `/assets/icons/96/${name}.svg`,
     },
   }
 
@@ -29,7 +29,7 @@ function SvgUse({
         <svg
           className={clsx(
             styles.icon,
-            styles[`icon-${type[size].size}`],
+            styles[`icon${type[size].size}`],
           )}
           viewBox={`0 0 ${type[size].size} ${type[size].size}`}
         />
@@ -38,7 +38,7 @@ function SvgUse({
         <svg
           className={clsx(
             styles.icon,
-            styles[`icon-${type[size].size}`],
+            styles[`icon${type[size].size}`],
             className,
             { [styles['text-white icon-outline']]: outline },
           )}
@@ -55,11 +55,9 @@ function SvgUse({
 
   )
 }
-SvgUse.defaultProps = {
+IconSvg.defaultProps = {
   name: 'none',
-  size: 'sm',
   bgImg: false,
-  color: 'hsla(0, 0%, 0%, 0.4)',
 }
-SvgUse.muiName = 'SvgIcon'
-export default SvgUse
+IconSvg.muiName = 'SvgIcon'
+export default IconSvg

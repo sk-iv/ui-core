@@ -24,9 +24,9 @@
 //       className={className}
 //       {...other}
 //     >
-//       <svg viewBox="0 0 24 24">
+//       <glyphs viewBox="0 0 24 24">
 //         {children}
-//       </svg>
+//       </glyphs>
 //     </span>
 //   );
 // }

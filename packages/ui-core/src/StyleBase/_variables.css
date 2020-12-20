@@ -82,7 +82,7 @@
 
 /*appbar*/
 --appbar-height:60px;
---appbar-bg: 187, 0%, 90%, 0.5;
+--appbar-bg: hsla(187, 0%, 90%, 0.5);
 --appbar-txt: #000000;
 /*z-index*/
 

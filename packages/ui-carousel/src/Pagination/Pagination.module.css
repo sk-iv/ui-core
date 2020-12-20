@@ -2,15 +2,15 @@
 
 }
 .proportion {
-
+  grid-area: proportion;
 }
 
 .arrow-next {
-
+  grid-area: next;
 }
 
 .arrow-prev {
-
+  grid-area: prev;
 }
 
 .numerator {

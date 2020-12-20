@@ -13,6 +13,7 @@ const List = React.forwardRef((props, ref) => {
     dense = false,
     disablePadding = false,
     subheader,
+    direction,
     ...other
   } = props
 
@@ -27,6 +28,7 @@ const List = React.forwardRef((props, ref) => {
             [styles['list--dense']]: dense,
             [styles['list--padding']]: !disablePadding,
             [styles['list--subheader']]: subheader,
+            [styles.directionX]: direction === 'x',
           },
           className,
         )}
@@ -72,6 +74,7 @@ List.propTypes = {
    * The content of the subheader, normally `ListSubheader`.
    */
   subheader: PropTypes.node,
+  direction: PropTypes.oneOf(['x', 'y']),
 }
 
 export default List

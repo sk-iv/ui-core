@@ -13,8 +13,7 @@
 /out/
 
 # production
-/build
-/public
+/dist
 
 # misc
 .DS_Store
@@ -34,3 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 /public/
+
+# storm
+.idea

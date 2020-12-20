@@ -1,0 +1,59 @@
+.buttress-size {
+  position: relative;
+  display: flex;
+}
+
+.buttress-size:after {
+  content: '';
+  display: block;
+  height: 0;
+}
+
+.buttress20:after {
+  padding-bottom: 20%;
+}
+
+.buttress30:after {
+  padding-bottom: 30%;
+}
+
+.buttress40:after {
+  padding-bottom: 40%;
+}
+
+.buttress50:after {
+  padding-bottom: 50%;
+}
+
+.buttress60:after {
+  padding-bottom: 60%;
+}
+
+.buttress70:after {
+  padding-bottom: 70%;
+}
+
+.buttress80:after {
+  padding-bottom: 80%;
+}
+
+.buttress100:after {
+  padding-bottom: 100%;
+}
+
+/*выравнивает контент внутри buttress по цетру по оси y*/
+.y-middle-wrapper:after {
+  content: "";
+  height: 100%;
+}
+
+.y-middle, .y-middle-wrapper:after {
+  display: flex;
+  flex: 1 0 100%;
+}
+
+.y-middle {
+  z-index: 1;
+  align-self: stretch !important;
+  position: relative;
+}

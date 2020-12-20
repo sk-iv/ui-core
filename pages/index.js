@@ -2,8 +2,6 @@ import * as React from 'react'
 import ReactDom from 'react-dom'
 import App from './_app'
 
-const devMode = process.env.NODE_ENV !== 'production'
-
 const root = document.querySelector('#root')
 
 const render = () => {
@@ -15,7 +13,6 @@ const render = () => {
   }
 }
 
-// $FlowIssue
 if (module.hot) {
   module.hot.accept()
 }

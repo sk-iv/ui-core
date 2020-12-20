@@ -7,7 +7,7 @@ import { chainPropTypes } from '../utils/chainPropTypes'
 import styles from './IconButton.module.css'
 
 /**
- * Refer to the [Icons](/style/icons) section of the documentation
+ * Refer to the [Icons](/style/glyphs) section of the documentation
  * regarding the available icon options.
  */
 const IconButton = React.forwardRef((props, ref) => {

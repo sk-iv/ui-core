@@ -20,7 +20,7 @@ ListItemIcon.propTypes = {
 
   /**
      * The content of the component, normally `Icon`, `SvgIcon`,
-     * or a `material-ui-icons` SVG icon component.
+     * or a `material-ui-glyphs` SVG icon component.
      */
   children: PropTypes.element,
 

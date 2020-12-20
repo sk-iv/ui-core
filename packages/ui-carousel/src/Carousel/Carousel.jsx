@@ -12,7 +12,6 @@ const Carousel = ({ children, containerWidth }) => {
   const refItem = useRef(0)
 
   const [state, dispatch] = useContext(CarouselContext)
-  //const dragOffset = useRef(state.cursorIndex)
 
   useEffect(() => {
     dispatch({

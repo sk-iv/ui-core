@@ -20,6 +20,7 @@ module.exports = (env, argv) => ({
     alias: {
       '@sivasifr/ui-core': path.resolve(__dirname, './packages/ui-core/src'),
       '@sivasifr/ui-carousel': path.resolve(__dirname, './packages/ui-carousel/src'),
+      '@sivasifr/icons': path.resolve(__dirname, './packages/icons/src'),
     },
     extensions: ['*', '.ts', '.js', '.jsx'],
   },
@@ -32,11 +33,11 @@ module.exports = (env, argv) => ({
           loader: 'babel-loader',
           options: {
             presets: [
-              //'@babel/preset-env',
-              "@babel/preset-react"
-            ]
-          }
-        }
+              // '@babel/preset-env',
+              '@babel/preset-react',
+            ],
+          },
+        },
       },
       {
         test: /\.ts?$/,
@@ -48,11 +49,11 @@ module.exports = (env, argv) => ({
         use: [
           (argv.mode !== 'production' ? MiniCssExtractPlugin.loader : 'style-loader'),
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: {
                 localIdentName: '[name]_[local]_[hash:base64:5]',
-                exportLocalsConvention: "dashesOnly",
+                exportLocalsConvention: 'dashesOnly',
               },
             },
           },

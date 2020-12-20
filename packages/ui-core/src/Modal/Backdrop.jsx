@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import clsx from 'clsx';
-import Fade from '../Transition/Fade';
+import PropTypes from 'prop-types'
+import React from 'react'
+import clsx from 'clsx'
+import Fade from '../Transition/Fade'
 import styles from './Backdrop.module.css'
 
 const Backdrop = React.forwardRef((props, ref) => {
@@ -20,9 +20,9 @@ const Backdrop = React.forwardRef((props, ref) => {
       <div
         data-mui-test="Backdrop"
         className={clsx(
-          'backdrop',
+          styles.backdrop,
           {
-            'backdrop-invisible': invisible,
+            [styles.invisible]: invisible,
           },
           className,
         )}

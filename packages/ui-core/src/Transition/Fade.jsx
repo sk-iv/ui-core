@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import Transition from 'react-transition-group/Transition';
+import PropTypes from 'prop-types'
+import React from 'react'
+import Transition from 'react-transition-group/Transition'
+import { useForkRef, getTransitionProps } from '../utils'
 
-const reflow = (node) => node.scrollTop;
+const reflow = (node) => node.scrollTop
 
 /**
  * The Fade transition is used by the Modal component.
@@ -15,29 +16,32 @@ const Fade = React.forwardRef((props, ref) => {
     onEnter,
     onExit,
     style,
-    timeout = defaultTimeout,
+    timeout = {
+      enter: 100,
+      exit: 50,
+    },
     ...other
   } = props;
-  const theme = useTheme();
+
   const handleRef = useForkRef(children.ref, ref);
 
   const handleEnter = (node, isAppearing) => {
-    reflow(node); // So the animation always start from the start.
+    reflow(node) // So the animation always start from the start.
 
     const transitionProps = getTransitionProps(
       { style, timeout },
       {
         mode: 'enter',
       },
-    );
+    )
 
-    node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
-    node.style.transition = theme.transitions.create('opacity', transitionProps);
+    node.style.webkitTransition = `opacity ${transitionProps.duration} ease-in-out`
+    node.style.transition = `opacity ${transitionProps.duration} ease-in-out`
 
     if (onEnter) {
-      onEnter(node, isAppearing);
+      onEnter(node, isAppearing)
     }
-  };
+  }
 
   const handleExit = (node) => {
     const transitionProps = getTransitionProps(
@@ -45,15 +49,15 @@ const Fade = React.forwardRef((props, ref) => {
       {
         mode: 'exit',
       },
-    );
+    )
 
-    node.style.webkitTransition = theme.transitions.create('opacity', transitionProps);
-    node.style.transition = theme.transitions.create('opacity', transitionProps);
+    node.style.webkitTransition = `opacity ${transitionProps.duration} ease-in-out`
+    node.style.transition = `opacity ${transitionProps.duration} ease-in-out`
 
     if (onExit) {
-      onExit(node);
+      onExit(node)
     }
-  };
+  }
 
   return (
     <Transition
@@ -66,9 +70,9 @@ const Fade = React.forwardRef((props, ref) => {
     >
       {(state, childProps) => React.cloneElement(children, {
         style: {
-          opacity: 0,
+          opacity: state === 'exited' ? 0 : 1,
           visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
-          ...styles[state],
+          // ...styles[state],
           ...style,
           ...children.props.style,
         },
@@ -76,8 +80,8 @@ const Fade = React.forwardRef((props, ref) => {
         ...childProps,
       })}
     </Transition>
-  );
-});
+  )
+})
 
 Fade.propTypes = {
 
@@ -135,6 +139,6 @@ Fade.defaultProps = {
     enter: 300,
     exit: 300,
   },
-};
+}
 
-export default Fade;
+export default Fade

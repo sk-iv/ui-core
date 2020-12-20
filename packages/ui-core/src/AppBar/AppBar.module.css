@@ -1,0 +1,55 @@
+.app-bar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Prevent padding issue with the Modal and fixed positioned AppBar.*/
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: var(--appbar-height);
+  background-color: var(--appbar-bg);
+  color: var(--appbar-txt);
+  justify-content: center;
+}
+
+/* Styles applied to the root element if `position="fixed"`. */
+.position-fixed {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: auto;
+  right: 0;
+}
+@media print {
+  .position-fixed {
+    /*Prevent the app bar to be visible on each printed page.*/
+    position: absolute;
+  }
+}
+/* Styles applied to the root element if `position="absolute"`. */
+.position-absolute {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: auto;
+  right: 0;
+}
+
+/* Styles applied to the root element if `position="sticky"`. */
+.position-sticky {
+  /* ⚠️ sticky is not supported by IE11.*/
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  left: auto;
+  right: 0;
+}
+
+/* Styles applied to the root element if `position="static"`. */
+.position-static {
+  position: static;
+}
+
+/* Styles applied to the root element if `position="relative"`. */
+.position-relative {
+  position: relative;
+}

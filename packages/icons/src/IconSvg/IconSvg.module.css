@@ -15,19 +15,19 @@
   cursor: pointer;
 }
 
-.icon-96 {
+.icon96 {
   font-size: 96px;
   stroke-width: 2px;
 }
 
-.icon-24 {
+.icon24 {
   font-size: 24px;
   fill: none;
   stroke-width: 2;
   vector-effect: non-scaling-stroke;
 }
 
-.icon-18 {
+.icon18 {
   font-size: 18px;
   fill: none;
   stroke-width: 2.5;

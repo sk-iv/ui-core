@@ -3,7 +3,7 @@
 //
 // import Checkbox from '../Checkbox';
 // import IconButton from '../IconButton';
-// import { SvgUse } from '../SvgIcon';
+// import { IconSvg } from '../SvgIcon';
 // import TextField from './TextField';
 //
 // const TextFieldsArrayAdd = (props) => {
@@ -68,7 +68,7 @@
 //         <IconButton
 //           onClick={this.handleClickRemoveAttribute(value.id)}
 //         >
-//           <SvgUse name="times" />
+//           <IconSvg name="times" />
 //         </IconButton>
 //       </InputAdornment>
 //                       )}
@@ -97,7 +97,7 @@
 //                 color="primary"
 //                 onClick={(e) => this.handleClickAddAttribute()}
 //               >
-//                 <SvgUse name="plus" />
+//                 <IconSvg name="plus" />
 //               </IconButton>
 //                           </InputAdornment>,
 //           }}

@@ -1,7 +1,7 @@
 import {List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar} from './';
 import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import {SvgUse} from '../SvgIcon'
+import {IconSvg} from '../SvgIcon'
 import { IconButton } from '../IconButton'
 import Avatar from '../Avatar';
 function generate(element) {
@@ -24,7 +24,7 @@ Lists are continuous, vertical indexes of text or images.
              <ListItem>
                <ListItemAvatar>
                   <Avatar>
-                    <SvgUse name='funnel'/>
+                    <IconSvg name='funnel'/>
                   </Avatar>
                 </ListItemAvatar>
                <ListItemText
@@ -33,7 +33,7 @@ Lists are continuous, vertical indexes of text or images.
                />
                <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
-                      <SvgUse name='times'/>
+                      <IconSvg name='times'/>
                     </IconButton>
                   </ListItemSecondaryAction>
              </ListItem>

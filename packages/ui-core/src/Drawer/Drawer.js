@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
 import Modal from '../Modal'
-import Paper from '../Paper'
+import { Paper } from '../Paper'
 import { Slide } from '../Transition'
 import Backdrop from '../Modal/Backdrop'
 import styles from './Drawer.module.css'
@@ -68,10 +68,10 @@ const Drawer = React.forwardRef((props, ref) => {
       elevation={variant === 'temporary' ? elevation : 0}
       square
       className={clsx(
-        styles['drawer-paper'],
-        styles[`drawer-paperAnchor-${anchor}`],
+        styles.paper,
+        styles[`paperAnchor-${anchor}`],
         {
-          [styles[`drawer-paperAnchorDocked-${anchor}`]]: variant !== 'temporary',
+          [styles[`paperAnchorDocked-${anchor}`]]: variant !== 'temporary',
         },
       )}
       {...PaperProps}
@@ -84,7 +84,7 @@ const Drawer = React.forwardRef((props, ref) => {
     return (
       <div
         className={clsx(
-          styles.drawer, styles['drawer-docked'], className,
+          styles.drawer, styles.drawerDocked, className,
         )}
         ref={ref}
         {...other}
@@ -110,7 +110,7 @@ const Drawer = React.forwardRef((props, ref) => {
     return (
       <div
         className={clsx(
-          styles.drawer, styles['drawer-docked'], className,
+          styles.drawer, styles.drawerDocked, className,
         )}
         ref={ref}
         {...other}
@@ -131,7 +131,7 @@ const Drawer = React.forwardRef((props, ref) => {
       BackdropComponent={Backdrop}
       className={clsx(
         styles.drawer,
-        styles['drawer-modal'],
+        styles.drawerModal,
         className,
       )}
       open={open}
