@@ -74,6 +74,7 @@ module.exports = (env, argv) => ({
       },
     ],
   },
+  devtool: false,
   plugins: [
     new HtmlWebpackPlugin({
       title: 'webpack Boilerplate',
@@ -84,6 +85,7 @@ module.exports = (env, argv) => ({
     }),
     new ESLintPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.SourceMapDevToolPlugin({}),
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     // }),

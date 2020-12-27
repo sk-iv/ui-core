@@ -1,6 +1,6 @@
 {
   "name": "@sivasifr/ui-core",
-  "version": "1.0.4",
+  "version": "1.0.11",
   "private": false,
   "author": "Svetlana Ivannikova",
   "main": "./src/index.js",
@@ -43,7 +43,8 @@
     "hoist-non-react-statics": "^3.3.2",
     "prop-types": "^15.7.2",
     "react-is": "^16.8.0 || ^17.0.0",
-    "react-transition-group": "^4.4.0"
+    "react-transition-group": "^4.4.0",
+    "@sivasifr/icons": "^1.0.0"
   },
   "devDependencies": {},
   "sideEffects": false,

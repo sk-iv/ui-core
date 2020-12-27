@@ -1,22 +1,32 @@
-.markdown a, .link {
-  transition: all 0.3s ease 0s;
-  border-bottom-color: hsla(var(--body-txt-color), 0.3);
+.link {
   border-bottom-width: 1px;
-  cursor: pointer;
+  border-bottom-color: currentColor;
+  text-decoration: none;
+  transition: opacity 0.3s ease 0s;
 }
 
-.markdown a:hover, .link:hover {
-  cursor: pointer;
-  color: hsla(var(--color-accent-start), 1);
-  border-bottom-color: hsla(var(--color-accent-start), 0.5);
+.link:hover {
+  opacity: 0.8;
 }
 
-.link-primary {
-  color: hsla(var(--color-primary-txt), 1);
+.color-primary {
+  color: hsl(var(--huePrimary), var(--saturationPrimary), calc(var(--lightnessPrimary) * 0.8));
 }
 
-.link-white {
-  color: hsla(0, 100%, 100%, 1);
+.color-secondary {
+  color: hsl(var(--hueSecondary), var(--saturationSecondary), calc(var(--lightnessSecondary) * 0.8));
+}
+
+.color-accent {
+  color: hsl(var(--hueAccent), var(--saturationAccent), calc(var(--lightnessAccent) * 0.8));
+}
+
+.color-light {
+  color: hsl(0, 100%, 100%);
+}
+
+.color-dark {
+  color: hsla(0, 100%, 0%, 0.8);
 }
 
 .more-link:after {
@@ -29,17 +39,10 @@
   align-items: center;
 }
 
-.link-solid {
+.variant-solid {
   border-bottom-style: solid;
 }
 
-.link-dashed {
+.variant-dashed {
   border-bottom-style: dashed;
-}
-
-.anchor:before {
-  content: "";
-  display: block;
-  height: var(--appbar-height);
-  margin-top: -(var(--appbar-height));
 }

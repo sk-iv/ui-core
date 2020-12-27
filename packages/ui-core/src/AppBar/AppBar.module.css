@@ -9,6 +9,7 @@
   background-color: var(--appbar-bg);
   color: var(--appbar-txt);
   justify-content: center;
+  backdrop-filter: blur(1px);
 }
 
 /* Styles applied to the root element if `position="fixed"`. */

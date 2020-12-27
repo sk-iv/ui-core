@@ -261,8 +261,8 @@ const Clickable = React.forwardRef((props, ref) => {
       className={clsx(
         styles.clickable,
         {
-          [styles['clickable--disabled']]: disabled,
-          [styles['clickable--focusVisible']]: focusVisible,
+          [styles.disabled]: disabled,
+          [styles.focusVisible]: focusVisible,
           [focusVisibleClassName]: focusVisible,
         },
         className,

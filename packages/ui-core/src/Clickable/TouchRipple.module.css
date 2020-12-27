@@ -11,7 +11,7 @@
   z-index: 0;
 }
 
-.touchripple-ripple {
+.ripple {
   width: 50;
   height: 50;
   left: 0;
@@ -34,7 +34,7 @@
   animation-duration: 200ms;
 }
 
-.touchripple-child {
+.child {
   opacity: 1;
 }
 
@@ -54,7 +54,7 @@
 
 }
 
-.pulsate .touchripple--ripple-visible {
+.pulsate .ripple-visible {
   opacity: 0.2;
 }
 

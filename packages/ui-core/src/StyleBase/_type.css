@@ -14,135 +14,11 @@
 .text-center{
   text-align: center;
 }
-.text-loud{
-  font-size: 4.5rem;
-}
-@media (max-width: 1200px) {
-  .text-loud{
-    font-size: 2rem;
-    font-weight: bold;
-  }
-}
-.text-loud em{
-  color: hsla(var(--color-accent-start), 1);
-  font-style: normal;
-}
 .text-truncate{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.25;
-}
-.small{
-  font-size: 0.8rem;
-}
-.strong{
-  font-weight: bold;
-}
-.h1 {
-  font-size: var(--h1-font-size);
-}
-@media (max-width: 1200px) {
-  .h1 {
-    font-size: 2rem;
-  }
-}
-
-.h2 {
-  font-size: var(--h2-font-size);
- }
-.h3 {
-  font-size: var(--h3-font-size);
- }
-h4, .h4 {
-  font-size: var(--h4-font-size);
- }
-h5, .h5 {
-  font-size: var(--h5-font-size);
- }
-h6, .h6 {
-  font-size: var(--h6-font-size);
- }
-
-.p2 p { font-size: var(--h2-font-size) }
-.p3 p { font-size: var(--h3-font-size) }
-.p4 p { font-size: var(--h4-font-size) }
-.p5 p { font-size: var(--h5-font-size) }
-
-.title-section-left-01 {
-  position: relative;
-  font-weight: normal;
-  line-height: 1;
-  padding-bottom: 1rem;
-}
-.title-section-left-01:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0px;
-  height: 1px;
-  width: 60px;
-  border-bottom: 5px solid hsla(var(--color-secondary-start), 1);
-}
-.title-section-center-01 {
-  position: relative;
-  font-weight: normal;
-  text-transform: uppercase;
-  line-height: 1;
-  text-align: center;
-  padding-bottom: 1rem;
-}
-.title-section-center-01:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 0px;
-  height: 1px;
-  width: 60px;
-  border-bottom: 5px solid hsla(var(--color-secondary-start), 1);
-}
-
-.vignette-center-01{
-  position: relative;
-  margin-bottom: 1.9rem !important;
-}
-.vignette-center-01:after {
-  bottom: 0;
-  max-width: 650px;
-  width: 100%;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  content: "";
-  display: block;
-  height: 34px;
-  margin: 0 auto;
-}
-.vignette-center-01:before {
-  bottom: -3px;
-  position: absolute;
-  left: 50%;
-  width: 36px;
-  height: 7px;
-  margin-left: -18px;
-  content: "";
-  text-align: center;
-  white-space: nowrap;
-  background-color: #fff;
-
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 23 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E5E5E5' fill-rule='evenodd'%3E%3Cpath d='M2.5 0L0 3.452 2.5 7 5 3.452M11.5 0L9 3.452 11.5 7 14 3.452M20.5 0L18 3.452 20.5 7 23 3.452'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.vignette-center-02:after {
-  content: '';
-  display: block;
-  margin: 0.5em auto;
-  height: 18px;
-  background: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 166 18'><path d='M83,4.9c-2.2,0-4.1,1.8-4.1,4.1s1.8,4.1,4.1,4.1s4.1-1.8,4.1-4.1S85.2,4.9,83,4.9z M3.7,9h56.1 M0.7,12.5L4.2,9L0.7,5.5 M66.6,9L63,5.4L59.4,9l3.6,3.6L66.6,9z M106.3,9h56 M165.3,5.5L161.8,9l3.5,3.5 M103,12.6l3.6-3.6L103,5.4L99.4,9L103,12.6z' stroke='#ccc' stroke-width='2' fill='none'/></svg>") 50% 50% no-repeat;
 }
 
 .typo-leader {
@@ -159,41 +35,11 @@ h6, .h6 {
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 2 1' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E %3Crect width='1' height='1' fill='%2300000050' /%3E %3Crect x='1' width='1' height='1' fill='%23FFFFFF50' /%3E%3C/g%3E%3C/svg%3E") 0 0 repeat-x;
 }
 
-.display {
-  font-family: var(--font-display-base);
-}
-h1.display {
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.2;
-  text-transform: var(--dysplay-text-transform);
-  letter-spacing: var(--dysplay-letter-spacing);
-}
-@media (max-width: 992px) {
-  h1.display {
-    font-size: 1.8rem;
-  }
-}
-@media (max-width: 576px) {
-  h1.display {
-    font-size: 1.2rem;
-  }
-  h2.display {
-    font-size: 1.2rem;
-   }
-}
-.txt-outline{
-  text-shadow:1px 1px 0 hsl(var(--color-primary-txt)),
-  -1px -1px 0 hsl(var(--color-primary-txt)), 1px -1px 0 hsl(var(--color-primary-txt)), -1px 1px 0 hsl(var(--color-primary-txt)), 1px 1px 0 hsl(var(--color-primary-txt)), 2px 2px 2px hsl(var(--color-primary-txt));
-  color: #fff;
-  font-weight: bold;
-}
 .initial-letter::first-letter{
   padding-right: .3rem;
   margin-bottom: -20px;
   font-size: 4.6rem;
   float: left;
   line-height: 1;
-  font-family: var(--font-display-base);
-  color: hsl(var(--color-secondary-txt))
+  font-family: var(--font-display);
 }

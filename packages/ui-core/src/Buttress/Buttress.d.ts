@@ -1,7 +1,11 @@
 import * as React from 'react'
 
 export interface ButtressProps {
-    position?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative';
+    children: React.ReactNode,
+    aspectRatio?: number;
+    className?: string;
+    background?: string;
+    overflowHidden?: boolean;
 }
 
 declare const Buttress: React.FunctionComponent<ButtressProps>

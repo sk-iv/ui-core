@@ -1,7 +1,7 @@
 import React, { useRef, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useSprings, animated } from 'react-spring'
-import { useDrag } from 'react-use-gesture'
+import { useGesture } from 'react-use-gesture'
 
 import { CarouselContext } from "./CarouselContextProvider"
 import styles from './Carousel.module.css'
@@ -27,43 +27,66 @@ const Carousel = ({ children, containerWidth }) => {
   const [springs, set] = useSprings(children.length, (i) => ({
     x: i * containerWidth,
     display: 'block',
+    pointerEvents: 'none',
   }))
 
-  const bind = useDrag(({
-    down,
-    movement: [mx],
-    direction: [xDir],
-    distance,
-    cancel,
-  }) => {
-    //в крайних положениях не дает свайпить дальше
-    if ((children.length - 1 === state.cursorIndex && xDir < 0) || (state.cursorIndex === 0 && xDir > 0)) {
-      cancel()
-    }
+  const bind = useGesture({
+    onDrag: ({
+               down,
+               movement: [mx],
+               direction: [xDir],
+               distance,
+               cancel,
+             }) => {
+      //в крайних положениях не дает свайпить дальше
+      if ((children.length - 1 === state.cursorIndex && xDir < 0) || (state.cursorIndex === 0 && xDir > 0)) {
+        cancel()
+      }
 
-    if (down && distance > refItem.current.offsetWidth / 2) {
-      dispatch({
-        type: "SET_CURRENT_INDEX",
-        payload: xDir > 0 ? -1 : 1,
+      if (down && distance > containerWidth / 2) {
+        dispatch({
+          type: "SET_CURRENT_INDEX",
+          payload: xDir > 0 ? -1 : 1,
+        })
+        cancel()
+      }
+
+      setSwipe(down, mx, distance)
+    },
+    onDragStart: () => {
+      set((i) => {
+        return { pointerEvents: 'none' }
       })
-      cancel()
-    }
-
-    setSwipe(down, mx)
+    },
+    onMouseUp: (prop) => {
+      set((i) => {
+        return { pointerEvents: 'auto' }
+      })
+    },
+    onTouchEnd: (prop) => {
+      set((i) => {
+        return { pointerEvents: 'auto' }
+      })
+    },
   })
 
-  const setSwipe = (down, mx) => {
+
+  const setSwipe = (down, mx, distance) => {
     set((i) => {
       if (i < state.cursorIndex - 1 || i > state.cursorIndex + 1) return { display: 'none' }
-      const x = (i - state.cursorIndex) * refItem.current.offsetWidth + (down ? mx : 0)
-      return { x, display: 'block' }
+      const x = (i - state.cursorIndex) * containerWidth + (down ? mx : 0)
+      return {
+        x,
+        display: 'block',
+        pointerEvents: distance > 0.5 ? 'none' : 'auto',
+      }
     })
   }
 
   return (
     <div className={styles.carousel} ref={refContainer}>
       {
-        springs.map(({ x, display, scale }, i) => (
+        springs.map(({ x, display, pointerEvents, userSelect }, i) => (
           <animated.div
             ref={refItem}
             {...bind()}
@@ -71,7 +94,10 @@ const Carousel = ({ children, containerWidth }) => {
             style={{ display, transform: x.interpolate((g) => `translate3d(${g}px, 0, 0)`) }}
             className={styles.wrapper}
           >
-            <animated.div className={styles.item}>
+            <animated.div
+              className={styles.item}
+              style={{pointerEvents, userSelect}}
+            >
               {children[i]}
             </animated.div>
           </animated.div>

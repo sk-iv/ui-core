@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import capitalize from '../utils/capitalize'
@@ -19,54 +19,49 @@ const Link = React.forwardRef((props, ref) => {
     ...other
   } = props;
 
-  const { isFocusVisible, onBlurVisible, ref: focusVisibleRef } = useIsFocusVisible();
-  const [focusVisible, setFocusVisible] = React.useState(false);
-  const handlerRef = useForkRef(ref, focusVisibleRef);
+  const { isFocusVisible, onBlurVisible, ref: focusVisibleRef } = useIsFocusVisible()
+  const [focusVisible, setFocusVisible] = React.useState(false)
+  const handlerRef = useForkRef(ref, focusVisibleRef)
   const handleBlur = (event) => {
     if (focusVisible) {
-      onBlurVisible();
-      setFocusVisible(false);
+      onBlurVisible()
+      setFocusVisible(false)
     }
     if (onBlur) {
-      onBlur(event);
+      onBlur(event)
     }
-  };
+  }
   const handleFocus = (event) => {
     if (isFocusVisible(event)) {
-      setFocusVisible(true);
+      setFocusVisible(true)
     }
     if (onFocus) {
-      onFocus(event);
+      onFocus(event)
     }
-  };
+  }
 
-  const LinkProp = component;
-  const linkProps = {};
+  const LinkProp = component
+  const linkProps = {}
 
   if (LinkProp === 'a') {
-    linkProps.href = href;
+    linkProps.href = href
   }
 
   return (
     <LinkProp
       className={clsx(
         styles.link,
-        styles[`link-${color}`],
-        {
-          [styles['link-solid']]: variant === 'solid',
-          [styles['link-dashed']]: variant === 'dashed',
-          [styles['link-dashed']]: variant === 'dashed',
-        },
+        styles[`color${capitalize(color)}`],
+        styles[`variant${capitalize(variant)}`],
         className,
       )}
-
       onBlur={handleBlur}
       onFocus={handleFocus}
       {...linkProps}
       {...other}
     />
-  );
-});
+  )
+})
 
 Link.propTypes = {
   /**
@@ -86,9 +81,9 @@ Link.propTypes = {
     'inherit',
     'primary',
     'secondary',
-    'textPrimary',
-    'textSecondary',
-    'error',
+    'light',
+    'dark',
+    'accent',
   ]),
   /**
    * The component used for the root node.

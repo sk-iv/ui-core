@@ -8,17 +8,13 @@ const Paper = React.forwardRef((props, ref) => {
   const {
     className: classNameProp,
     component: ComponentProp,
-    square,
     elevation,
     ...other
   } = props
 
   const className = clsx(
     styles.shadow,
-    styles[`shadow-${elevation >= 0 ? elevation : 0}`],
-    {
-      [styles['shadow--rounded']]: !square,
-    },
+    styles[`shadow${elevation >= 0 ? elevation : 0}`],
     classNameProp,
   )
 

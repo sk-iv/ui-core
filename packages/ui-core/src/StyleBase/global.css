@@ -6,14 +6,10 @@
 @import '_color.css';
 @import '_spacing.css';
 @import '_border.css';
-@import '_paper.css';
 @import '_flex.css';
 @import '_type.css';
 @import '_animation.css';
 @import '_display.css';
-@import '_nav.css';
-@import '_icon.css';
-@import '_mapbox-gl.css';
 
 
 .route-wrap{

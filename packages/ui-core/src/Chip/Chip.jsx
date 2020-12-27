@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import { IconButton } from '../IconButton'
-import { SvgUse } from '../SvgIcon'
+import { IconSvg } from '@sivasifr/icons/IconSvg'
 import useForkRef from '../utils/useForkRef'
 import unsupportedProp from '../utils/unsupportedProp'
 import capitalize from '../utils/capitalize'
@@ -102,7 +102,7 @@ const Chip = React.forwardRef((props, ref) => {
         className={clsx('chip--deleteIcon', customClasses)}
         onClick={handleDeleteIconClick}
       >
-        <SvgUse name="times" />
+        <IconSvg name="times" />
       </IconButton>
     );
   }

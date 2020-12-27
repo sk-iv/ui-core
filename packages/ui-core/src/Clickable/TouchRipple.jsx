@@ -186,7 +186,7 @@ const TouchRipple = React.forwardRef((props, ref) => {
   )
 
   return (
-    <span className={clsx(styles['touchripple'], className)} ref={container} {...other}>
+    <span className={clsx(styles.touchripple, className)} ref={container} {...other}>
       <TransitionGroup component={null} exit>
         {ripples}
       </TransitionGroup>

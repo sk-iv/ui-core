@@ -1,51 +1,51 @@
 .clickable {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    /*Remove grey highlight*/
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background: transparent; /* Reset default value*/
-    outline: none;
-    border: 0;
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
-    overflow: hidden;
-    /*So we take precedent over the style of a native <a /> element.*/
-    color: inherit;
-
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /*Remove grey highlight*/
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: transparent; /* Reset default value*/
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  overflow: hidden;
+  /*So we take precedent over the style of a native <a /> element.*/
+  color: inherit;
 }
 
 .disabled {
-   pointer-events: none; /* Disable link interactions*/
-   cursor: not-allowed;
- }
+  pointer-events: none; /* Disable link interactions*/
+  cursor: not-allowed;
+}
 
 .attention {
-   position: absolute;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   animation: sheen 4s 0s forwards;
-   transform:translateX(-100%);
-   pointer-events: none;
-   z-index: 0;
-   overflow: hidden;
- }
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation: sheen 4s 0s forwards;
+  transform: translateX(-100%);
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
 
-.attention:after{
-   content: '';
-   width: 50px;
-   height: 100%;
-   display: flex;
-   background: linear-gradient(to left, transparent, rgba(255,255,255,0.8) 50%, transparent);
- }
+.attention:after {
+  content: '';
+  width: 50px;
+  height: 100%;
+  display: flex;
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.8) 50%, transparent);
+}
 
 @keyframes sheen {
-  0% {transform:translateX(-100%);}
+  0% {
+    transform: translateX(-100%);
+  }
   40% {
     transform: translateX(100%);
   }

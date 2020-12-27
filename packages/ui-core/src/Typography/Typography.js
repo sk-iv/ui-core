@@ -1,22 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import capitalize from 'src/ui/utils/capitalize'
+import capitalize from '../utils/capitalize'
 import styles from './Typography.module.css'
 
-const defaultVariantMapping = {
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-  h5: 'h5',
-  h6: 'h6',
-  subtitle1: 'h6',
-  subtitle2: 'h6',
-  body1: 'p',
-  body2: 'p',
-  inherit: 'p',
-};
 
 const Typography = React.forwardRef((props, ref) => {
   const {
@@ -28,54 +15,41 @@ const Typography = React.forwardRef((props, ref) => {
     gutterBottom = false,
     noWrap = false,
     outline = false,
-    paragraph = false,
-    variant = 'body1',
-    variantMapping = defaultVariantMapping,
     weight = 'normal',
+    vignette,
+    size = 'base',
+    font = 'body',
+    maxWidth,
     ...other
-  } = props;
+  } = props
 
-  // const themeVariantsClasses = useThemeVariants(
-  //     {
-  //         ...props,
-  //         align,
-  //         color,
-  //         display,
-  //         gutterBottom,
-  //         noWrap,
-  //         paragraph,
-  //         variant,
-  //         variantMapping,
-  //     },
-  //     'MuiTypography',
-  // );
-
-  const Component = component
-        || (paragraph ? 'p' : variantMapping[variant] || defaultVariantMapping[variant])
-        || 'span';
+  const Component = component || 'span'
 
   return (
     <Component
       className={clsx(
         styles.text,
         {
-          [styles[`color--${color}`]]: color !== 'initial',
-          [styles['no-wrap']]: noWrap,
-          [styles['gutter-bottom']]: gutterBottom,
-          [styles.paragraph]: paragraph,
-          [styles[`align--${align}`]]: align !== 'inherit',
-          [styles[`display--${display}`]]: display !== 'initial',
-          [styles[`text-${weight}`]]: weight !== 'normal',
-          [styles['txt-outline']]: outline,
+          [styles[`color${capitalize(color)}`]]: color !== 'initial',
+          [styles.noWrap]: noWrap,
+          [styles.gutterBottom]: gutterBottom,
+          [styles[`align${capitalize(align)}`]]: align !== 'inherit',
+          [styles[`display${capitalize(display)}`]]: display !== 'initial',
+          [styles[`text${capitalize(weight)}`]]: weight !== 'normal',
+          [styles.outline]: outline,
+          [styles[`size${capitalize(size)}`]]: size !== 'base',
+          [styles[`font${capitalize(font)}`]]: font !== 'body',
         },
-        // themeVariantsClasses,
         className,
       )}
+      style={{maxWidth}}
       ref={ref}
       {...other}
     />
   )
 })
+
+Typography.displayName = 'Typography'
 
 Typography.propTypes = {
   // ----------------------------- Warning --------------------------------
@@ -126,39 +100,6 @@ Typography.propTypes = {
      * (the element needs to have a width in order to overflow).
      */
   noWrap: PropTypes.bool,
-  /**
-     * If `true`, the text will have a bottom margin.
-     */
-  paragraph: PropTypes.bool,
-  /**
-     * Applies the theme typography styles.
-     */
-  variant: PropTypes.oneOfType([
-    PropTypes.oneOf([
-      'body1',
-      'body2',
-      'button',
-      'caption',
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'inherit',
-      'overline',
-      'subtitle1',
-      'subtitle2',
-    ]),
-    PropTypes.string,
-  ]),
-  /**
-     * The component maps the variant prop to a range of different HTML element types.
-     * For instance, subtitle1 to `<h6>`.
-     * If you wish to change that mapping, you can provide your own.
-     * Alternatively, you can use the `component` prop.
-     */
-  variantMapping: PropTypes.object,
 }
 
 export default Typography

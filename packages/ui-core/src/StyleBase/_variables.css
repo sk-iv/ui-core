@@ -12,8 +12,9 @@
  * Typography
  * ======================================================================== */
 /* 'Vesterbro' */
---font-family-base: 'PTSans', 'Segoe UI', 'HelveticaNeue-Light', sans-serif;
---font-display-base: 'Panton', sans-serif;
+--font-family-body: 'PTSans', 'Segoe UI', 'HelveticaNeue-Light', sans-serif;
+--font-accent: 'Panton', sans-serif;
+--font-display: 'TheodoreGlagolevNarrow', serif;
 --font-size-base: 16px;
 --line-height-base:1;
 --font-size-sm:0.8rem;
@@ -45,22 +46,11 @@
 --header-color:0, 0%, 0%, 1;
 --body-bg-color:#efefef;
 
---black:0, 0, 0;
---white:255, 255, 255;
+--text-dark: #000000;
+--text-light: #ffffff;
+--text-muted: #8c8c8c;
 --body-txt-color:0, 0%, 0%;
 --hr-border-color:#ccc;
---text-muted: #8c8c8c;
-
-
-/*Links*/
---link-decoration:none;
---link-hover-color:#004ead;
---link-hover-decoration:none;
-
---color-primary-txt:309, 19%, 44%;
---color-secondary-txt:11, 23%, 58%;
---color-accent-txt:0, 0%, 100%;
-
 
 /*Tables*/
 --table-bg:#fff;

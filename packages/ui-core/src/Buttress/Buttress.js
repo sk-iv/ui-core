@@ -2,27 +2,31 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
 import styles from './Buttress.module.css'
-
+// https://css-tricks.com/aspect-ratio-boxes/
 const Buttress = (props) => {
   const {
     children,
     className,
-    size = 60,
+    aspectRatio = 1.6,
+    background,
+    overflowHidden = false,
   } = props
 
+  const style = {
+    '--aspect-ratio': aspectRatio,
+    '--background': background,
+    overflow: overflowHidden ? 'hidden' : '',
+  }
+
   return (
-    <div className={clsx(
-      styles.buttressSize,
-      styles.yMiddleWrapper,
-      styles[`buttress${size}`],
-      className,
-    )}
-    >
-      {children && (
-        <div className={clsx(styles.yMiddle)}>
-          {children}
-        </div>
+    <div
+      className={clsx(
+        styles,
+        className,
       )}
+      style={style}
+    >
+      {children}
     </div>
   )
 }
@@ -30,6 +34,8 @@ const Buttress = (props) => {
 Buttress.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.number,
+  aspectRatio: PropTypes.number,
+  background: PropTypes.string,
+  overflowHidden: PropTypes.bool,
 }
 export default Buttress

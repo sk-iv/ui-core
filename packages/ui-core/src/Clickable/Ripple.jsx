@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import useEventCallback from '../utils/useEventCallback';
 import styles from './TouchRipple.module.css'
+
 const useEnhancedEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
 
 /**
@@ -20,9 +21,9 @@ function Ripple(props) {
   } = props;
   const [leaving, setLeaving] = React.useState(false);
 
-  const rippleClassName = clsx(styles['touchripple-ripple'], styles['touchripple-ripple--visible'], {
-    [styles['touchripple-ripple--pulsate']]: pulsate,
-  });
+  const rippleClassName = clsx(styles.ripple, styles.rippleVisible, {
+    [styles.ripplePulsate]: pulsate,
+  })
 
   const rippleStyles = {
     width: rippleSize,
@@ -31,13 +32,14 @@ function Ripple(props) {
     left: -(rippleSize / 2) + rippleX,
   };
 
-  const childClassName = clsx(styles['touchripple--child'], {
-    [styles['touchripple-child--leaving']]: leaving,
-    [styles['touchripple-child--pulsate']]: pulsate,
-  });
+  const childClassName = clsx(styles.child, {
+    [styles.childLeaving]: leaving,
+    [styles.childPulsate]: pulsate,
+  })
 
-  const handleExited = useEventCallback(onExited);
-  // Ripple is used for user feedback (e.g. click or press) so we want to apply styles with the highest priority
+  const handleExited = useEventCallback(onExited)
+  // Ripple is used for user feedback (e.g. click or press)
+  // so we want to apply styles with the highest priority
   useEnhancedEffect(() => {
     if (!inProp) {
       // react-transition-group#onExit

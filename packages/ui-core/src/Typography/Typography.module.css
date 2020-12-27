@@ -1,9 +1,11 @@
 .text {
   margin: 0;
+  display: inline-block;
+  line-height: 1;
+}
 
-  &-bold {
-    font-weight: bold;
-  }
+.text-bold {
+ font-weight: bold;
 }
 
 /* Styles applied to the root element if `align="left"`. */
@@ -49,23 +51,18 @@
 }
 
 /* Styles applied to the root element if `color="primary"`. */
-.color-primary {
-  /*color: theme.palette.primary.main;*/
+.color-muted {
+  color: var(--text-muted);
 }
 
 /* Styles applied to the root element if `color="secondary"`. */
-.color-secondary {
-  /*color: theme.palette.secondary.main;*/
+.color-light {
+  color: var(--text-light);
 }
 
 /* Styles applied to the root element if `color="textPrimary"`. */
-.color-text-primary {
-  /*color: theme.palette.text.primary;*/
-}
-
-/* Styles applied to the root element if `color="textSecondary"`. */
-.color-text-secondary {
-  /*color: theme.palette.text.secondary;*/
+.color-dark {
+  color: var(--text-dark);
 }
 
 /* Styles applied to the root element if `color="error"`. */
@@ -83,9 +80,79 @@
   display: block;
 }
 
-.txt-outline{
-  text-shadow:1px 1px 0 hsl(var(--color-primary-txt)),
-  -1px -1px 0 hsl(var(--color-primary-txt)), 1px -1px 0 hsl(var(--color-primary-txt)), -1px 1px 0 hsl(var(--color-primary-txt)), 1px 1px 0 hsl(var(--color-primary-txt)), 2px 2px 2px hsl(var(--color-primary-txt));
+/*https://www.carbondesignsystem.com/guidelines/typography/overview/*/
+.size-sm {
+  font-size: 0.875rem;
+}
+
+.size-base {
+  font-size: 1rem;
+}
+
+.size-md {
+  font-size: 1.125rem;
+}
+
+.size-xmd {
+  font-size: 1.25rem;
+}
+
+.size-xxm {
+  font-size: 1.5rem;
+}
+
+.size-lg {
+  font-size: 1.75rem;
+}
+
+.size-xlg {
+  font-size: 2rem;
+}
+
+.size-xxl {
+  font-size: 2.25rem;
+}
+
+.size-hg {
+  font-size: 2.625rem;
+}
+
+.size-xhg {
+  font-size: 3rem;
+}
+
+.size-xxh {
+  font-size: 3.375rem;
+}
+
+.size-gn {
+  font-size: 3.75rem;
+}
+
+.size-xgn {
+  font-size: 4.25rem;
+}
+
+.size-xxg {
+  font-size: 4.75rem;
+}
+
+.outline{
+  text-shadow:
+    1px 1px 0 hsl(var(--huePrimary),60%,20%),
+    -1px -1px 0 hsl(var(--huePrimary),60%,20%),
+    1px -1px 0 hsl(var(--huePrimary),60%,20%),
+    -1px 1px 0 hsl(var(--huePrimary),60%,20%),
+    1px 1px 0 hsl(var(--huePrimary),60%,20%),
+    2px 2px 2px hsl(var(--huePrimary),60%,20%);
   color: #fff;
   font-weight: bold;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
