@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
+import clsx from 'clsx'
 import { CarouselContext } from '../Carousel/CarouselContextProvider'
 import styles from './Pagination.module.css'
 
 const Pagination = (props) => {
-  const { arrowNext, arrowPrev } = props
+  const { arrowNext, arrowPrev, className } = props
   const [state, dispatch] = useContext(CarouselContext)
 
   const next = React.cloneElement(arrowNext, {
@@ -23,14 +24,9 @@ const Pagination = (props) => {
     className: styles.arrowPrev,
   })
   return (
-    <div className={styles.pagination}>
+    <div className={clsx(styles.pagination, className)}>
       {prev}
       {next}
-      <span className={styles.proportion}>
-        <span className={styles.numerator}>{state.cursorIndex + 1}</span>
-        /
-        <span className={styles.denominator}>{state.totalCount}</span>
-      </span>
     </div>
   )
 }

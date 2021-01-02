@@ -14,7 +14,7 @@ const Buttress = (props) => {
 
   const style = {
     '--aspect-ratio': aspectRatio,
-    '--background': background,
+    background,
     overflow: overflowHidden ? 'hidden' : '',
   }
 

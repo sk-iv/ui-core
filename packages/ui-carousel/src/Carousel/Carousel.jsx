@@ -9,7 +9,7 @@ import styles from './Carousel.module.css'
 // https://tsh.io/blog/react-state-management-react-hooks-vs-redux/
 const Carousel = ({ children, containerWidth }) => {
   const refContainer = useRef(0)
-  const refItem = useRef(0)
+  const setRefs = useRef(0)
 
   const [state, dispatch] = useContext(CarouselContext)
 
@@ -84,11 +84,14 @@ const Carousel = ({ children, containerWidth }) => {
   }
 
   return (
-    <div className={styles.carousel} ref={refContainer}>
+    <div
+      className={styles.carousel}
+      ref={refContainer}
+      style={{height: setRefs.current}}
+    >
       {
         springs.map(({ x, display, pointerEvents, userSelect }, i) => (
           <animated.div
-            ref={refItem}
             {...bind()}
             key={i}
             style={{ display, transform: x.interpolate((g) => `translate3d(${g}px, 0, 0)`) }}
@@ -98,7 +101,16 @@ const Carousel = ({ children, containerWidth }) => {
               className={styles.item}
               style={{pointerEvents, userSelect}}
             >
-              {children[i]}
+              {
+                React.cloneElement(children[i], {
+                  ref: node => {
+                    if (node?.offsetHeight) {
+                      setRefs.current = Math.max(setRefs.current, node?.offsetHeight)
+                    }
+                    return node
+                  }
+                })
+              }
             </animated.div>
           </animated.div>
         ))

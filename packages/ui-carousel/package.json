@@ -1,6 +1,6 @@
 {
   "name": "@sivasifr/ui-carousel",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "private": false,
   "author": "Svetlana Ivannikova",
   "main": "./src/index.js",

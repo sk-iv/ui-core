@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Pagination } from '@sivasifr/ui-carousel/Pagination'
+import { Pagination, Proportion } from '@sivasifr/ui-carousel/Pagination'
 import { Button } from '@sivasifr/ui-core/Button'
 import { Carousel, CarouselContextProvider } from '@sivasifr/ui-carousel/Carousel'
 import { AppBar } from '@sivasifr/ui-core/AppBar'
@@ -57,30 +57,31 @@ const App = () => {
           arrowNext={<Button><IconSvg name="arrow-left" /></Button>}
           arrowPrev={<Button><IconSvg name="arrow-right" /></Button>}
         />
-        <div style={{ width: 400, backgroundColor: '#ccc' }}>
-          <Buttress size={80}>
-            <Carousel containerWidth={400}>
-              {
-                [
-                  'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
-                  'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
-                  'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
-                  'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
-                ].map((item, i) => (
-                  <div>
-                    <Link href={`#${i}`} color="dark">JJjhJH</Link>
-                    <img
-                      key={item}
-                      src={item}
-                      alt=""
-                      height={300}
-                      width={770}
-                    />
-                  </div>
-                ))
-              }
-            </Carousel>
-          </Buttress>
+        <Proportion separator="|" />
+        <div style={{ width: 400, backgroundColor: '#ccc', position: 'relative' }}>
+
+          <Carousel containerWidth={400}>
+            {
+              [
+                'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
+                'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
+                'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
+                'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
+              ].map((item, i) => (
+                <div key={i}>
+                  <Link href={`#${i}`} color="dark">JJjhJH</Link>
+                  <img
+                    key={item}
+                    src={item}
+                    alt=""
+                    height={300}
+                    width={770}
+                  />
+                </div>
+              ))
+            }
+          </Carousel>
+
         </div>
       </CarouselContextProvider>
 
@@ -92,7 +93,7 @@ const App = () => {
         >
           Образование Образование Образование
           <br />
-          <Vignette name="wave" />
+          <Vignette name="line" />
         </Typography>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
         numquam porro quam tempora temporibus unde veritatis.

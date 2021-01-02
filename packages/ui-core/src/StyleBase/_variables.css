@@ -12,7 +12,11 @@
  * Typography
  * ======================================================================== */
 /* 'Vesterbro' */
---font-family-body: 'PTSans', 'Segoe UI', 'HelveticaNeue-Light', sans-serif;
+--fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif;
+--fontFamily-sans: 'PTSans', Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
+"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+--font-family-body: var(--fontFamily-serif);
 --font-accent: 'Panton', sans-serif;
 --font-display: 'TheodoreGlagolevNarrow', serif;
 --font-size-base: 16px;
@@ -26,22 +30,22 @@
 /* https://www.w3schools.com/colors/colors_converter.asp */
 /* https://www.w3schools.com/colors/colors_hsl.asp */
 
---hueAccent: 190;
---huePrimary: 305;
---hueSecondary: 20;
-
+--hueAccent: 305;
 --saturationAccent: 96%;
---saturationPrimary: 25%;
---saturationSecondary: 55%;
-
 --lightnessAccent: 26%;
+
+--huePrimary: 15;
+--saturationPrimary: 25%;
 --lightnessPrimary: 90%;
+
+--hueSecondary: 20;
+--saturationSecondary: 55%;
 --lightnessSecondary: 81%;
 
 --colorOverAccent: #ffffff;
 --colorOverPrimary: #000000;
 
---error-hue:340;
+--hueError: 340;
 --l-fork: 50%;
 --header-color:0, 0%, 0%, 1;
 --body-bg-color:#efefef;
@@ -71,7 +75,7 @@
 --input-btn-padding-y-lg:1rem;
 
 /*appbar*/
---appbar-height:60px;
+--appbar-height:44px;
 --appbar-bg: hsla(187, 0%, 90%, 0.5);
 --appbar-txt: #000000;
 /*z-index*/
@@ -81,12 +85,6 @@
 --modal-backdrop:1040;
 --modal-wrap:1060;
 
---h1-font-size: 2.5rem;
---h2-font-size: 2rem;
---h3-font-size: 1.75rem;
---h4-font-size: 1.5rem;
---h5-font-size: 1.25rem;
---h6-font-size: 1rem;
 --dysplay-text-transform: uppercase;
 --dysplay-letter-spacing: 0.8rem;
 

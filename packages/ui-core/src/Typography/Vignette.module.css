@@ -3,8 +3,8 @@
   fill: none;
   height: 1rem;
   stroke: currentColor;
-  stroke-linecap: inherit;
-  stroke-linejoin: inherit;
+  stroke-linecap: square;
+  stroke-linejoin: bevel;
   overflow: visible;
   vertical-align: middle;
   transition: all 0.3s ease 0s;

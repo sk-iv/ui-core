@@ -17,8 +17,4 @@
     display: table;
     clear: both;
   }
-
-  [style*="--background"] {
-    background: var(--background);
-  }
 }
