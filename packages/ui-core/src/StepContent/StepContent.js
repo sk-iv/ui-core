@@ -1,14 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Collapse from '../Transition/Collapse';
-if (process.env.WEBPACK) {
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import { Collapse } from '../Collapse'
+import styles from './StepContent.module.css'
 
-    require("./step-content.css");
-
-}
-
-const StepContent = React.forwardRef(function StepContent(props, ref) {
+const StepContent = React.forwardRef((props, ref) => {
   const {
     active,
     alternativeLabel,
@@ -28,7 +24,7 @@ const StepContent = React.forwardRef(function StepContent(props, ref) {
     if (orientation !== 'vertical') {
       console.error(
         'Material-UI: <StepContent /> is only designed for use with the vertical stepper.',
-      );
+      )
     }
   }
 
@@ -39,10 +35,10 @@ const StepContent = React.forwardRef(function StepContent(props, ref) {
   }
 
   return (
-    <div className={clsx("step-content-root", { ["step-content-last"]: last }, className)} ref={ref} {...other}>
+    <div className={clsx(styles.stepContentRoot, { [styles.stepContentLast]: last }, className)} ref={ref} {...other}>
       <TransitionComponent
         in={active}
-        className={"step-content-transition"}
+        className={styles.stepContentTransition}
         timeout={transitionDuration}
         unmountOnExit
         {...TransitionProps}
@@ -50,8 +46,8 @@ const StepContent = React.forwardRef(function StepContent(props, ref) {
         {children}
       </TransitionComponent>
     </div>
-  );
-});
+  )
+})
 
 StepContent.propTypes = {
   /**
@@ -112,7 +108,7 @@ StepContent.propTypes = {
   /**
    * Props applied to the `Transition` element.
    */
-  TransitionProps: PropTypes.object,
-};
+  TransitionProps: PropTypes.shape(),
+}
 
-export default StepContent;
+export default StepContent

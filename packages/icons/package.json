@@ -1,6 +1,6 @@
 {
   "name": "@sivasifr/icons",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "author": "Svetlana Ivannikova",
   "main": "./src/index.js",

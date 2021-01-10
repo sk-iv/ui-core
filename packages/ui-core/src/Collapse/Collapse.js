@@ -1,40 +1,14 @@
-import React from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
-import { useForkRef, getAutoHeightDuration, getTransitionProps } from 'src/ui/utils'
-
+import { getTransitionProps } from '../Transition/utils'
+import { useForkRef } from '../utils'
 import styles from './Collapse.module.css'
-
-const duration = {
-  shortest: 150,
-  shorter: 200,
-  short: 250,
-  // Most basic recommended timing
-  standard: 300,
-  // This is to be used in complex animations
-  complex: 375,
-  // Recommended when something is entering screen
-  enteringScreen: 225,
-  // Recommended when something is leaving screen
-  leavingScreen: 195,
-};
-
-/*
- * Type ProvidedProps = {
- *   Appear: boolean,
- *   Classes: Object,
- *   Component: ElementType,
- *   CollapsedHeight: string,
- *   Timeout: TransitionDuration,
- *   Theme: Object,
- * };
- */
 
 const Collapse = React.forwardRef((props, ref) => {
   const {
     children,
-    classes,
     className,
     collapsedSize: collapsedSizeProp = '0px',
     component: Component = 'div',
@@ -47,24 +21,25 @@ const Collapse = React.forwardRef((props, ref) => {
     onExiting,
     orientation = 'vertical',
     style,
-    timeout = duration.standard,
+    timeout = 100,
     // eslint-disable-next-line react/prop-types
     TransitionComponent = Transition,
     ...other
   } = props;
-  const timer = React.useRef(null)
-  const wrapperRef = React.useRef(null)
-  const autoTransitionDuration = React.useRef(null)
+
+  const timer = React.useRef();
+  const wrapperRef = React.useRef(null);
+  const autoTransitionDuration = React.useRef();
   const collapsedSize = typeof collapsedSizeProp === 'number' ? `${collapsedSizeProp}px` : collapsedSizeProp;
   const isHorizontal = orientation === 'horizontal';
   const size = isHorizontal ? 'width' : 'height';
 
   React.useEffect(() => () => {
-    clearTimeout(timer.current)
-  }, [])
+    clearTimeout(timer.current);
+  }, []);
 
-  const nodeRef = React.useRef(null)
-  const handleRef = useForkRef(ref, nodeRef)
+  const nodeRef = React.useRef(null);
+  const handleRef = useForkRef(ref, nodeRef);
 
   const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
     if (callback) {
@@ -82,7 +57,7 @@ const Collapse = React.forwardRef((props, ref) => {
   const getWrapperSize = () => (wrapperRef.current ? wrapperRef.current[isHorizontal ? 'clientWidth' : 'clientHeight'] : 0);
 
   const handleEnter = normalizedTransitionCallback((node, isAppearing) => {
-    if (wrapperRef.current) {
+    if (wrapperRef.current && isHorizontal) {
       // Set absolute position to get the size of collapsed content
       wrapperRef.current.style.position = 'absolute';
     }
@@ -96,7 +71,7 @@ const Collapse = React.forwardRef((props, ref) => {
   const handleEntering = normalizedTransitionCallback((node, isAppearing) => {
     const wrapperSize = getWrapperSize();
 
-    if (wrapperRef.current) {
+    if (wrapperRef.current && isHorizontal) {
       // After the size is read reset the position back to default
       wrapperRef.current.style.position = '';
     }
@@ -109,7 +84,7 @@ const Collapse = React.forwardRef((props, ref) => {
     );
 
     if (timeout === 'auto') {
-      const duration2 = getAutoHeightDuration(wrapperSize)
+      const duration2 = 200;
       node.style.transitionDuration = `${duration2}ms`;
       autoTransitionDuration.current = duration2;
     } else {
@@ -153,7 +128,7 @@ const Collapse = React.forwardRef((props, ref) => {
     if (timeout === 'auto') {
       // TODO: rename getAutoHeightDuration to something more generic (width support)
       // Actually it just calculates animation duration based on size
-      const duration2 = getAutoHeightDuration(wrapperSize)
+      const duration2 = 200;
       node.style.transitionDuration = `${duration2}ms`;
       autoTransitionDuration.current = duration2;
     } else {
@@ -190,11 +165,11 @@ const Collapse = React.forwardRef((props, ref) => {
       {(state, childProps) => (
         <Component
           className={clsx(
-            styles.collapse,
+            styles.root,
             {
-              [styles['collapse--horizontal']]: isHorizontal,
-              [styles['collapse--entered']]: state === 'entered',
-              [styles['collapse--hidden']]: state === 'exited' && !inProp && collapsedSize === '0px',
+              [styles.horizontal]: isHorizontal,
+              [styles.entered]: state === 'entered',
+              [styles.hidden]: state === 'exited' && !inProp && collapsedSize === '0px',
             },
             className,
           )}
@@ -206,14 +181,14 @@ const Collapse = React.forwardRef((props, ref) => {
           {...childProps}
         >
           <div
-            className={clsx(styles['collapse--wrapper'], {
-              [styles['collapse--horizontal']]: isHorizontal,
+            className={clsx(styles.wrapper, {
+              [styles.horizontal]: isHorizontal,
             })}
             ref={wrapperRef}
           >
             <div
-              className={clsx(styles['collapse--wrapper-inner'], {
-                [styles['collapse--horizontal']]: isHorizontal,
+              className={clsx(styles.wrapperInner, {
+                [styles.horizontal]: isHorizontal,
               })}
             >
               {children}
@@ -222,8 +197,8 @@ const Collapse = React.forwardRef((props, ref) => {
         </Component>
       )}
     </TransitionComponent>
-  )
-})
+  );
+});
 
 Collapse.propTypes = {
   // ----------------------------- Warning --------------------------------
@@ -240,6 +215,7 @@ Collapse.propTypes = {
   className: PropTypes.string,
   /**
    * The width (horizontal) or height (vertical) of the container when collapsed.
+   * @default '0px'
    */
   collapsedSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
@@ -276,7 +252,8 @@ Collapse.propTypes = {
    */
   onExiting: PropTypes.func,
   /**
-   * The collapse transition orientation.
+   * The transition orientation.
+   * @default 'vertical'
    */
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
@@ -288,6 +265,7 @@ Collapse.propTypes = {
    * You may specify a single timeout for all transitions, or individually with an object.
    *
    * Set to 'auto' to automatically calculate transition time based on height.
+   * @default duration.standard
    */
   timeout: PropTypes.oneOfType([
     PropTypes.oneOf(['auto']),
@@ -299,7 +277,5 @@ Collapse.propTypes = {
     }),
   ]),
 }
-
-Collapse.muiSupportAuto = true
 
 export default Collapse

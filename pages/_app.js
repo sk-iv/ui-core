@@ -4,12 +4,13 @@ import { Button } from '@sivasifr/ui-core/Button'
 import { Carousel, CarouselContextProvider } from '@sivasifr/ui-carousel/Carousel'
 import { AppBar } from '@sivasifr/ui-core/AppBar'
 import { List, ListItem } from '@sivasifr/ui-core/List'
-import { IconSvg } from '@sivasifr/icons/IconSvg'
+import { IconSvg, icons24 } from '@sivasifr/icons/IconSvg'
 import { Buttress } from '@sivasifr/ui-core/Buttress'
 import { Drawer } from '@sivasifr/ui-core/Drawer'
 import { Typography, Vignette } from '@sivasifr/ui-core/Typography'
 import { Paper } from '@sivasifr/ui-core/Paper'
 import Link from '@sivasifr/ui-core/Link'
+import { Collapse } from '@sivasifr/ui-core/Collapse'
 
 const menu = [
   'Образование',
@@ -18,9 +19,13 @@ const menu = [
 
 const App = () => {
   const [open, setOpen] = React.useState(false)
+  const [checked, setChecked] = React.useState(false)
   const handler = (e) => {
     console.log('e', e)
     setOpen(true)
+  }
+  const handleChange = () => {
+    setChecked(!checked)
   }
   return (
     <>
@@ -99,6 +104,12 @@ const App = () => {
         numquam porro quam tempora temporibus unde veritatis.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
       </Paper>
+      <Button onClick={handleChange}><IconSvg name="arrow-left" /></Button>
+      <Collapse in={checked}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
+        numquam porro quam tempora temporibus unde veritatis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
+      </Collapse>
     </>
   )
 }

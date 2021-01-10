@@ -1,6 +1,6 @@
 {
   "name": "@sivasifr/ui-core",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "private": false,
   "author": "Svetlana Ivannikova",
   "main": "./src/index.js",
