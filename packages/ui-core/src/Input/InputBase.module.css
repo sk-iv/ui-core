@@ -1,0 +1,87 @@
+.input {
+  font: inherit;
+  color: currentColor;
+  /*slight alteration to spec spacing to match visual spec result*/
+  border: 0;
+  display: block;
+  box-sizing: content-box;
+  vertical-align: middle;
+  background: none;
+  margin: 0; /*Reset for Safari*/
+  width: 100%;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.focused:after {
+  transform: scaleX(1);
+}
+
+.input--error:after {
+  background-color: hsl(var(--hueError), 100%, 52%);
+  transform: scaleX(1); /* error is always underlined in hsla(var(--color-secondary-start), 1)*/
+}
+
+.input-base {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: text;
+  display: inline-flex;
+  position: relative;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #eaeaeab3;
+  line-height: 1.1875em;
+}
+
+.input--formControl {
+  padding: 20px 0 17px 5px;
+}
+
+.input::selection {
+  background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+  color: #fff;
+}
+
+.input::-webkit-input-placeholder {
+  outline: 0;
+}
+
+.input::-webkit-search-decoration {
+  /*Remove the padding when type=search.*/
+  appearance: none;
+}
+
+/*Reset Firefox invalid requihsla(var(--color-secondary-start), 1) input style*/
+.input:invalid {
+  box-shadow: none;
+}
+
+/*Show and hide the placeholder logic*/
+/*.field-control--label[data-shrink=false]::-webkit-input-placeholder {
+  &::-webkit-input-placeholder: placeholderHidden
+}*/
+
+.input--input-dense {
+  padding-top: 5px;
+}
+
+.input--disabled {
+  color: #ccc;
+  opacity: 1; /*Reset iOS opacity*/
+}
+
+.input--inputSingleline {
+  height: 1em;
+  /* background-color: hsla(0, 0%, 70%, 0.2); */
+}
+
+.input--inputSearch {
+  appearance: auto; /*Improve type search style.*/
+}
+
+.input--inputMultiline {
+  resize: none;
+}

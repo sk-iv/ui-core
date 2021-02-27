@@ -1,0 +1,67 @@
+import { Button } from './'
+import { Meta, Story, ArgsTable, Canvas } from '@storybook/addon-docs/blocks'
+
+<Meta title="Components/Button" component={Button} />
+
+# Button
+
+Buttons allow users to take actions, and make choices, with a single tap.
+
+<Canvas>
+  <Story name="default">
+    <Button color="default">default</Button>
+  </Story>
+  <Story name="primary">
+    <Button color="primary">primary</Button>
+  </Story>
+  <Story name="secondary">
+    <Button color="secondary">secondary</Button>
+  </Story>
+  <Story name="accent">
+    <Button color="accent">accent</Button>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="default outlined">
+    <Button color="default" variant="outlined">default</Button>
+  </Story>
+  <Story name="primary outlined">
+    <Button color="primary" variant="outlined">primary</Button>
+  </Story>
+  <Story name="secondary outlined">
+    <Button color="secondary" variant="outlined">secondary</Button>
+  </Story>
+  <Story name="accent outlined">
+    <Button color="accent" variant="outlined">accent</Button>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="size sm">
+    <Button color="primary" size="sm">small</Button>
+  </Story>
+  <Story name="size md">
+    <Button color="primary">medium</Button>
+  </Story>
+  <Story name="size lg">
+    <Button color="primary" size="lg">large</Button>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="disabled">
+    <Button color="primary" disabled>disabled</Button>
+  </Story>
+  <Story name="primary disabled">
+    <Button color="primary" disabled>primary</Button>
+  </Story>
+  <Story name="secondary disabled">
+    <Button color="secondary" disabled>secondary</Button>
+  </Story>
+  <Story name="accent disabled">
+    <Button color="accent" disabled>accent</Button>
+  </Story>
+</Canvas>
+
+<ArgsTable of={Button} />

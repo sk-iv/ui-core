@@ -58,7 +58,6 @@ module.exports = (env, argv) => ({
             },
           },
         ],
-
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

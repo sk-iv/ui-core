@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react'
 
-import { IconButton } from '../IconButton';
-import { InputAdornment } from '../Input';
-import { SvgUse } from '../SvgIcon';
-import TextField from './TextField';
+import { IconSvg } from '@sivasifr/icons/IconSvg'
+import { IconButton } from '../IconButton'
+import { InputAdornment } from '../Input'
+import TextField from './TextField'
 
 // const REGEX = {
 //   mail:'^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
@@ -34,7 +34,7 @@ const NumberSpinner = ({ value, onValue }) => {
                 setAmount(parseInt(e.currentTarget.value) - 1);
               }}
             >
-              <SvgUse name="minus" />
+              <IconSvg name="minus" />
             </IconButton>
           </InputAdornment>
         ),
@@ -46,7 +46,7 @@ const NumberSpinner = ({ value, onValue }) => {
                 setAmount(parseInt(e.currentTarget.value) + 1);
               }}
             >
-              <SvgUse name="plus" />
+              <IconSvg name="plus" />
             </IconButton>
           </InputAdornment>
         ),

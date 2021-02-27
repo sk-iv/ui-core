@@ -17,7 +17,7 @@ const Button = React.forwardRef((props, ref) => {
     endIcon: endIconProp,
     focusVisibleClassName,
     fullWidth = false,
-    size = 'medium',
+    size = 'md',
     startIcon: startIconProp,
     type = 'button',
     variant = 'contained',
@@ -40,9 +40,8 @@ const Button = React.forwardRef((props, ref) => {
       className={clsx(
         styles.btn,
         {
-          [styles[`color${capitalize(color)}`]]: color === 'default',
-          [styles['btn--sm']]: size === 'small',
-          [styles['btn--lg']]: size === 'large',
+          [styles[`color${capitalize(color)}`]]: color !== 'default',
+          [styles[`size${capitalize(size)}`]]: size !== 'md',
           [styles.disabled]: disabled,
           [styles.outlined]: variant === 'outlined',
           [styles.contained]: variant === 'contained',
@@ -58,11 +57,9 @@ const Button = React.forwardRef((props, ref) => {
       type={type}
       {...other}
     >
-      <span className={styles.label}>
-        {startIcon}
-        {children}
-        {endIcon}
-      </span>
+      {startIcon}
+      {children}
+      {endIcon}
     </ButtonBase>
   )
 })
@@ -126,7 +123,7 @@ Button.propTypes = {
    * The size of the button.
    * `small` is equivalent to the dense button styling.
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
    * Element placed before the children.
    */
@@ -141,4 +138,4 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['outlined', 'contained']),
 };
 
-export default Button;
+export default Button

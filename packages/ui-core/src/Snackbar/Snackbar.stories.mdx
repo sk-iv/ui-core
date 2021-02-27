@@ -1,0 +1,19 @@
+import Snackbar from './'
+import { Meta, Story, ArgsTable, Canvas } from '@storybook/addon-docs/blocks'
+
+<Meta title="Components/Snackbar" component={Snackbar} />
+
+#Snackbar
+
+Provide brief messages about app processes.
+
+<Canvas>
+  <Story name="default">
+    <Snackbar
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      open
+      onClose={() => {}}
+      message="I love snacks"
+    />
+  </Story>
+</Canvas>

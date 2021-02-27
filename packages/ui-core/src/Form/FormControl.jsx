@@ -137,8 +137,8 @@ const FormControl = React.forwardRef((props, ref) => {
         className={clsx(
           styles['form-control'],
           {
-            [styles[`form-control--margin${capitalize(margin)}`]]: margin !== 'none',
-            [styles['form-control--fullWidth']]: fullWidth,
+            [styles[`margin${capitalize(margin)}`]]: margin !== 'none',
+            [styles.fullWidth]: fullWidth,
             [styles['form-control-error']]: error,
           },
           className,

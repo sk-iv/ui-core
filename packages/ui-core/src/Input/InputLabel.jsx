@@ -3,10 +3,10 @@ import React from 'react'
 import clsx from 'clsx'
 import { FormLabel, formControlState, useFormControl } from '../Form'
 import styles from './InputLabel.module.css'
+import stylesForm from '../Form/FormLabel.module.css'
 
 const InputLabel = React.forwardRef((props, ref) => {
   const {
-    classes,
     className,
     disableAnimation = false,
     margin,
@@ -32,22 +32,19 @@ const InputLabel = React.forwardRef((props, ref) => {
     <FormLabel
       data-shrink={shrink}
       className={clsx(
-        styles['label-input'],
+        styles.labelInput,
         {
-          [styles['label-formControl']]: muiFormControl,
-          [styles['label-animated']]: !disableAnimation,
-          [styles['label-shrink']]: shrink,
-          [styles['label-marginDense']]: fcs.margin === 'dense',
+          [styles.formControl]: muiFormControl,
+          [styles.animated]: !disableAnimation,
+          [styles.shrink]: shrink,
+          [styles.marginDense]: fcs.margin === 'dense',
+          [stylesForm.focused]: fcs.focused,
+          [styles.disabled]: fcs.disabled,
+          [stylesForm.error]: fcs.error,
+          [stylesForm.required]: fcs.required,
         },
         className,
       )}
-      classes={{
-        focused: 'form-label--focused',
-        disabled: 'form-label--disabled',
-        error: 'form-label--error',
-        required: 'form-label--required',
-        asterisk: 'form-label--asterisk',
-      }}
       ref={ref}
       {...other}
     />

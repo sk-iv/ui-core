@@ -12,23 +12,21 @@
 }
 
 .ripple {
-  width: 50;
-  height: 50;
+  width: 50%;
+  height: 50%;
   left: 0;
   top: 0;
   opacity: 0.3;
   position: absolute;
   border-radius: 50%;
   background: currentColor;
-  animation: ripple-enter 550ms linear;
-
-
+  animation: ripple-enter 1100ms ease;
 }
 
-.visible {
-  opacity: 0.3;
-  transform: scale(1);
-}
+/*.ripple-visible {*/
+/*  opacity: 0.3;*/
+/*  transform: scale(1);*/
+/*}*/
 
 .fast {
   animation-duration: 200ms;
@@ -40,7 +38,7 @@
 
 .leaving {
   opacity: 0;
-  animation: ripple-exit 550ms linear;
+  animation: ripple-exit 350ms ease;
 }
 
 .pulsate {
@@ -51,7 +49,6 @@
   width: 100%;
   height: 100%;
   animation: ripple-pulsate 1500ms linear 200ms infinite;
-
 }
 
 .pulsate .ripple-visible {
@@ -74,15 +71,17 @@
 @keyframes ripple-enter {
   0% {
     transform: scale(0);
+    opacity: 0.3;
   }
   100% {
     transform: scale(1);
+    opacity: 0;
   }
 }
 
 @keyframes ripple-exit {
   0% {
-    opacity: 1;
+    opacity: 0.3;
   }
   100% {
     opacity: 0;

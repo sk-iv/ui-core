@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import Grow from '../Transition/Grow';
 import Modal from '../Modal';
-import Paper from '../Paper';
-import { chainPropTypes } from '../utils/chainPropTypes';
+import {Paper} from '../Paper'
 import createChainedFunction from '../utils/createChainedFunction'
 import debounce from '../utils/debounce';
 import elementTypeAcceptingRef from '../utils/elementTypeAcceptingRef';

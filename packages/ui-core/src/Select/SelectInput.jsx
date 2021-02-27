@@ -4,8 +4,6 @@ import clsx from 'clsx';
 import Menu from '../Menu/Menu';
 import { isFilled } from '../Input/utils';
 import { useForkRef } from '../utils/reactHelpers';
-import { SvgUse } from '../SvgIcon';
-
 
 function areEqualValues(a, b) {
   if (typeof b === 'object' && b !== null) {

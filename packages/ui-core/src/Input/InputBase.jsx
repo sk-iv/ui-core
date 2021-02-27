@@ -3,11 +3,10 @@ import React from 'react';
 import clsx from 'clsx';
 import TextareaAutosize from './TextareaAutosize';
 import { FormControlContext, formControlState, useFormControl } from '../Form';
-import debounce from '../utils/debounce';
 import { isFilled } from './utils';
 import { useForkRef } from '../utils/reactHelpers';
 import useDebouncedEffect from '../utils/useDebouncedEffect';
-import styles from './Input.module.css'
+import styles from './InputBase.module.css'
 
 const useEnhancedEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
 
@@ -240,7 +239,7 @@ const InputBase = React.forwardRef((props, ref) => {
           [styles['input--disabled']]: fcs.disabled,
           [styles['input--error']]: fcs.error,
           [styles['input--fullWidth']]: fullWidth,
-          [styles['input--focused']]: fcs.focused,
+          [styles.focused]: fcs.focused,
           [styles['input--formControl']]: muiFormControl,
           [styles['input--marginDense']]: fcs.margin === 'dense',
           [styles['input--multiline']]: multiline,

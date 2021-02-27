@@ -19,10 +19,11 @@ function Ripple(props) {
     onExited = () => {},
     timeout,
   } = props;
-  const [leaving, setLeaving] = React.useState(false);
+  const [leaving, setLeaving] = React.useState(false)
 
   const rippleClassName = clsx(styles.ripple, styles.rippleVisible, {
     [styles.ripplePulsate]: pulsate,
+    //[styles.leaving]: leaving,
   })
 
   const rippleStyles = {
@@ -30,12 +31,12 @@ function Ripple(props) {
     height: rippleSize,
     top: -(rippleSize / 2) + rippleY,
     left: -(rippleSize / 2) + rippleX,
-  };
+  }
 
-  const childClassName = clsx(styles.child, {
-    [styles.childLeaving]: leaving,
-    [styles.childPulsate]: pulsate,
-  })
+  // const childClassName = clsx(styles.child, {
+  //   [styles.childLeaving]: leaving,
+  //   [styles.childPulsate]: pulsate,
+  // })
 
   const handleExited = useEventCallback(onExited)
   // Ripple is used for user feedback (e.g. click or press)
@@ -43,22 +44,23 @@ function Ripple(props) {
   useEnhancedEffect(() => {
     if (!inProp) {
       // react-transition-group#onExit
-      setLeaving(true);
+      setLeaving(true)
 
       // react-transition-group#onExited
-      const timeoutId = setTimeout(handleExited, timeout);
+      const timeoutId = setTimeout(handleExited, timeout)
       return () => {
-        clearTimeout(timeoutId);
-      };
+        clearTimeout(timeoutId)
+      }
     }
-    return undefined;
-  }, [handleExited, inProp, timeout]);
+    return undefined
+  }, [handleExited, inProp, timeout])
 
   return (
-    <span className={rippleClassName} style={rippleStyles}>
-      <span className={childClassName} />
-    </span>
-  );
+    <span
+      className={rippleClassName}
+      style={rippleStyles}
+    />
+  )
 }
 
 Ripple.propTypes = {
@@ -90,6 +92,6 @@ Ripple.propTypes = {
    * exit delay
    */
   timeout: PropTypes.number.isRequired,
-};
+}
 
-export default Ripple;
+export default Ripple

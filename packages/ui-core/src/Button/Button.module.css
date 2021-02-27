@@ -7,13 +7,15 @@
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border-width: var(--input-btn-border-width);
+  border-width: 2px;
   border-style: solid;
   border-color: transparent;
   border-radius: calc(var(--btn-border-radius) * (var(--input-btn-padding-y) * 2 + var(--input-btn-line-height)));
   transition: all 0.3s ease 0s;
   /*for ripple-effect*/
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: .07em;
 }
 
 .fab.btn:before {
@@ -21,44 +23,49 @@
 }
 
 .color-primary {
-  color: hsl(var(--color-primary-txt));
-  background-image: linear-gradient(to right, hsla(var(--color-primary-start), 0.2), hsla(var(--color-primary-end), 0.2));
-  border-color: hsl(var(--color-primary-end));
+  color: var(--colorOverPrimary);
+  background-color: hsla(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary), 0.2);
+  border-color: hsl(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary));
 }
 
-.color-primary.btn--contained {
-  color: hsl(var(--color-primary-txt));
-  background-image: linear-gradient(to right, hsl(var(--color-primary-start)), hsl(var(--color-primary-end)));
+.color-primary.contained {
+  background-color: hsl(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary));
+}
+
+.color-primary:hover,
+.color-primary.active.contained {
+  filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary), 0.5));
 }
 
 .color-secondary {
-  color: hsl(var(--color-secondary-txt));
-  background-image: linear-gradient(to right, hsla(var(--color-secondary-start), 0.2), hsla(var(--color-secondary-end), 0.2));
-  border-color: hsla(var(--color-secondary-start), 1);
+  color: var(--colorOverSecondary);
+  background-color: hsla(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary), 0.2);
+  border-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
 }
 
 .color-secondary.contained {
-  color: hsl(var(--color-secondary-txt));
-  background-image: linear-gradient(
-      to right, hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary)),
-      hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary))
-  );
+  background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+}
+
+.color-secondary:hover {
+  filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary), 0.5));
 }
 
 .color-accent {
-  color: hsl(var(--color-accent-txt));
-  background-image: linear-gradient(to right, hsla(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent), 0.2), hsla(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent), 0.2));
+  color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
+  background-color: hsla(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent), 0.2);
   border-color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
 }
 
 .color-accent.contained {
-  color: hsl(var(--color-accent-txt));
-  background-image: linear-gradient(to right, hsl(var(--color-accent-start)), hsl(var(--color-accent-end)));
+  color: var(--colorOverAccent);
+  background-color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
 }
 
-/* .btn--accent:before{
-  color: hsl(var(--color-accent-start)) !important;
-} */
+.color-accent:hover {
+  filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent), 0.5));
+}
+
 .color-default {
   color: hsla(0, 0%, 0%, 0.7);
   border-color: hsla(0, 0%, 0%, 0.25);
@@ -75,42 +82,6 @@
 
 .color-default:hover {
   background: hsla(0, 0%, 0%, 0.2);
-}
-
-.color-accent:hover {
-  color: hsl(var(--color-accent-txt));
-  filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--color-accent-start), 0.5));
-}
-
-.label {
-  width: 100%;
-  display: inline-flex;
-  align-items: inherit;
-  justify-content: inherit;
-  text-transform: uppercase;
-  letter-spacing: .0892857143em;
-  padding: 0 var(--input-btn-padding-x);
-  /* чтобы событие не распространялось на этот слой */
-  user-select: none;
-  pointer-events: none;
-}
-
-.color-primary:hover {
-  color: hsl(var(--color-primary-txt));
-  filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--color-primary-start), 0.5));
-}
-
-.color-secondary:hover {
-  color: hsl(var(--color-secondary-txt));
-  filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--color-secondary-start), 0.5));
-}
-
-.color-primary.active.contained {
-  background: color(hsl(var(--color-primary-start)) blackness(+10%));
-}
-
-.color-primary.outlined:hover {
-  color: hsl(var(--color-accent-txt));
 }
 
 .disabled {
@@ -140,16 +111,6 @@
   border-radius: 50%;
 }
 
-.bg {
-  border: 0;
-}
-
-/*.fab.btn--bg.btn--primary{*/
-/*   background-image: url("/assets/identity/btn-fab-default.png");*/
-/* }*/
-/*.fab.btn--bg.btn--accent{*/
-/*   background-image: url("/assets/identity/btn-fab.png");*/
-/* }*/
 .fab.btn--bg.color-primary:hover, .btn--fab.btn--bg.color-accent:hover {
   filter: hue-rotate(110deg);
 }
@@ -165,10 +126,10 @@
   border-radius: 50%;
 }
 
-.sm {
+.size-sm {
   height: calc(var(--input-btn-padding-y) * 1 + var(--input-btn-line-height)) !important;
 }
 
-.lg {
+.size-lg {
   height: calc(var(--input-btn-padding-y) * 4 + var(--input-btn-line-height)) !important;
 }
