@@ -1,9 +1,9 @@
 // @inheritedComponent Paper
 
-import PropTypes from 'prop-types';
-import React from 'react';
-import classNames from 'classnames';
-import Paper from '../Paper';
+import PropTypes from 'prop-types'
+import React from 'react'
+import classNames from 'classnames'
+import {Paper} from '../Paper'
 
 /*
  * Import Typography from '../Typography';

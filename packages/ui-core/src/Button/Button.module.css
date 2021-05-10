@@ -16,6 +16,8 @@
   position: relative;
   text-transform: uppercase;
   letter-spacing: .07em;
+  display: inline-flex;
+  justify-content: center;
 }
 
 .fab.btn:before {
@@ -132,4 +134,8 @@
 
 .size-lg {
   height: calc(var(--input-btn-padding-y) * 4 + var(--input-btn-line-height)) !important;
+}
+
+.full-width {
+  width: 100%;
 }

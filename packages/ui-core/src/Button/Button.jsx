@@ -22,18 +22,18 @@ const Button = React.forwardRef((props, ref) => {
     type = 'button',
     variant = 'contained',
     ...other
-  } = props;
+  } = props
 
   const startIcon = startIconProp && (
     <span className={clsx('btn-startIcon', `iconSize-${capitalize(size)}`)}>
       {startIconProp}
     </span>
-  );
+  )
   const endIcon = endIconProp && (
     <span className={clsx('btn-endIcon', `iconSize-${capitalize(size)}`)}>
       {endIconProp}
     </span>
-  );
+  )
 
   return (
     <ButtonBase
@@ -45,7 +45,7 @@ const Button = React.forwardRef((props, ref) => {
           [styles.disabled]: disabled,
           [styles.outlined]: variant === 'outlined',
           [styles.contained]: variant === 'contained',
-          [styles['w-100']]: fullWidth,
+          [styles.fullWidth]: fullWidth,
         },
         className,
       )}
@@ -57,12 +57,11 @@ const Button = React.forwardRef((props, ref) => {
       type={type}
       {...other}
     >
-      {startIcon}
       {children}
-      {endIcon}
     </ButtonBase>
   )
 })
+Button.displayName = 'Button'
 Button.propTypes = {
   /**
    * The content of the button.

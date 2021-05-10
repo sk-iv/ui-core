@@ -5,7 +5,6 @@ import clsx from 'clsx'
 import TouchRipple from './TouchRipple'
 import useForkRef from '../utils/useForkRef'
 import useEventCallback from '../utils/useEventCallback'
-import NoSsr from '../NoSsr'
 import useIsFocusVisible from '../utils/useIsFocusVisible'
 import styles from './Clickable.module.css'
 
@@ -293,7 +292,9 @@ const Clickable = React.forwardRef((props, ref) => {
   )
 })
 
-Clickable.propTypes = {
+Clickable.displayName = 'Clickable'
+
+  Clickable.propTypes = {
   /**
    * Infinite animation shine to attract attention.
    */

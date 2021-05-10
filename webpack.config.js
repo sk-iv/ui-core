@@ -54,6 +54,7 @@ module.exports = (env, argv) => ({
               modules: {
                 localIdentName: '[name]_[local]_[hash:base64:5]',
                 exportLocalsConvention: 'dashesOnly',
+                auto: (resourcePath) => resourcePath.endsWith(".mdl.css"),
               },
             },
           },

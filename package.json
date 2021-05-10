@@ -6,7 +6,7 @@
   "scripts": {
     "storybook": "start-storybook -s ./packages -p 6006 -c .storybook",
     "dev": "webpack serve --env development --mode development",
-    "build": "babel --delete-dir-on-start --config-file ./.babelrc --out-dir dist ./packages --copy-files"
+    "build": "babel ./packages/icons/* --delete-dir-on-start --config-file ./.babelrc --out-dir ./dist/icons --copy-files && babel ./packages/ui-carousel/* --delete-dir-on-start --config-file ./.babelrc --out-dir ./dist/ui-carousel --copy-files && babel ./packages/ui-core/* --delete-dir-on-start --config-file ./.babelrc --out-dir ./dist/ui-core  --copy-files"
   },
   "dependencies": {
     "clsx": "^1.1.1",
@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@mdx-js/loader": "^1.6.22",
-    "@storybook/addon-docs": "^6.1.20",
+    "babel-preset-css-modules-transform": "^6.1.20",
     "@storybook/addon-knobs": "^6.1.20",
     "@storybook/react": "^6.1.20",
     "@svgr/webpack": "^5.5.0",
