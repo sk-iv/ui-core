@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+
 if (process.env.WEBPACK) {
-
-    require("./step-connector.css");
-
+  require('./step-connector.css');
 }
 
-
-
-const StepConnector = React.forwardRef(function StepConnector(props, ref) {
+const StepConnector = React.forwardRef((props, ref) => {
   const {
     active,
     alternativeLabel = false,
@@ -24,13 +21,13 @@ const StepConnector = React.forwardRef(function StepConnector(props, ref) {
   return (
     <div
       className={clsx(
-        "step-connector-root",
+        'step-connector-root',
         `step-connector-${orientation}`,
         {
-          ["step-connector-alternativeLabel"]: alternativeLabel,
-          ["step-connector-active"]: active,
-          ["step-connector-completed"]: completed,
-          ["step-connector-disabled"]: disabled,
+          'step-connector-alternativeLabel': alternativeLabel,
+          'step-connector-active': active,
+          'step-connector-completed': completed,
+          'step-connector-disabled': disabled,
         },
         classNameProp,
       )}
@@ -38,9 +35,9 @@ const StepConnector = React.forwardRef(function StepConnector(props, ref) {
       {...other}
     >
       <span
-        className={clsx("step-connector-line", {
-          ["step-connector-lineHorizontal"]: orientation === 'horizontal',
-          ["step-connector-lineVertical"]: orientation === 'vertical',
+        className={clsx('step-connector-line', {
+          'step-connector-lineHorizontal': orientation === 'horizontal',
+          'step-connector-lineVertical': orientation === 'vertical',
         })}
       />
     </div>

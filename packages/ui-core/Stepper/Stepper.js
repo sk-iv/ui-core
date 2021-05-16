@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Paper from '../Paper';
 import StepConnector from '../StepConnector';
+
 if (process.env.WEBPACK) {
-
-    require("./stepper.css");
-
+  require('./stepper.css');
 }
-
 
 const defaultConnector = <StepConnector />;
 
-const Stepper = React.forwardRef(function Stepper(props, ref) {
+const Stepper = React.forwardRef((props, ref) => {
   const {
     activeStep = 0,
     alternativeLabel = false,
@@ -25,10 +23,10 @@ const Stepper = React.forwardRef(function Stepper(props, ref) {
   } = props;
 
   const className = clsx(
-    "stepper-root",
+    'stepper-root',
     `stepper-${orientation}`,
     {
-      ["stepper-alternativeLabel"]: alternativeLabel,
+      'stepper-alternativeLabel': alternativeLabel,
     },
     classNameProp,
   );
@@ -61,10 +59,10 @@ const Stepper = React.forwardRef(function Stepper(props, ref) {
     }
 
     return [
-      !alternativeLabel &&
-        connector &&
-        index !== 0 &&
-        React.cloneElement(connector, {
+      !alternativeLabel
+        && connector
+        && index !== 0
+        && React.cloneElement(connector, {
           key: index,
           ...state,
         }),

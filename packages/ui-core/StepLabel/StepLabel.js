@@ -4,12 +4,10 @@ import clsx from 'clsx';
 import StepIcon from '../StepIcon';
 
 if (process.env.WEBPACK) {
-
-    require("./step-label.css");
-
+  require('./step-label.css');
 }
 
-const StepLabel = React.forwardRef(function StepLabel(props, ref) {
+const StepLabel = React.forwardRef((props, ref) => {
   const {
     active = false,
     alternativeLabel = false,
@@ -36,12 +34,12 @@ const StepLabel = React.forwardRef(function StepLabel(props, ref) {
   return (
     <span
       className={clsx(
-        "step-label-root",
+        'step-label-root',
         `step-label-${orientation}`,
         {
-          ["step-label-disabled"]: disabled,
-          ["step-label-alternativeLabel"]: alternativeLabel,
-          ["step-label-error"]: error,
+          'step-label-disabled': disabled,
+          'step-label-alternativeLabel': alternativeLabel,
+          'step-label-error': error,
         },
         classNameProp,
       )}
@@ -50,8 +48,8 @@ const StepLabel = React.forwardRef(function StepLabel(props, ref) {
     >
       {icon || StepIconComponent ? (
         <span
-          className={clsx("step-label-iconContainer", {
-            ["step-label-alternativeLabel"]: alternativeLabel,
+          className={clsx('step-label-iconContainer', {
+            'step-label-alternativeLabel': alternativeLabel,
           })}
         >
           <StepIconComponent
@@ -63,14 +61,14 @@ const StepLabel = React.forwardRef(function StepLabel(props, ref) {
           />
         </span>
       ) : null}
-      <span className={"step-label-labelContainer"}>
+      <span className="step-label-labelContainer">
         <span
           variant="body2"
-          className={clsx("step-label-label", {
-            ["step-label-alternativeLabel"]: alternativeLabel,
-            ["step-label-completed"]: completed,
-            ["step-label-active"]: active,
-            ["step-label-error"]: error,
+          className={clsx('step-label-label', {
+            'step-label-alternativeLabel': alternativeLabel,
+            'step-label-completed': completed,
+            'step-label-active': active,
+            'step-label-error': error,
           })}
           display="block"
         >

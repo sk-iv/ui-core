@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import {SvgUse} from '../SvgIcon';
+import { SvgUse } from '../SvgIcon';
+
 if (process.env.WEBPACK) {
-
-    require("./step-icon.css");
-
+  require('./step-icon.css');
 }
 
-
-const StepIcon = React.forwardRef(function StepIcon(props, ref) {
-  const { completed = false, icon, active = false, error = false } = props;
+const StepIcon = React.forwardRef((props, ref) => {
+  const {
+    completed = false, icon, active = false, error = false,
+  } = props;
 
   if (typeof icon === 'number' || typeof icon === 'string') {
     // if (error) {
@@ -22,13 +22,13 @@ const StepIcon = React.forwardRef(function StepIcon(props, ref) {
     return (
       <SvgUse
         name="clock"
-        className={clsx("step-icon-root", {
-          ["step-icon-active"]: active,
+        className={clsx('step-icon-root', {
+          'step-icon-active': active,
         })}
         ref={ref}
       >
         <circle cx="12" cy="12" r="12" />
-        <text className={"step-icon-text"} x="12" y="16" textAnchor="middle">
+        <text className="step-icon-text" x="12" y="16" textAnchor="middle">
           {icon}
         </text>
       </SvgUse>

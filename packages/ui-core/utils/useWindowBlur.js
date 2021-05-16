@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react'
 
 function useWindowBlur() {
-
   // State for keeping track of whether key is pressed
   const [blur, setBlur] = useState(false);
 
   // If pressed key is our target key then set to true
-  const blurHandler = ({type}) => {
-    if (type === "blur") {
+  const blurHandler = ({ type }) => {
+    if (type === 'blur') {
       setBlur(true);
-    }else{
+    } else {
       setBlur(false);
     }
   }
