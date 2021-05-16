@@ -1,0 +1,15 @@
+.checkbox {
+
+}
+
+.default {
+  color: #ccc;
+}
+
+.checked {
+  color: color(var(--color-secondary-start));
+}
+
+.disabled {
+  color: #ddd;
+}

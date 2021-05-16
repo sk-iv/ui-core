@@ -20,6 +20,7 @@
     "react/jsx-props-no-spreading": 0,
     "react/require-default-props": 0,
     "semi": 0,
+    "import/no-unresolved": 0,
     "no-use-before-define": [
       "error",
       {

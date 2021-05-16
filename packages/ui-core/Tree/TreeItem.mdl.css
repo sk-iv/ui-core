@@ -1,0 +1,41 @@
+.tree-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+/* Styles applied to the `role="group"` element. */
+.tree-item-group {
+  margin: 0;
+  padding: 0;
+  margin-left: 17px;
+}
+
+/* Styles applied to the tree node content. */
+.tree-item-content {
+  padding: 0 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Styles applied to the tree node icon and collapse/expand icon. */
+.tree-item-icon-container {
+  margin-right: 4px;
+  width: 15px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  /*'& glyphs': {*/
+  /*     fontSize: 18;*/
+  /* }*/
+}
+
+/* Styles applied to the label element. */
+.tree-item-label {
+  width: 100%;
+  padding-left: 4px;
+  position: relative;
+}

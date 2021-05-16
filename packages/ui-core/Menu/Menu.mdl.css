@@ -1,0 +1,42 @@
+.menu {
+  outline: 0;
+  position: absolute;
+  max-width: calc(100% - 32px);
+  min-width: 16px;
+  max-height: calc(100% - 32px);
+  min-height: 16px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
+}
+
+.menu-item {
+  height: 24px;
+  box-sizing: content-box;
+  background: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-item:focus {
+  background: #ddd;
+}
+
+.menu-item:hover {
+  background-color: #ddd;
+}
+
+.menu-item-selected {
+  background-color: #ddd;
+}
+
+.menu-item-gutters {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.popperClose {
+  pointer-events: none;
+}

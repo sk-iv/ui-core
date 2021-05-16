@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+__webpack_base_uri__ = 'http://localhost:8080';
+
 // Try the environment variable, otherwise use root
 // argv.mode !== 'production' ? '/' : 'assets/'
 
@@ -18,9 +20,9 @@ module.exports = (env, argv) => ({
   },
   resolve: {
     alias: {
-      '@sivasifr/ui-core': path.resolve(__dirname, './packages/ui-core/src'),
-      '@sivasifr/ui-carousel': path.resolve(__dirname, './packages/ui-carousel/src'),
-      '@sivasifr/icons': path.resolve(__dirname, './packages/icons/src'),
+      '@sivasifr/ui-core': path.resolve(__dirname, './packages/ui-core'),
+      '@sivasifr/ui-carousel': path.resolve(__dirname, './packages/ui-carousel'),
+      '@sivasifr/icons': path.resolve(__dirname, './packages/icons'),
     },
     extensions: ['*', '.ts', '.js', '.jsx'],
   },
@@ -52,9 +54,9 @@ module.exports = (env, argv) => ({
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]_[local]_[hash:base64:5]',
+                localIdentName: argv.mode !== 'production' ? '[name]_[local]_[hash:base64:5]' : '[name]_[local]',
                 exportLocalsConvention: 'dashesOnly',
-                auto: (resourcePath) => resourcePath.endsWith(".mdl.css"),
+                auto: (resourcePath) => resourcePath.endsWith('.mdl.css'),
               },
             },
           },

@@ -1,10 +1,10 @@
 {
   "name": "@sivasifr/ui-core",
-  "version": "1.0.17",
+  "version": "1.0.20",
   "private": false,
   "author": "Svetlana Ivannikova",
   "main": "./src/index.js",
-  "description": "React components that implement Google's Material Design.",
+  "description": "React ui components",
   "keywords": [
     "react",
     "material design",
@@ -44,7 +44,8 @@
     "prop-types": "^15.7.2",
     "react-is": "^16.8.0 || ^17.0.0",
     "react-transition-group": "^4.4.0",
-    "@sivasifr/icons": "^1.0.0"
+    "@sivasifr/icons": "^1.0.0",
+    "react-select": "^4.3.1"
   },
   "devDependencies": {},
   "sideEffects": false,

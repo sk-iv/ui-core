@@ -1,0 +1,47 @@
+.root {
+  height: 0;
+  /*overflow: 'hidden';*/
+  /*transition: theme.transitions.create('height');*/
+}
+
+.root .horizontal {
+  height: auto;
+  width: 0;
+  /*transition: theme . transitions . create('width');*/
+}
+
+.entered {
+  height: auto;
+  overflow: visible;
+
+}
+
+.entered .horizontal {
+  width: auto;
+}
+
+/* Styles applied to the root element when the transition has exited and `collapsedSize` = 0px. */
+.hidden {
+  visibility: hidden;
+}
+
+/* Styles applied to the outer wrapper element. */
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.wrapper .horizontal {
+  width: auto;
+  height: 100%;
+}
+
+/* Styles applied to the inner wrapper element. */
+.wrapper-inner {
+  width: 100%;
+}
+
+.wrapper-inner .horizontal {
+  width: auto;
+  height: 100%;
+}

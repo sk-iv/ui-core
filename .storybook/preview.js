@@ -1,1 +1,1 @@
-import "../packages/ui-core/src/StyleBase/_variables.css";
+import "../packages/ui-core/StyleBase/_variables.css";

@@ -1,0 +1,10 @@
+.form-group {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 4px 4px 0 0;
+}
+
+.row {
+  flex-direction: row;
+}

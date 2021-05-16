@@ -1,0 +1,47 @@
+.icon {
+  display: inline-block;
+  fill: none;
+  width: 1em;
+  stroke: currentColor;
+  stroke-linecap: inherit;
+  stroke-linejoin: inherit;
+  overflow: visible;
+  vertical-align: middle;
+  transition: all 0.3s ease 0s;
+}
+
+.icon-hover:hover {
+  --color-stroke: hsla(var(--color-secondary-start), 1) !important;
+  cursor: pointer;
+}
+
+.icon96 {
+  font-size: 96px;
+  stroke-width: 2px;
+}
+
+.icon24 {
+  font-size: 24px;
+  fill: none;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.icon18 {
+  font-size: 18px;
+  fill: none;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.link-icon {
+  --color-stroke: hsla(var(--color-secondary-start), 1);
+}
+
+.link-icon:hover {
+  --color-stroke: hsla(0 100% 0%, 1);
+}
+
+.icon-outline {
+  filter: drop-shadow(0 0px 1px hsl(var(--color-primary-txt)));
+}
