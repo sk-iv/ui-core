@@ -5,16 +5,17 @@ import icons24 from '../glyphs/24/icons-24.svg'
 import styles from './IconSvg.mdl.css'
 
 const IconSvg = ({
-  name, size = 'sm', bgImg, color = 'inherit', style, className, outline,
+  name = 'bars', size = 'sm', bgImg, color = 'inherit', style, className, outline,
 }) => {
+  const iconsMd = icons24 || ''
   const type = {
     xs: {
       size: 18,
-      path: `${icons24}#${name}`,
+      path: `${iconsMd}#${name}`,
     },
     sm: {
       size: 24,
-      path: `${icons24}#${name}`,
+      path: `${iconsMd}#${name}`,
     },
     lg: {
       size: 96,

@@ -25,6 +25,7 @@ const FormControl = React.forwardRef((props, ref) => {
     component: Component = 'div',
     disabled = false,
     error = false,
+    focused: visuallyFocused,
     fullWidth = false,
     hiddenLabel = false,
     margin = 'none',
@@ -73,11 +74,12 @@ const FormControl = React.forwardRef((props, ref) => {
     return initialFilled;
   });
 
-  const [focused, setFocused] = React.useState(false);
-
-  if (disabled && focused) {
+  const [focusedState, setFocused] = React.useState(false);
+  if (disabled && focusedState) {
     setFocused(false);
   }
+
+  const focused = visuallyFocused !== undefined && !disabled ? visuallyFocused : focusedState
 
   let registerEffect;
   if (process.env.NODE_ENV !== 'production') {

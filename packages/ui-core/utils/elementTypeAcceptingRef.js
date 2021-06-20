@@ -2,7 +2,6 @@ import * as PropTypes from 'prop-types';
 
 import chainPropTypes from './chainPropTypes';
 
-
 function isClassComponent(elementType) {
   // elementType.prototype?.isReactComponent
   const { prototype = {} } = elementType;

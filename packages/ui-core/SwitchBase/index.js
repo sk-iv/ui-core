@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import clsx from 'clsx';
-import Icon from '../Icon';
-import { IconButton } from '../IconButton';
-import { SvgUse } from '../SvgIcon';
-import refType from '../utils/refType';
-import useFormControl from '../Form/useFormControl';
+import PropTypes from 'prop-types'
+import React from 'react'
+import clsx from 'clsx'
+import { IconButton } from '../IconButton'
+import { SvgUse } from '@sivasifr/icons/IconSvg'
+import { refType } from '../utils'
+import useFormControl from '../Form/useFormControl'
 import styles from './SwitchBase.mdl.css'
 
 /**
@@ -86,10 +85,10 @@ const SwitchBase = React.forwardRef((props, ref) => {
     <IconButton
       component="span"
       className={clsx(
-        styles['switch-base'],
+        styles.root,
         {
-          [styles['switch-base-checked']]: checked,
-          [styles['switch-base-disabled']]: disabled,
+          [styles.checked]: checked,
+          [styles.disabled]: disabled,
         },
         className,
       )}
@@ -105,7 +104,7 @@ const SwitchBase = React.forwardRef((props, ref) => {
         autoFocus={autoFocus}
         checked={checkedProp}
         defaultChecked={defaultChecked}
-        className={styles['switch-base-input']}
+        className={styles.input}
         disabled={disabled}
         id={hasLabelFor && id}
         name={name}
@@ -212,4 +211,4 @@ SwitchBase.propTypes = {
   value: PropTypes.any,
 };
 
-export default SwitchBase;
+export default SwitchBase

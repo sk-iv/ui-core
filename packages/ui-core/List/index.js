@@ -1,8 +1,19 @@
-export { default as List } from './List'
-export { default as ListItem } from './ListItem'
-export { default as ListItemAvatar } from './ListItemAvatar'
-export { default as ListItemText } from './ListItemText'
-export { default as ListItemIcon } from './ListItemIcon'
-export { default as ListItemSecondaryAction } from './ListItemSecondaryAction'
-export { default as ListItemSecondaryActionStart } from './ListItemSecondaryActionStart'
-export { default as ListSubheader } from './ListSubheader'
+import List from './List'
+import ListItem from './ListItem'
+import ListItemAvatar from './ListItemAvatar'
+import ListItemText from './ListItemText'
+import ListItemIcon from './ListItemIcon'
+import ListItemSecondaryAction from './ListItemSecondaryAction'
+import ListItemSecondaryActionStart from './ListItemSecondaryActionStart'
+import ListSubheader from './ListSubheader'
+
+export default List
+export {
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemSecondaryActionStart,
+  ListSubheader,
+}

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
-import ButtonBase from '../Clickable'
+import Clickable from '../Clickable'
 import capitalize from '../utils/capitalize'
 import { chainPropTypes } from '../utils/chainPropTypes'
 import styles from './IconButton.mdl.css'
@@ -23,7 +23,7 @@ const IconButton = React.forwardRef((props, ref) => {
   } = props
 
   return (
-    <ButtonBase
+    <Clickable
       className={clsx(
         styles['icon-btn'],
         {
@@ -42,7 +42,7 @@ const IconButton = React.forwardRef((props, ref) => {
       {...other}
     >
       <span className={styles['icon-btn-label']}>{ children }</span>
-    </ButtonBase>
+    </Clickable>
   )
 })
 

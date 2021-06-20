@@ -3,12 +3,12 @@ import Pagination, { Proportion } from '@sivasifr/ui-carousel/Pagination'
 import { Button } from '@sivasifr/ui-core/Button'
 import { Carousel, CarouselContextProvider } from '@sivasifr/ui-carousel/Carousel'
 import { AppBar } from '@sivasifr/ui-core/AppBar'
-import { List, ListItem } from '@sivasifr/ui-core/List'
-import { IconSvg, icons24 } from '@sivasifr/icons/IconSvg'
+import List, { ListItem } from '@sivasifr/ui-core/List'
+import IconSvg from '@sivasifr/icons/IconSvg'
 import { Buttress } from '@sivasifr/ui-core/Buttress'
 import { Drawer } from '@sivasifr/ui-core/Drawer'
 import { Typography, Vignette } from '@sivasifr/ui-core/Typography'
-import { Paper } from '@sivasifr/ui-core/Paper'
+import Paper from '@sivasifr/ui-core/Paper'
 import Link from '@sivasifr/ui-core/Link'
 import { Collapse } from '@sivasifr/ui-core/Collapse'
 import TextField from '@sivasifr/ui-core/TextField'
@@ -19,24 +19,67 @@ const menu = [
   'Просвещение',
 ]
 
+// const options = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+//   { value: 'vanilla', label: 'Vanilla' },
+// ]
+
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+  'Chocolate',
+  'Strawberry',
+  'Vanilla',
 ]
+
+const initialState = {
+  value: '',
+  options: [],
+}
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'CHANGE_VALUE':
+      return {
+        ...state,
+        value: action.payload,
+      }
+    case 'CHANGE_OPTIONS':
+      return {
+        ...state,
+        options: action.payload,
+      }
+    default:
+      return state
+  }
+}
 
 const App = () => {
   const [open, setOpen] = React.useState(false)
   const [checked, setChecked] = React.useState(false)
-  const [valSel, setValSel] = React.useState(options[0])
+  const [state, dispatch] = React.useReducer(reducer, initialState)
   const handler = (e) => {
     setOpen(true)
   }
   const handleChange = () => {
     setChecked(!checked)
   }
-  const handleChangeSelect = (e) => {
-    setValSel(e)
+
+  const handleChangeSelect2 = (e, newValue, reason, details) => {
+    console.log('newValue', newValue, reason)
+    if (reason === 'selectOption') {
+      dispatch({ type: 'CHANGE_OPTIONS', payload: newValue })
+      dispatch({ type: 'CHANGE_VALUE', payload: '' })
+    }
+    if (reason === 'input') {
+      dispatch({ type: 'CHANGE_VALUE', payload: newValue })
+    }
+    if (reason === 'clear') {
+      dispatch({ type: 'CHANGE_OPTIONS', payload: [] })
+      dispatch({ type: 'CHANGE_VALUE', payload: '' })
+    }
+    if (reason === 'removeOption') {
+      dispatch({ type: 'CHANGE_OPTIONS', payload: newValue })
+    }
   }
   return (
     <>
@@ -119,13 +162,24 @@ const App = () => {
         label="Standard"
       />
       <ComboboxField
+        name="Combobox2"
+        label="Combobox2"
+        options={options}
+        value={state.options}
+        inputValue={state.value}
+        onChange={handleChangeSelect2}
+        fullWidth
+        multiple
+      />
+      {/* <ComboboxField
+        name="Combobox"
         label="Combobox"
         options={options}
         value={valSel}
         onChange={handleChangeSelect}
         fullWidth
-        isSearchable
-      />
+        isSearchable={false}
+      /> */}
       <Button onClick={handleChange}><IconSvg name="arrow-left" /></Button>
       <Collapse in={checked}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam

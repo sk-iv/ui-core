@@ -1,0 +1,15 @@
+import Checkbox from './'
+import { Meta, Story, ArgsTable, Canvas } from '@storybook/addon-docs'
+
+<Meta title="Components/Checkbox" component={Checkbox} />
+
+# Checkbox
+
+<Canvas>
+  <Story name="default" args={{ checked: {control: { type: 'boolean' },} }}>
+    <Checkbox 
+    />
+  </Story>
+</Canvas>
+
+<ArgsTable of={Checkbox} />

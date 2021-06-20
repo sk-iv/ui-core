@@ -1,0 +1,20 @@
+import SwitchBase from './'
+import { Meta, Story, ArgsTable, Canvas } from '@storybook/addon-docs'
+
+<Meta 
+  title="Components/SwitchBase"
+  component={SwitchBase}
+/>
+
+# SwitchBase
+
+<Canvas>
+  <Story 
+    name="default" 
+    args={{ checked: {control: { type: 'boolean' },} }}
+  >
+    <SwitchBase />
+  </Story>
+</Canvas>
+
+<ArgsTable of={SwitchBase} />

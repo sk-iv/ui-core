@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
-import { Paper } from '../Paper'
+import Paper from '../Paper'
 import styles from './SnackbarContent.mdl.css'
 /*
  * Import Typography from '../Typography';

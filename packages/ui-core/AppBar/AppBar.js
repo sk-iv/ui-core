@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import capitalize from '../utils/capitalize'
-import { Paper } from '../Paper'
+import Paper from '../Paper'
 import styles from './AppBar.mdl.css'
 
 const AppBar = React.forwardRef((props, ref) => {

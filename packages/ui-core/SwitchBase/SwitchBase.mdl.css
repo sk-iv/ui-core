@@ -1,4 +1,4 @@
-.switch-base {
+.root {
   padding: 2px;
 }
 
@@ -18,7 +18,7 @@
    padding: 0;
  }
 
-.switch .switch-base-checked{
+.checked{
   transform: translateX(100%);
 }
 .switch-color-secondary .switch-base-checked {

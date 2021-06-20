@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Input, { InputLabel, InputAdornment } from '../Input';
-import { Chip } from '../Chip'
+import Chip from '../Chip'
 import { FormControl, FormHelperText } from '../Form';
 // https://www.npmjs.com/package/material-ui-chip-input
 const variantComponent = {

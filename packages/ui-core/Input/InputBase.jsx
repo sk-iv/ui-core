@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import clsx from 'clsx';
 import TextareaAutosize from './TextareaAutosize';
-import { FormControlContext, formControlState, useFormControl } from '../Form';
+import { formControlState, useFormControl } from '../Form';
 import { isFilled } from './utils';
 import { useForkRef } from '../utils/reactHelpers';
 import useDebouncedEffect from '../utils/useDebouncedEffect';
@@ -53,13 +53,14 @@ const InputBase = React.forwardRef((props, ref) => {
     spellCheck,
     startAdornment,
     type = 'text',
-    value,
+    value: valueProp,
     disableUnderline,
     options,
     children,
     ...other
   } = props;
 
+  const value = inputPropsProp.value != null ? inputPropsProp.value : valueProp
   const { current: isControlled } = React.useRef(value != null);
 
   const inputRef = React.useRef();
@@ -68,7 +69,7 @@ const InputBase = React.forwardRef((props, ref) => {
       if (instance && instance.nodeName !== 'INPUT' && !instance.focus) {
         console.error(
           [
-            'Material-UI: You have provided a `inputComponent` to the input component',
+            'SivaSifr-UI: You have provided a `inputComponent` to the input component',
             'that does not correctly handle the `inputRef` prop.',
             'Make sure the `inputRef` prop is called with a HTMLInputElement.',
           ].join('\n'),
@@ -246,9 +247,9 @@ const InputBase = React.forwardRef((props, ref) => {
           [styles.focused]: fcs.focused,
           [styles.formControl]: muiFormControl,
           [styles.underline]: !disableUnderline,
-          [styles['input--marginDense']]: fcs.margin === 'dense',
-          [styles['input--multiline']]: multiline,
-          [styles['input--adornedStart']]: startAdornment,
+          [styles.marginDense]: fcs.margin === 'dense',
+          [styles.multiline]: multiline,
+          [styles.adornedStart]: startAdornment,
         },
         classNameProp,
       )}
@@ -257,7 +258,7 @@ const InputBase = React.forwardRef((props, ref) => {
       {...other}
     >
       {startAdornment}
-      <FormControlContext.Provider value={null}>
+     
         {
           options && <OptionsComponent />
         }
@@ -272,8 +273,8 @@ const InputBase = React.forwardRef((props, ref) => {
             styles.input,
             {
               [styles.inputSearch]: type === 'search',
-              [styles.inputMultiline]: multiline,
-              [styles['input--inputSelect']]: select,
+              [styles.multiline]: multiline,
+              [styles.inputSelect]: select,
               [styles.inputDense]: fcs.margin === 'dense',
             },
             inputPropsClassName,
@@ -296,7 +297,7 @@ const InputBase = React.forwardRef((props, ref) => {
           {...inputProps}
         />
         )}
-      </FormControlContext.Provider>
+     
       {endAdornment}
       {renderSuffix
         ? renderSuffix({
@@ -307,6 +308,8 @@ const InputBase = React.forwardRef((props, ref) => {
     </div>
   );
 });
+
+InputBase.displayName = 'InputBase'
 
 InputBase.propTypes = {
   /**

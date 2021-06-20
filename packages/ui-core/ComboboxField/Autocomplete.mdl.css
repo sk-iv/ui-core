@@ -1,0 +1,59 @@
+.root {
+  width: 300px;
+}
+
+.popper {
+  z-index: 100;
+}
+
+.paper {
+  overflow: auto;
+  background-color: #FFF;
+}
+
+.listbox {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  max-height: 40vh;
+  overflow: auto;
+  background-color: #FFF;
+}
+
+.option {
+  min-height: 48px;
+  display: flex;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+[aria-selected="true"] {
+  background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+}
+
+.end-adornment {
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 14px);
+  right: 9px;
+}
+
+.input {
+  width: 0;
+  min-width: 30px;
+  flex-grow: 1;
+}
+
+.input-root {
+  padding-right: 52px;
+}

@@ -54,7 +54,6 @@ const useForm = (initModel, submitCallback, defaultValues) => {
     return { error: !!error, helperText: error };
   };
 
-
   return [inputs, handleChange, handleSubmit];
 };
 

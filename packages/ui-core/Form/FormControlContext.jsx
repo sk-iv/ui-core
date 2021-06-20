@@ -1,12 +1,16 @@
-import React from 'react';
+import React from 'react'
 
 /**
  * @ignore - internal component.
  */
-const FormControlContext = React.createContext();
+const FormControlContext = React.createContext()
 
-export function useFormControl() {
-  return React.useContext(FormControlContext);
+if (process.env.NODE_ENV !== 'production') {
+  FormControlContext.displayName = 'FormControlContext';
 }
 
-export default FormControlContext;
+// export function useFormControl() {
+//   return React.useContext(FormControlContext)
+// }
+
+export default FormControlContext

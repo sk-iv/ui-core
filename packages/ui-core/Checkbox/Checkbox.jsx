@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import clsx from 'clsx';
-import { SvgUse } from '../SvgIcon';
-import SwitchBase from '../SwitchBase';
+import PropTypes from 'prop-types'
+import React from 'react'
+import clsx from 'clsx'
+import { IconSvg, icons24 } from '@sivasifr/icons/IconSvg'
+import SwitchBase from '../SwitchBase'
 import styles from './Checkbox.mdl.css'
 
-function Checkbox(props) {
+const Checkbox = (props) => {
   const {
     checkedIcon,
     className,
@@ -15,7 +15,7 @@ function Checkbox(props) {
     indeterminateIcon,
     inputProps,
     ...other
-  } = props;
+  } = props
 
   return (
     <SwitchBase
@@ -27,11 +27,6 @@ function Checkbox(props) {
         },
         className,
       )}
-      // classes={{
-      //   root: 'checkbox--default',
-      //   checked: 'checkbox--checked',
-      //   disabled: 'checkbox--disabled',
-      // }}
       inputProps={{
         'data-indeterminate': indeterminate,
         ...inputProps,
@@ -39,7 +34,7 @@ function Checkbox(props) {
       icon={indeterminate ? indeterminateIcon : icon}
       {...other}
     />
-  );
+  )
 }
 
 Checkbox.propTypes = {
@@ -114,14 +109,15 @@ Checkbox.propTypes = {
    * The value of the component.
    */
   value: PropTypes.string,
-};
+}
 
 Checkbox.defaultProps = {
-  checkedIcon: <SvgUse name="check-box" />,
+  checked: false,
+  checkedIcon: <IconSvg name="check-box" />,
   color: 'secondary',
-  icon: <SvgUse name="square" />,
+  icon: <IconSvg name="square" />,
   indeterminate: false,
-  indeterminateIcon: <SvgUse name="check-box-indeterminate" />,
-};
+  indeterminateIcon: <IconSvg name="check-box-indeterminate" />,
+}
 
-export default Checkbox;
+export default Checkbox

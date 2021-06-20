@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import { IconButton } from '../IconButton'
-import { IconSvg } from '@sivasifr/icons/IconSvg'
+import IconSvg from '@sivasifr/icons/IconSvg'
 import useForkRef from '../utils/useForkRef'
 import unsupportedProp from '../utils/unsupportedProp'
 import capitalize from '../utils/capitalize'

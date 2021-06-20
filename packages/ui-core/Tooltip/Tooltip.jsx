@@ -9,7 +9,7 @@ import deepmerge from '../utils/deepmerge';
 import elementAcceptingRef from '../utils/elementAcceptingRef';
 import useIsFocusVisible from '../utils/useIsFocusVisible';
 import useControlled from '../utils/useControlled';
-import useId from '../utils/unstable_useId';
+import useId from '../utils/useId';
 import setRef from '../utils/setRef';
 import useForkRef from '../utils/useForkRef';
 import styles from './Tooltip.mdl.css'

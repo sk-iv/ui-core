@@ -1,6 +1,5 @@
 import React, { Children, cloneElement, isValidElement } from 'react';
 
-
 // TODO: Make it private only in v5
 export function setRef(ref, value) {
   if (typeof ref === 'function') {

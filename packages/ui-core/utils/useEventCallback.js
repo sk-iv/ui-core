@@ -10,7 +10,7 @@ const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect 
 export default function useEventCallback(fn) {
   const ref = React.useRef(fn);
   useEnhancedEffect(() => {
-    ref.current = fn;
-  });
-  return React.useCallback((event) => (0, ref.current)(event), []);
+    ref.current = fn
+  })
+  return React.useCallback((...args) => (0, ref.current)(...args), [])
 }

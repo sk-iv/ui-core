@@ -3,9 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import clsx from 'clsx'
 import TouchRipple from './TouchRipple'
-import useForkRef from '../utils/useForkRef'
-import useEventCallback from '../utils/useEventCallback'
-import useIsFocusVisible from '../utils/useIsFocusVisible'
+import { useForkRef, useEventCallback, useIsFocusVisible } from '../utils'
 import styles from './Clickable.mdl.css'
 
 const Clickable = React.forwardRef((props, ref) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PopperJs from 'popper.js'
+import { createPopper } from '@popperjs/core'
 import createChainedFunction from '../utils/createChainedFunction'
 import Portal from '../Modal/Portal'
 import setRef from '../utils/setRef'
@@ -122,25 +122,40 @@ const Popper = React.forwardRef((props, ref) => {
       }
     }
 
-    const popper = new PopperJs(getAnchorEl(anchorEl), tooltipRef.current, {
+    let popperModifiers = [
+      {
+        name: 'preventOverflow',
+        options: {
+          altBoundary: disablePortal,
+        },
+      },
+      {
+        name: 'flip',
+        options: {
+          altBoundary: disablePortal,
+        },
+      },
+      {
+        name: 'onUpdate',
+        enabled: true,
+        phase: 'afterWrite',
+        fn: ({ state }) => {
+          handlePopperUpdate(state);
+        },
+      },
+    ];
+
+    if (modifiers != null) {
+      popperModifiers = popperModifiers.concat(modifiers);
+    }
+    if (popperOptions && popperOptions.modifiers != null) {
+      popperModifiers = popperModifiers.concat(popperOptions.modifiers);
+    }
+
+    const popper = createPopper(getAnchorEl(anchorEl), tooltipRef.current, {
       placement: rtlPlacement,
       ...popperOptions,
-      modifiers: {
-        ...(disablePortal
-          ? {}
-          : {
-            // It's using scrollParent by default, we can use the viewport when using a portal.
-            preventOverflow: {
-              boundariesElement: 'window',
-            },
-          }),
-        ...modifiers,
-        ...popperOptions.modifiers,
-      },
-      // We could have been using a custom modifier like react-popper is doing.
-      // But it seems this is the best public API for this use case.
-      onCreate: createChainedFunction(handlePopperUpdate, popperOptions.onCreate),
-      onUpdate: createChainedFunction(handlePopperUpdate, popperOptions.onUpdate),
+      modifiers: popperModifiers,
     })
 
     handlePopperRefRef.current(popper)

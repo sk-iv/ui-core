@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import clsx from 'clsx';
-import { capitalizeFirstLetter } from '../utils/helpers';
+import { capitalize } from '../utils';
 
 export const styles = (theme) => ({
   root: {
@@ -47,7 +47,7 @@ function ListSubheader(props) {
   const className = clsx(
     classes.root,
     {
-      [classes[`color${capitalizeFirstLetter(color)}`]]: color !== 'default',
+      [classes[`color${capitalize(color)}`]]: color !== 'default',
       [classes.inset]: inset,
       [classes.sticky]: !disableSticky,
     },

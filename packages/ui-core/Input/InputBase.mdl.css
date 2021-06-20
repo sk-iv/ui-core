@@ -30,6 +30,7 @@
   align-items: center;
   background-color: #eaeaeab3;
   line-height: 1.1875em;
+  flex-wrap: wrap;
 }
 
 .form-control {
@@ -38,7 +39,7 @@
 
 .input::selection {
   background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
-  color: #fff;
+  color: hsl(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary));
 }
 
 .input::-webkit-input-placeholder {
@@ -124,6 +125,10 @@
   appearance: auto; /*Improve type search style.*/
 }
 
-.input-multiline {
+.multiline {
   resize: none;
+}
+
+.start-adornment {
+
 }

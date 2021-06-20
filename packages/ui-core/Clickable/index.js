@@ -1,1 +1,3 @@
-export { default } from './Clickable'
+import Clickable from './Clickable'
+
+export default Clickable

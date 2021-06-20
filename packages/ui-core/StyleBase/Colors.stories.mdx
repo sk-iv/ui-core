@@ -1,5 +1,4 @@
-import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
-import { withKnobs, color } from '@storybook/addon-knobs';
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs';
 
 <Meta title="Basic/Colors" />
 
@@ -14,9 +13,9 @@ The 30%. It will become the secondary color in your space and will support the m
 
 The 10%; your accent color. It can be more bold or more subtle depending on what look you want. The 10% can be what gives the room character or keeps it that much more neutral, it's really up to you.
 
-<Story name="variants" decorators={[withKnobs]}>
+<Story name="variants">
   <div style={{display: "flex", height: "50px"}}>
-    <div style={{background:`linear-gradient(to right, ${color("Primary start", "hsl(var(--color-primary-start))", "Primary color")}, hsl(var(--color-primary-end)))`, width:"60%", float:"left"}}>60%</div>
+    <div style={{background:`linear-gradient(to right, hsl(var(--color-primary-start)), hsl(var(--color-primary-end)))`, width:"60%", float:"left"}}>60%</div>
     <div style={{background:'#000', width:"30%", float:"left"}}>30%</div>
     <div style={{background:'#000', width:"10%", float:"left"}}>10%</div>
   </div>

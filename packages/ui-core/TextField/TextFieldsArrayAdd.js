@@ -3,7 +3,7 @@
 //
 // import Checkbox from '../Checkbox';
 // import IconButton from '../IconButton';
-// import { IconSvg } from '../SvgIcon';
+// import IconSvg from '../SvgIcon';
 // import TextField from './TextField';
 //
 // const TextFieldsArrayAdd = (props) => {

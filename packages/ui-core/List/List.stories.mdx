@@ -1,6 +1,5 @@
-import {List, ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar} from './';
-import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import List, { ListItem, ListItemText, ListItemSecondaryAction, ListItemAvatar} from './';
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs';
 import { IconSvg, icons24 } from '@sivasifr/icons/IconSvg'
 import { IconButton } from '../IconButton'
 import Avatar from '../Avatar';
@@ -19,7 +18,7 @@ function generate(element) {
 Lists are continuous, vertical indexes of text or images.
 
 <Preview>
-  <List dense={boolean("dense", false)}>
+  <List dense={false}>
            {generate(
              <ListItem>
                <ListItemAvatar>

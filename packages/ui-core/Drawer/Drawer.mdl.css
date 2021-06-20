@@ -70,12 +70,12 @@
 }
 
 /* Styles applied to the `Paper` component if `anchor="right"` & `variant` is not "temporary". */
-.paperAnchor-docked-right {
+.paper-anchor-docked-right {
   border-left: 1px solid #ccc;
 }
 
 /* Styles applied to the `Paper` component if `anchor="bottom"` & `variant` is not "temporary". */
-.paperAnchor-docked-bottom {
+.paper-anchor-docked-bottom {
   border-top: 1px solid #ccc;
 }
 

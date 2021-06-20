@@ -1,3 +1,3 @@
 import IconSvg from './IconSvg'
 
-export { IconSvg }
+export default IconSvg
