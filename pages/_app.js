@@ -33,7 +33,7 @@ const options = [
 
 const initialState = {
   value: '',
-  options: [],
+  options: [options[0]],
 }
 
 const reducer = (state = initialState, action) => {
