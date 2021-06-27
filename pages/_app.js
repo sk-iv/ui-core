@@ -26,9 +26,9 @@ const menu = [
 // ]
 
 const options = [
-  'Chocolate',
-  'Strawberry',
-  'Vanilla',
+  'Chocolate2',
+  'Strawberry2',
+  'Vanilla2',
 ]
 
 const initialState = {
