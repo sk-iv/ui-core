@@ -1,9 +1,21 @@
-export { default as FormControl } from './FormControl';
-export { default as FormHelperText } from './FormHelperText';
-export { default as FormControlLabel } from './FormControlLabel';
-export { default as FormGroup } from './FormGroup';
-export { default as FormLabel } from './FormLabel';
-export { default as FormControlContext } from './FormControlContext';
-export { default as formControlState } from './formControlState';
-export { default as useFormControl } from './useFormControl';
-export { default as useForm } from './useForm';
+import FormControl from './FormControl'
+import FormHelperText from './FormHelperText'
+import FormControlLabel from './FormControlLabel'
+import FormGroup from './FormGroup'
+import FormLabel from './FormLabel'
+import FormControlContext from './FormControlContext'
+import formControlState from './formControlState'
+import useFormControl from './useFormControl'
+import useForm from './useForm'
+
+export {
+  FormControl,
+  FormHelperText,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  FormControlContext,
+  formControlState,
+  useFormControl,
+  useForm,
+}

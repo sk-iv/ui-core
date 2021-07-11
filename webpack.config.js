@@ -3,7 +3,9 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
+// eslint-disable-next-line camelcase
 __webpack_base_uri__ = 'http://localhost:8080';
 
 // Try the environment variable, otherwise use root
@@ -35,7 +37,7 @@ module.exports = (env, argv) => ({
           loader: 'babel-loader',
           options: {
             presets: [
-              // '@babel/preset-env',
+              '@babel/preset-env',
               '@babel/preset-react',
             ],
             plugins: [
@@ -58,7 +60,9 @@ module.exports = (env, argv) => ({
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: argv.mode !== 'production' ? '[name]_[local]_[hash:base64:5]' : '[name]_[local]',
+                localIdentName: argv.mode !== 'production'
+                  ? '[name]_[local]_[hash:base64:5]'
+                  : '[name]_[local]',
                 exportLocalsConvention: 'dashesOnly',
                 auto: (resourcePath) => resourcePath.endsWith('.mdl.css'),
               },
@@ -78,6 +82,10 @@ module.exports = (env, argv) => ({
         test: /\.html$/i,
         loader: 'html-loader',
       },
+      {
+        test: /\.mdx?$/,
+        use: ['babel-loader', '@mdx-js/loader'],
+      },
     ],
   },
   devtool: false,
@@ -92,6 +100,8 @@ module.exports = (env, argv) => ({
     new ESLintPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.SourceMapDevToolPlugin({}),
+    // argv.mode !== 'production' && new webpack.HotModuleReplacementPlugin(),
+    argv.mode !== 'production' && new ReactRefreshWebpackPlugin(),
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     // }),

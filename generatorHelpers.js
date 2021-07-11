@@ -6,20 +6,20 @@ const getGeneratorDataPath = (generatorIdentifier) => (
 );
 
 const getGeneratorData = (generatorIdentifier) => {
-  const path = getGeneratorDataPath(generatorIdentifier);
+  const dir = getGeneratorDataPath(generatorIdentifier);
 
-  if (fs.existsSync(path)) {
-    return require(path);
+  if (fs.existsSync(dir)) {
+    return require(dir);
   }
 
   return {};
 };
 
 const saveGeneratorData = (generatorIdentifier, uniqIds) => {
-  const path = getGeneratorDataPath(generatorIdentifier);
+  const dir = getGeneratorDataPath(generatorIdentifier);
   const data = JSON.stringify(uniqIds, null, 2);
 
-  fs.writeFileSync(path, data, 'utf-8');
+  fs.writeFileSync(dir, data, 'utf-8');
 };
 
 module.exports = {

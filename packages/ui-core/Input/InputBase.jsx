@@ -77,22 +77,22 @@ const InputBase = React.forwardRef((props, ref) => {
       }
     }
   }, []);
-  const handleInputPropsRefProp = useForkRef(inputPropsProp.ref, handleInputRefWarning);
-  const handleInputRefProp = useForkRef(inputRefProp, handleInputPropsRefProp);
-  const handleInputRef = useForkRef(inputRef, handleInputRefProp);
+  const handleInputPropsRefProp = useForkRef(inputPropsProp.ref, handleInputRefWarning)
+  const handleInputRefProp = useForkRef(inputRefProp, handleInputPropsRefProp)
+  const handleInputRef = useForkRef(inputRef, handleInputRefProp)
 
-  const [focused, setFocused] = React.useState(false);
-  const muiFormControl = useFormControl();
+  const [focused, setFocused] = React.useState(false)
+  const muiFormControl = useFormControl()
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (muiFormControl) {
-        return muiFormControl.registerEffect();
+        return muiFormControl.registerEffect()
       }
 
-      return undefined;
-    }, [muiFormControl]);
+      return undefined
+    }, [muiFormControl])
   }
 
   const fcs = formControlState({
@@ -100,7 +100,7 @@ const InputBase = React.forwardRef((props, ref) => {
     muiFormControl,
     states: ['disabled', 'error', 'hiddenLabel', 'margin', 'required', 'filled'],
   });
-  fcs.focused = muiFormControl ? muiFormControl.focused : focused;
+  fcs.focused = muiFormControl ? muiFormControl.focused : focused
 
   // The blur won't fire when the disabled state is set on a focused input.
   // We need to book keep the focused state manually.
@@ -111,32 +111,32 @@ const InputBase = React.forwardRef((props, ref) => {
         onBlur();
       }
     }
-  }, [muiFormControl, disabled, focused, onBlur]);
+  }, [muiFormControl, disabled, focused, onBlur])
 
   const checkDirty = React.useCallback(
     (obj) => {
       if (isFilled(obj)) {
         if (muiFormControl && muiFormControl.onFilled) {
-          muiFormControl.onFilled();
+          muiFormControl.onFilled()
         }
       } else if (muiFormControl && muiFormControl.onEmpty) {
-        muiFormControl.onEmpty();
+        muiFormControl.onEmpty()
       }
     },
     [muiFormControl],
-  );
+  )
 
   useEnhancedEffect(() => {
     if (isControlled) {
-      checkDirty({ value });
+      checkDirty({ value })
     }
-  }, [value, checkDirty, isControlled]);
+  }, [value, checkDirty, isControlled])
 
   useDebouncedEffect(() => {
     if (onDebounce && fcs.focused) {
-      onDebounce({ target: { name, value } });
+      onDebounce({ target: { name, value } })
     }
-  }, 2000, [value]);
+  }, 2000, [value])
 
   const handleFocus = (event) => {
     // Fix a bug with IE 11 where the focus/blur events are triggered
@@ -174,32 +174,32 @@ const InputBase = React.forwardRef((props, ref) => {
       const element = event.target || inputRef.current;
       if (element == null) {
         throw new TypeError(
-          'Material-UI: Expected valid input target. '
+          'SivaSifr-UI: Expected valid input target. '
             + 'Did you use a custom `inputComponent` and forget to forward refs? '
             + 'See https://material-ui.com/r/input-component-ref-interface for more info.',
-        );
+        )
       }
 
       checkDirty({
         value: element.value,
-      });
+      })
     }
 
     // Perform in the willUpdate
     if (onChange) {
-      onChange(event, ...args);
+      onChange(event, ...args)
     }
   };
 
   const handleClick = (event) => {
     if (inputRef.current && event.currentTarget === event.target) {
-      inputRef.current.focus();
+      inputRef.current.focus()
     }
 
     if (onClick) {
-      onClick(event);
+      onClick(event)
     }
-  };
+  }
 
   const OptionsComponent = options
 
@@ -226,15 +226,21 @@ const InputBase = React.forwardRef((props, ref) => {
         rows,
         rowsMax,
         ...inputProps,
-      };
-      InputComponent = TextareaAutosize;
+      }
+      InputComponent = TextareaAutosize
     }
   } else {
     inputProps = {
       type,
       ...inputProps,
-    };
+    }
   }
+
+  React.useEffect(() => {
+    if (muiFormControl) {
+      muiFormControl.setAdornedStart(Boolean(startAdornment))
+    }
+  }, [muiFormControl, startAdornment])
 
   return (
     <div
@@ -258,10 +264,6 @@ const InputBase = React.forwardRef((props, ref) => {
       {...other}
     >
       {startAdornment}
-     
-        {
-          options && <OptionsComponent />
-        }
 
         {children || (
         <InputComponent
@@ -307,9 +309,11 @@ const InputBase = React.forwardRef((props, ref) => {
         : null}
     </div>
   );
-});
+})
 
-InputBase.displayName = 'InputBase'
+if (process.env.NODE_ENV !== 'production') {
+  InputBase.displayName = 'InputBase'
+}
 
 InputBase.propTypes = {
   /**

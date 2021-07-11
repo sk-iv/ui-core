@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/ComboboxFieldProps",
+    "definitions": {
+        "ComboboxFieldProps": {
+            "type": "object",
+            "properties": {
+                "clearText": {
+                    "type": "string",
+                    "description": "Override the default text for the *clear* icon button.\n\nFor localization purposes, you can use the provided [translations](/guides/localization/)."
+                },
+                "closeText": {
+                    "type": "string",
+                    "description": "Override the default text for the *close popup* icon button.\n\nFor localization purposes, you can use the provided [translations](/guides/localization/)."
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "If `true`, the component is disabled.",
+                    "default": false
+                },
+                "disablePortal": {
+                    "type": "boolean",
+                    "description": "If `true`, the `Popper` content will be under the DOM hierarchy of the parent component.",
+                    "default": false
+                },
+                "forcePopupIcon": {
+                    "type": [
+                        "boolean",
+                        "string"
+                    ],
+                    "enum": [
+                        true,
+                        false,
+                        "auto"
+                    ],
+                    "description": "Force the visibility display of the popup icon."
+                },
+                "fullWidth": {
+                    "type": "boolean",
+                    "description": "If `true`, the input will take up the full width of its container.",
+                    "default": false
+                },
+                "loading": {
+                    "type": "boolean",
+                    "description": "If `true`, the component is in a loading state.",
+                    "default": false
+                },
+                "limitTags": {
+                    "type": "number",
+                    "description": "The maximum number of tags that will be visible when not focused. Set `-1` to disable the limit.",
+                    "default": -1
+                },
+                "openText": {
+                    "type": "string",
+                    "description": "Override the default text for the *open popup* icon button.\n\nFor localization purposes, you can use the provided [translations](/guides/localization/)."
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

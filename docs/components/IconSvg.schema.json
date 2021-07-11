@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/IconSvgProps",
+    "definitions": {
+        "IconSvgProps": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Идентификатор"
+                },
+                "size": {
+                    "type": "string",
+                    "enum": [
+                        "sm",
+                        "md",
+                        "lg"
+                    ],
+                    "default": "md"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "ariaHidden": {
+                    "type": "boolean",
+                    "description": "a11y: скрыть от скринридера в ситуации если рядом есть лейбл",
+                    "default": true
+                },
+                "ariaLabelledby": {
+                    "type": "string",
+                    "description": "a11y: ссылка на id элемента-лейбла"
+                },
+                "focusable": {
+                    "type": "boolean",
+                    "description": "svg элемент по умолчанию может иметь состояние фокуса, атрибут отключает эту способность у элемента",
+                    "default": false
+                },
+                "isFilled": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

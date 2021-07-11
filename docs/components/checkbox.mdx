@@ -1,0 +1,14 @@
+import Canvas from '../layout/Canvas'
+import ArgsTable from '../layout/ArgsTable'
+import CheckboxUsecase from './Checkbox.usecase.js'
+import Code from '!!raw-loader!./Checkbox.usecase.js'
+import CheckboxSchema from './Checkbox.schema.json'
+
+# Checkbox
+
+<Canvas
+  code={Code}
+  usecase={<CheckboxUsecase />}
+/>
+
+<ArgsTable of={CheckboxSchema.definitions.CheckboxProps} />

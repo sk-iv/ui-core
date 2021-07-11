@@ -32,27 +32,28 @@ const FormControl = React.forwardRef((props, ref) => {
     required = false,
     variant = 'standard',
     ...other
-  } = props;
-  const [adornedStart] = React.useState(() => {
+  } = props
+
+  const [adornedStart, setAdornedStart] = React.useState(() => {
     // We need to iterate through the children and find the Input in order
     // to fully support server-side rendering.
-    let initialAdornedStart = false;
+    let initialAdornedStart = false
 
     if (children) {
       React.Children.forEach(children, (child) => {
-        if (!isMuiElement(child, ['Input', 'Select'])) {
+        if (!isMuiElement(child, ['Input', 'Autocomplete'])) {
           return;
         }
 
-        const input = isMuiElement(child, ['Select']) ? child.props.input : child;
+        const input = isMuiElement(child, ['Autocomplete']) ? child.props.input : child;
 
         if (input && isAdornedStart(input.props)) {
-          initialAdornedStart = true;
+          initialAdornedStart = true
         }
-      });
+      })
     }
-    return initialAdornedStart;
-  });
+    return initialAdornedStart
+  })
 
   const [filled, setFilled] = React.useState(() => {
     // We need to iterate through the children and find the Input in order
@@ -61,7 +62,7 @@ const FormControl = React.forwardRef((props, ref) => {
 
     if (children) {
       React.Children.forEach(children, (child) => {
-        if (!isMuiElement(child, ['Input', 'Select'])) {
+        if (!isMuiElement(child, ['Input', 'Autocomplete'])) {
           return;
         }
 
@@ -89,7 +90,7 @@ const FormControl = React.forwardRef((props, ref) => {
       if (registeredInput.current) {
         console.error(
           [
-            'Material-UI: there are multiple InputBase components inside a FormControl.',
+            'SivaSifr-UI: there are multiple InputBase components inside a FormControl.',
             'This is not supported. It might cause infinite rendering loops.',
             'Only use one InputBase.',
           ].join('\n'),
@@ -105,32 +106,30 @@ const FormControl = React.forwardRef((props, ref) => {
 
   const childContext = {
     adornedStart,
+    setAdornedStart,
     disabled,
     error,
     filled,
     focused,
     hiddenLabel,
     margin,
-    onBlur: () => {
-      setFocused(false);
-    },
+    onBlur: () => setFocused(false),
     onEmpty: () => {
       if (filled) {
-        setFilled(false);
+        setFilled(false)
       }
     },
     onFilled: () => {
       if (!filled) {
-        setFilled(true);
+        setFilled(true)
       }
     },
     onFocus: () => {
-      setFocused(true);
+      setFocused(true)
     },
     registerEffect,
     required,
-    variant,
-  };
+  }
 
   return (
     <FormControlContext.Provider value={childContext}>
@@ -203,6 +202,8 @@ FormControl.propTypes = {
   variant: PropTypes.oneOf(['standard', 'outlined', 'filled']),
 }
 
-FormControl.displayName = 'FormControl'
+if (process.env.NODE_ENV !== 'production') {
+  FormControl.displayName = 'FormControl'
+}
 
 export default FormControl

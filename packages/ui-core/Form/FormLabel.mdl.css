@@ -6,7 +6,7 @@
 }
 
 .focused {
-  color: hsl(var(--color-secondary-start));
+  color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
 }
 
 .error {

@@ -57,17 +57,11 @@ Paper.propTypes = {
      * It's accepting values between 0 and 24 inclusive.
      */
   elevation: PropTypes.number,
-
-  /**
-     * If `true`, rounded corners are disabled.
-     */
-  square: PropTypes.bool,
 }
 
 Paper.defaultProps = {
   component: 'div',
   elevation: 2,
-  square: true,
 }
 
 export default Paper

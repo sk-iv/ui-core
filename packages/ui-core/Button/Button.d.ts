@@ -2,49 +2,52 @@ import * as React from 'react'
 
 export interface ButtonProps {
     /**
-     * The color of the component. It supports those theme colors that make sense for this component.
+     * Цвет кнопки
      * @default 'primary'
      */
     color?: 'default' | 'primary' | 'secondary' | 'accent';
     /**
-     * If `true`, the button is disabled.
+     * Заблокированное состояние
      * @default false
      */
     disabled?: boolean;
+    // /**
+    //  * If `true`, no elevation is used.
+    //  * @default false
+    //  */
+    // disableElevation?: boolean;
     /**
-     * If `true`, no elevation is used.
-     * @default false
-     */
-    disableElevation?: boolean;
-    /**
-     * If `true`, the  keyboard focus ripple is disabled.
+     * убрать пульсацию фокуса
      * @default false
      */
     disableFocusRipple?: boolean;
+    // /**
+    //  * Element placed after the children.
+    //  */
+    // endIcon?: React.ReactNode;
     /**
-     * Element placed after the children.
-     */
-    endIcon?: React.ReactNode;
-    /**
-     * If `true`, the button will take up the full width of its container.
+     * На всю длину родительского контейнера
      * @default false
      */
     fullWidth?: boolean;
     /**
-     * The URL to link to when the button is clicked.
-     * If defined, an `a` element will be used as the root node.
+     * URL в ситуации, когда кнопка должна быть ссылкой
      */
     href?: string;
     /**
-     * The size of the button.
-     * `small` is equivalent to the dense button styling.
-     * @default 'medium'
+     * Высота кнопки
+     * @default 'md'
      */
-    size?: 'small' | 'medium' | 'large';
+    size?: 'md' | 'sm' | 'lg';
+    // /**
+    //  * Element placed before the children.
+    //  */
+    // startIcon?: React.ReactNode;
     /**
-     * Element placed before the children.
+     * Призрачная или обычная кнопка
+     * @default 'contained'
      */
-    startIcon?: React.ReactNode;
+    variant?: 'contained' | 'outlined';
 }
 
 declare const Button: React.FunctionComponent<ButtonProps>

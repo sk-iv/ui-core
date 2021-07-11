@@ -1,4 +1,4 @@
-.btn {
+.root {
   font-size: var(--font-size-btn);
   font-weight: var(--btn-font-weight);
   height: calc(var(--input-btn-padding-y) * 2 + var(--input-btn-line-height));
@@ -12,6 +12,9 @@
   border-color: transparent;
   border-radius: calc(var(--btn-border-radius) * (var(--input-btn-padding-y) * 2 + var(--input-btn-line-height)));
   transition: all 0.3s ease 0s;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-color: hsla(0, 0%, 0%, 0.25);
   /*for ripple-effect*/
   position: relative;
   text-transform: uppercase;
@@ -68,21 +71,16 @@
   filter: brightness(90%) saturate(200%) drop-shadow(0 0 8px hsla(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent), 0.5));
 }
 
-.color-default {
+.contained.more-link:after {
+  background: hsla(0, 0%, 80%, 0.8);
+}
+
+.contained {
   color: hsla(0, 0%, 0%, 0.7);
-  border-color: hsla(0, 0%, 0%, 0.25);
   background: hsla(0, 0%, 80%, 0.8);
 }
 
-.color-default.more-link:after {
-  background: hsla(0, 0%, 80%, 0.8);
-}
-
-.color-default.contained {
-  background: hsla(0, 0%, 80%, 0.4);
-}
-
-.color-default:hover {
+.contained:hover {
   background: hsla(0, 0%, 0%, 0.2);
 }
 
@@ -94,6 +92,10 @@
 
 .disabled:hover:before {
   visibility: hidden;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .start-icon {
@@ -134,8 +136,4 @@
 
 .size-lg {
   height: calc(var(--input-btn-padding-y) * 4 + var(--input-btn-line-height)) !important;
-}
-
-.full-width {
-  width: 100%;
 }

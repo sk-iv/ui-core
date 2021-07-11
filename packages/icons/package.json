@@ -1,10 +1,10 @@
 {
   "name": "@sivasifr/icons",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "private": false,
   "author": "Svetlana Ivannikova",
   "main": "./src/index.js",
-  "description": "React component that implement external svg icons.",
+  "description": "React component that implement svg icons.",
   "keywords": [
     "react",
     "material design",

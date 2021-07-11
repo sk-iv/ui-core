@@ -30,6 +30,8 @@ module.exports = {
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
     'import/no-named-as-default-member': 0,
+    'react/no-array-index-key': 0,
+    'react/prop-types': 0,
     'no-use-before-define': [
       'error',
       {

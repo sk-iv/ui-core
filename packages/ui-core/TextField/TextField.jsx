@@ -6,10 +6,6 @@ import clsx from 'clsx'
 import Input, { InputLabel } from '../Input'
 import { FormControl, FormHelperText } from '../Form'
 
-export const styles = {
-  /* Styles applied to the root element. */
-  root: {},
-};
 
 /**
  * The `TextField` is a convenience wrapper for the most common cases (80%).
@@ -95,7 +91,7 @@ const TextField = React.forwardRef((props, ref) => {
   if (!select && Boolean(children)) {
     console.error(
       !select && Boolean(children),
-      'Material-UI: `children` must be passed when using the `TextField` component with `select`.',
+      'SivaSifr-UI: `children` must be passed when using the `TextField` component with `select`.',
     );
   }
 
@@ -129,7 +125,7 @@ const TextField = React.forwardRef((props, ref) => {
       {...InputMore}
       {...InputProps}
     />
-  );
+  )
 
   return (
     <FormControl
@@ -154,8 +150,8 @@ const TextField = React.forwardRef((props, ref) => {
         </FormHelperText>
       )}
     </FormControl>
-  );
-});
+  )
+})
 
 TextField.propTypes = {
   /**

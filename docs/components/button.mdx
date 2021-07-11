@@ -1,0 +1,11 @@
+import Canvas from '../layout/Canvas'
+import ArgsTable from '../layout/ArgsTable'
+import ButtonUsecase from './Button.usecase.js'
+import ButtonSchema from './Button.schema.json'
+
+<Canvas
+  //code={Code}
+  usecase={<ButtonUsecase />}
+/>
+
+<ArgsTable of={ButtonSchema.definitions.ButtonProps} />

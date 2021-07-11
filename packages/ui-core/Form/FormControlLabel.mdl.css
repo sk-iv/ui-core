@@ -1,4 +1,4 @@
-.FormControlLabel {
+.root {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -7,13 +7,31 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.disabled {
-  color: #888888;
-  cursor: not-allowed;
+.root:hover {
+  color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
 }
 
 .label {
   user-select: none;
   padding-left: 0.5rem;
   display: inline-flex;
+  line-height: 1;
+}
+
+.required::after {
+  content: '*';
+  color: tomato;
+}
+
+.error {
+  color: hsl(var(--hueError), 100%, 50%);
+}
+
+.disabled, .disabled:hover {
+  color: #888888;
+  cursor: not-allowed;
+}
+
+.control {
+  margin-bottom: auto;
 }

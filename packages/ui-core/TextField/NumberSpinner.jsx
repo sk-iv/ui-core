@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import IconSvg from '@sivasifr/icons/IconSvg'
-import { IconButton } from '../IconButton'
+import IconButton from '../IconButton'
 import { InputAdornment } from '../Input'
 import TextField from './TextField'
 

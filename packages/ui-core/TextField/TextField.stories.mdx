@@ -1,5 +1,5 @@
+import { Meta, Story, ArgsTable, Canvas } from '@storybook/addon-docs'
 import TextField from './';
-import { Meta, Story, Props, Preview } from '@storybook/addon-docs';
 import { IconSvg, icons24 } from '@sivasifr/icons/IconSvg'
 import IconButton from '../IconButton';
 import Avatar from '../Avatar';
@@ -15,15 +15,12 @@ function generate(element) {
 
 # TextField
 
-Text fields let users enter and edit text.
+Текстовое поле позволяет юзеру писать и редактировать текст.
 
-<Preview>
+<Canvas>
   <TextField
     label="Standard"
   />
-  <TextField
-    label="Standard"
-  />
-</Preview>
+</Canvas>
 
-<Props of={TextField} />
+<ArgsTable of={TextField} />

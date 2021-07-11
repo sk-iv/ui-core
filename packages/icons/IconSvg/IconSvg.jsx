@@ -1,64 +1,106 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import clsx from 'clsx'
-
-import icons24 from '../glyphs/24/icons-24.svg'
+import icons24 from '../glyphs/24/icons24.json'
+import icons96 from '../glyphs/96/icons96.json'
 import styles from './IconSvg.mdl.css'
 
 const IconSvg = ({
-  name = 'bars', size = 'sm', bgImg, color = 'inherit', style, className, outline,
+  ariaHidden = true,
+  ariaLabelledby,
+  className,
+  focusable = false,
+  isFilled = false,
+  name,
+  size = 'md',
 }) => {
-  const iconsMd = icons24 || ''
   const type = {
-    xs: {
-      size: 18,
-      path: `${iconsMd}#${name}`,
-    },
     sm: {
+      size: 16,
+      set: icons24,
+      viewBox: 24,
+    },
+    md: {
       size: 24,
-      path: `${iconsMd}#${name}`,
+      set: icons24,
+      viewBox: 24,
     },
     lg: {
       size: 96,
-      path: `/assets/icons/96/${name}.svg`,
+      set: icons96,
+      viewBox: 96,
     },
   }
 
+  if (!name || !type[size].set[name]) {
+    console.error('❌ `IconSvg`: идентификатор иконки отсутствует или содержит неправильный идентификатор')
+    return (
+      <svg
+        className={clsx(
+          styles.icon,
+          styles[`${size}Size`],
+        )}
+        viewBox={`0 0 ${type[size].viewBox} ${type[size].viewBox}`}
+      />
+    )
+  }
+
   return (
-
-    name === 'none'
-      ? (
-        <svg
-          className={clsx(
-            styles.icon,
-            styles[`icon${type[size].size}`],
-          )}
-          viewBox={`0 0 ${type[size].size} ${type[size].size}`}
-        />
-      )
-      : (
-        <svg
-          className={clsx(
-            styles.icon,
-            styles[`icon${type[size].size}`],
-            className,
-            { [styles['text-white icon-outline']]: outline },
-          )}
-          style={{ ...style }}
-          viewBox="0 0 24 24"
-        >
-          {bgImg && <use xlinkHref="/assets/icons/96/effects.svg#shape" />}
-          <use
-            stroke="inherit"
-            xlinkHref={type[size].path}
-          />
-        </svg>
-      )
-
+    <svg
+      className={clsx(
+        styles.icon,
+        className,
+        styles[`${size}Size`]
+      )}
+      viewBox={`0 0 ${type[size].viewBox} ${type[size].viewBox}`}
+      aria-hidden={ariaHidden}
+      aria-labelledby={ariaLabelledby}
+      focusable={focusable}
+    >
+      {Object.entries(type[size].set[name]).reduce((acc, [key, value]) => {
+        if (isFilled && key.includes('fill')) {
+          return ([
+            ...acc,
+            <path
+              key={key}
+              d={value}
+              className={clsx(styles.fill, styles[key])}
+            />
+          ])
+        }
+        if (key.includes('stroke') || key.includes('edge')) {
+          return ([
+            ...acc,
+            <path
+              key={key}
+              d={value}
+              vectorEffect="non-scaling-stroke"
+            />
+          ])
+        }
+        return acc
+      }, [])}
+    </svg>
   )
 }
-IconSvg.defaultProps = {
-  name: 'none',
-  bgImg: false,
+
+IconSvg.displayName = 'SvgIcon'
+IconSvg.propTypes = {
+  /**
+  * Идентификатор
+  */
+  name: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  className: PropTypes.string,
+  /**
+  * a11y: скрыть от скринридера в ситуации если рядом есть лейбл
+  */
+  ariaHidden: PropTypes.bool,
+  /**
+  * a11y: ссылка на id элемента-лейбла
+  */
+  ariaLabelledby: PropTypes.string,
+  focusable: PropTypes.bool,
+  isFilled: PropTypes.bool,
 }
-IconSvg.muiName = 'SvgIcon'
-export default IconSvg
+export default React.memo(IconSvg)

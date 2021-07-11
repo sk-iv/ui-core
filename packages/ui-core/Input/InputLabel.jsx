@@ -25,7 +25,7 @@ const InputLabel = React.forwardRef((props, ref) => {
   const fcs = formControlState({
     props,
     muiFormControl,
-    states: ['margin', 'disabled'],
+    states: ['margin', 'disabled', 'focused'],
   });
 
   return (

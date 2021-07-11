@@ -5,17 +5,17 @@
   border: 0;
   display: block;
   box-sizing: content-box;
-  vertical-align: middle;
   background: none;
+  line-height: 1;
   margin: 0; /*Reset for Safari*/
-  width: 100%;
+  /* width: 100%; */
 }
 
 .input:focus {
   outline: 0;
 }
 
-.error:after {
+.error::after {
   background-color: hsl(var(--hueError), 100%, 52%);
   transform: scaleX(1); /* error is always underlined in hsla(var(--color-secondary-start), 1)*/
 }
@@ -34,11 +34,11 @@
 }
 
 .form-control {
-  padding: 20px 0 17px 5px;
+  padding: 19px 0 16px 5px;
 }
 
 .input::selection {
-  background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+  background-color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
   color: hsl(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary));
 }
 
@@ -97,7 +97,7 @@
 }
 
 .underline::after {
-  background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+  background-color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
   left: 0;
   bottom: 0;
   /*Doing the other way around crash on IE11 "" https://github.com/cssinjs/jss/issues/242*/

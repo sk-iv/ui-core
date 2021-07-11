@@ -5,7 +5,8 @@
   color: currentColor;
   top: 0;
   z-index: 1;
-  /*slight alteration to spec spacing to match visual spec result*/
+  transition: color 500ms ease-out;
+  /*небольшое изменение интервала спецификации для соответствия визуальному результату*/
   transform: translate(0, 10px) scale(1);
 }
 
@@ -13,14 +14,14 @@
   position: absolute;
   left: 0;
   top: 0;
-  /*slight alteration to spec spacing to match visual spec result*/
-  transform: translate(5px, 19px) scale(1);
+  z-index: 1;
+  /*небольшое изменение интервала спецификации для соответствия визуальному результату*/
+  transform: translate(5px, 15px) scale(1);
 }
 
 .shrink {
   transform: translate(5px, 3px) scale(0.75);
   transform-origin: top left;
-  color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
 }
 
 .animated {

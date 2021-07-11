@@ -121,7 +121,7 @@ const Popover = React.forwardRef((props, ref) => {
       if (anchorReference === 'anchorPosition') {
         console.error(
           anchorPosition,
-          'Material-UI: you need to provide a `anchorPosition` prop when using '
+          'SivaSifr-UI: you need to provide a `anchorPosition` prop when using '
             + '<Popover anchorReference="anchorPosition" />.',
         );
         return anchorPosition;
@@ -162,7 +162,7 @@ const Popover = React.forwardRef((props, ref) => {
         console.error(
           anchorOrigin.vertical === 'top',
           [
-            'Material-UI: you can not change the default `anchorOrigin.vertical` value ',
+            'SivaSifr-UI: you can not change the default `anchorOrigin.vertical` value ',
             'when also providing the `getContentAnchorEl` prop to the popover component.',
             'Only use one of the two props.',
             'Set `getContentAnchorEl` to `null | undefined`'
@@ -236,7 +236,7 @@ const Popover = React.forwardRef((props, ref) => {
       console.error(
         elemRect.height <= heightThreshold || !elemRect.height || !heightThreshold,
         [
-          'Material-UI: the popover component is too tall.',
+          'SivaSifr-UI: the popover component is too tall.',
           `Some part of it can not be seen on the screen (${elemRect.height - heightThreshold}px).`,
           'Please consider adding a `max-height` to improve the user-experience.',
         ].join('\n'),
@@ -403,7 +403,7 @@ Popover.propTypes = {
   //       ) {
   //         return new Error(
   //           [
-  //             'Material-UI: the `anchorEl` prop provided to the component is invalid.',
+  //             'SivaSifr-UI: the `anchorEl` prop provided to the component is invalid.',
   //             'The node element should be visible.',
   //           ].join('\n'),
   //         );
@@ -411,7 +411,7 @@ Popover.propTypes = {
   //     } else {
   //       return new Error(
   //         [
-  //           'Material-UI: the `anchorEl` prop provided to the component is invalid.',
+  //           'SivaSifr-UI: the `anchorEl` prop provided to the component is invalid.',
   //           `It should be an Element instance but it's \`${resolvedAnchorEl}\` instead.`,
   //         ].join('\n'),
   //       );

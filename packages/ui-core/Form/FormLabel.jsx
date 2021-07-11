@@ -19,12 +19,12 @@ const FormLabel = React.forwardRef((props, ref) => {
     ...other
   } = props;
 
-  const muiFormControl = useFormControl();
+  const muiFormControl = useFormControl()
   const fcs = formControlState({
     props,
     muiFormControl,
     states: ['color', 'required', 'focused', 'disabled', 'error', 'filled'],
-  });
+  })
 
   return (
     <Component
@@ -56,7 +56,9 @@ const FormLabel = React.forwardRef((props, ref) => {
       )}
     </Component>
   );
-});
+})
+
+FormLabel.displayName = 'FormLabel'
 
 FormLabel.propTypes = {
   /**
@@ -100,6 +102,6 @@ FormLabel.propTypes = {
    * If `true`, the label will indicate that the input is required.
    */
   required: PropTypes.bool,
-};
+}
 
-export default FormLabel;
+export default FormLabel

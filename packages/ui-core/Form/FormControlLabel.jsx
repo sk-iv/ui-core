@@ -15,40 +15,44 @@ const FormControlLabel = React.forwardRef((props, ref) => {
     className,
     control,
     disabled: disabledProp,
+    error,
     inputRef,
     label,
     labelPlacement = 'end',
     name,
     onChange,
+    required,
     value,
     ...other
-  } = props;
-  const muiFormControl = useFormControl();
+  } = props
+  const muiFormControl = useFormControl()
 
   let disabled = disabledProp;
   if (typeof disabled === 'undefined' && typeof control.props.disabled !== 'undefined') {
-    disabled = control.props.disabled;
+    disabled = control.props.disabled
   }
   if (typeof disabled === 'undefined' && muiFormControl) {
-    disabled = muiFormControl.disabled;
+    disabled = muiFormControl.disabled
   }
 
   const controlProps = {
     disabled,
-  };
-  ['checked', 'name', 'onChange', 'value', 'inputRef'].forEach((key) => {
+    className: styles.control,
+  }
+  ;['checked', 'name', 'onChange', 'value', 'inputRef'].forEach((key) => {
     if (typeof control.props[key] === 'undefined' && typeof props[key] !== 'undefined') {
-      controlProps[key] = props[key];
+      controlProps[key] = props[key]
     }
-  });
+  })
 
   return (
     <label
       className={clsx(
-        'FormControlLabel',
+        styles.root,
         {
-          [`FormControlLabel-labelPlacement-${labelPlacement}`]: labelPlacement !== 'end',
-          'FormControlLabel-disabled': disabled,
+          [styles.disabled]: disabled,
+          [styles.required]: required,
+          [styles.error]: error,
         },
         className,
       )}
@@ -57,13 +61,13 @@ const FormControlLabel = React.forwardRef((props, ref) => {
     >
       {React.cloneElement(control, controlProps)}
       <span
-        className={clsx('FormControlLabel-label', { 'FormControlLabel-disabled': disabled })}
+        className={clsx(styles.label, { 'FormControlLabel-disabled': disabled })}
       >
         {label}
       </span>
     </label>
-  );
-});
+  )
+})
 
 FormControlLabel.propTypes = {
   /**

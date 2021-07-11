@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  min-height: 100vh; 
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -13,4 +14,61 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+#root, .wrapper {
+  min-height: 100vh;
+}
+
+.main-head {
+  grid-area: header;
+  height:50px;
+}
+.content {
+  grid-area: content;
+}
+.main-nav {
+  grid-area: nav;
+}
+.side {
+  grid-area: sidebar;
+}
+.ad {
+  grid-area: ad;
+}
+.main-footer {
+  grid-area: footer;
+  min-height:50px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: min-content;
+  grid-gap: 20px;
+  grid-template-areas:
+    "header"
+    "nav"
+    "content"
+    "sidebar"
+    "ad"
+    "footer";
+}
+
+@media (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "header header  header"
+      "nav    content sidebar"
+      "nav    content ad"
+      "footer footer  footer"
+   }
+   nav ul {
+     flex-direction: column;
+   }
+}
+
+.asterisk::after {
+  content: '*';
+  color: tomato;
 }

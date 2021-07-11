@@ -5,7 +5,7 @@
 export default function capitalize(string) {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof string !== 'string') {
-      throw new Error('Material-UI: capitalize(string) expects a string argument.');
+      throw new Error('SivaSifr-UI: capitalize(string) expects a string argument.');
     }
   }
 

@@ -66,7 +66,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
     options,
     PaperComponent = Paper,
     PopperComponent = Popper,
-    popupIcon = <IconSvg name={'chevron-down'}/>,
+    popupIcon = <IconSvg name={'chevronDown'}/>,
     renderGroup: renderGroupProp,
     renderInput,
     renderOption: renderOptionProp,
@@ -109,7 +109,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
       className: clsx(styles.tag),
       disabled,
       ...getTagProps(params),
-    });
+    })
 
     if (renderTags) {
       startAdornment = renderTags(value, getCustomizedTagProps);
@@ -121,14 +121,14 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
           {...getCustomizedTagProps({ index })}
           {...ChipProps}
         />
-      ));
+      ))
     }
   }
 
   if (limitTags > -1 && Array.isArray(startAdornment)) {
-    const more = startAdornment.length - limitTags;
+    const more = startAdornment.length - limitTags
     if (!focused && more > 0) {
-      startAdornment = startAdornment.splice(0, limitTags);
+      startAdornment = startAdornment.splice(0, limitTags)
       startAdornment.push(
         <span className={styles.tag} key={startAdornment.length}>
           {getLimitTagsText(more)}
@@ -167,11 +167,10 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <div
         ref={ref}
         className={clsx(styles.root, className)}
-        //styleProps={styleProps}
         {...getRootProps(other)}
       >
         {renderInput({
@@ -188,7 +187,6 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
             endAdornment: (
               <div
                 className={styles.endAdornment}
-                //styleProps={styleProps}
               >
                 {hasClearIcon ? (
                   <div
@@ -196,7 +194,6 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
                     aria-label={clearText}
                     title={clearText}
                     className={styles.clearIndicator}
-                    //styleProps={styleProps}
                   >
                     {clearIcon}
                   </div>
@@ -209,7 +206,6 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
                     aria-label={popupOpen ? closeText : openText}
                     title={popupOpen ? closeText : openText}
                     className={clsx(styles.popupIndicator)}
-                    //styleProps={styleProps}
                   >
                     {popupIcon}
                   </div>
@@ -236,14 +232,10 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
           anchorEl={anchorEl}
           open
         >
-          <Paper
-            className={styles.paper}
-            //styleProps={styleProps}
-          >
+          <Paper className={styles.paper}>
             {loading && groupedOptions.length === 0 ? (
               <div
                 className={styles.loading}
-                //styleProps={styleProps}
               >
                 {loadingText}
               </div>
@@ -251,7 +243,6 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
             {groupedOptions.length === 0 && !freeSolo && !loading ? (
               <div
                 className={styles.noOptions}
-                //styleProps={styleProps}
                 role="presentation"
                 onMouseDown={(event) => {
                   // Prevent input blur when interacting with the "no options" content
@@ -277,24 +268,20 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
                       ),
                     })
                   }
-                  return renderListOption(option, index);
+                  return renderListOption(option, index)
                 })}
               </div>
             ) : null}
           </Paper>
         </Popper>
       ) : null}
-    </React.Fragment>
+    </>
   )
 })
 
 Autocomplete.displayName = 'Autocomplete'
 
-Autocomplete.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
+Autocomplete.propTypes = {
   /**
    * If `true`, the portion of the selected suggestion that has not been typed by the user,
    * known as the completion string, appears inline after the input cursor in the textbox.
@@ -666,7 +653,7 @@ Autocomplete.propTypes /* remove-proptypes */ = {
   //   if (props.multiple && props.value !== undefined && !Array.isArray(props.value)) {
   //     return new Error(
   //       [
-  //         'Material-UI: The Autocomplete expects the `value` prop to be an array or undefined.',
+  //         'SivaSifr-UI: The Autocomplete expects the `value` prop to be an array or undefined.',
   //         `However, ${props.value} was provided.`,
   //       ].join('\n'),
   //     );

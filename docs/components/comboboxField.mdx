@@ -1,0 +1,30 @@
+import Canvas from '../layout/Canvas'
+import ArgsTable from '../layout/ArgsTable'
+import ComboboxFieldUsecase from './ComboboxField.usecase.js'
+import ComboboxFieldAsyncUsecase from './ComboboxFieldAsync.usecase.js'
+import CodeAsync from '!!raw-loader!./ComboboxFieldAsync.usecase.js'
+import Code from '!!raw-loader!./ComboboxField.usecase.js'
+import ComboboxField from '@sivasifr/ui-core/ComboboxField'
+import ComboboxFieldSchema from './ComboboxField.schema.json'
+
+# ComboboxField
+
+Поле со списком. В зависимости от настроек, в списке можно выбирать одно или несколько значений. Преимущество списка в его компактности и универсальности, список может занимать одну или несколько строк, в нём можно выбирать одно или несколько значений.
+
+## Select
+
+Позволяет создать элемент интерфейса в виде раскрывающегося списка
+
+<Canvas
+  code={Code}
+  usecase={<ComboboxFieldUsecase />}
+/>
+
+## Асинхронный запрос
+
+<Canvas
+  code={CodeAsync}
+  usecase={<ComboboxFieldAsyncUsecase />}
+/>
+
+<ArgsTable of={ComboboxFieldSchema.definitions.ComboboxFieldProps} />

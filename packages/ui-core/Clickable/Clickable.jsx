@@ -245,7 +245,7 @@ const Clickable = React.forwardRef((props, ref) => {
       if (enableTouchRipple && !rippleRef.current) {
         console.error(
           [
-            'Material-UI: the `component` prop provided to ButtonBase is invalid.',
+            'SivaSifr-UI: the `component` prop provided to ButtonBase is invalid.',
             'Please make sure the children prop is rendered in this custom component.',
           ].join('\n'),
         )

@@ -7,7 +7,9 @@ module.exports = {
         "targets": {
           "esmodules": true
         },
-        modules: false
+        modules: false,
+        useBuiltIns: 'usage',
+        corejs: { version: 3, proposals: true }
       }
     ],
     "@babel/preset-react"
@@ -19,6 +21,12 @@ module.exports = {
       generateScopedName,
       "devMode": false,
       "keepImport": true
-    }]
+    }],
+    ["@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ],
+    "@babel/plugin-syntax-jsx"
   ]
 }

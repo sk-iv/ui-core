@@ -1,3 +1,3 @@
-export { default } from './TextField';
-export { default as NumberSpinner } from './NumberSpinner';
-export { default as ChipInput } from './ChipInput';
+import TextField from './TextField'
+
+export default TextField

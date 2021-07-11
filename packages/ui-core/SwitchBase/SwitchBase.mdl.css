@@ -18,9 +18,6 @@
    padding: 0;
  }
 
-.checked{
-  transform: translateX(100%);
-}
 .switch-color-secondary .switch-base-checked {
   color: hsl(var(--color-secondary-txt)) !important;
 }

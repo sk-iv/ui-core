@@ -110,9 +110,8 @@ export default function useAutocomplete(props) {
       if (process.env.NODE_ENV !== 'production') {
         const erroneousReturn = optionLabel === undefined ? 'undefined' : `${typeof optionLabel} (${optionLabel})`;
         console.error(
-          `SivaSifr-UI: The \`getOptionLabel\` method of ${componentName} returned ${erroneousReturn} instead of a string for ${JSON.stringify(
-            option,
-          )}.`,
+          `SivaSifr-UI: The \`getOptionLabel\` method of ${componentName} returned ${erroneousReturn}
+          instead of a string for ${JSON.stringify(option)}.`,
         );
       }
       return String(optionLabel);
@@ -120,15 +119,15 @@ export default function useAutocomplete(props) {
     return optionLabel;
   };
 
-  const ignoreFocus = React.useRef(false);
-  const firstFocus = React.useRef(true);
-  const inputRef = React.useRef(null);
-  const listboxRef = React.useRef(null);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const ignoreFocus = React.useRef(false)
+  const firstFocus = React.useRef(true)
+  const inputRef = React.useRef(null)
+  const listboxRef = React.useRef(null)
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const [focusedTag, setFocusedTag] = React.useState(-1);
-  const defaultHighlighted = autoHighlight ? 0 : -1;
-  const highlightedIndexRef = React.useRef(defaultHighlighted);
+  const [focusedTag, setFocusedTag] = React.useState(-1)
+  const defaultHighlighted = autoHighlight ? 0 : -1
+  const highlightedIndexRef = React.useRef(defaultHighlighted)
 
   const [value, setValueState] = useControlled({
     controlled: valueProp,
@@ -167,8 +166,8 @@ export default function useAutocomplete(props) {
   });
 
   React.useEffect(() => {
-    resetInputValue(null, value);
-  }, [value, resetInputValue]);
+    resetInputValue(null, value)
+  }, [value, resetInputValue])
 
   const [open, setOpenState] = useControlled({
     controlled: openProp,
@@ -179,7 +178,8 @@ export default function useAutocomplete(props) {
 
   const [inputPristine, setInputPristine] = React.useState(true);
 
-  const inputValueIsSelectedValue = !multiple && value != null && inputValue === getOptionLabel(value);
+  const inputValueIsSelectedValue = !multiple && value != null
+    && inputValue === getOptionLabel(value);
 
   const popupOpen = open;
 
@@ -448,7 +448,10 @@ export default function useAutocomplete(props) {
         return;
       }
 
-      const itemIndex = findIndex(filteredOptions, (optionItem) => isOptionEqualToValue(optionItem, valueItem));
+      // eslint-disable-next-line max-len
+      const itemIndex = findIndex(
+        filteredOptions, (optionItem) => isOptionEqualToValue(optionItem, valueItem),
+      )
       if (itemIndex === -1) {
         changeHighlightedIndex({ diff: 'reset' });
       } else {
@@ -465,7 +468,8 @@ export default function useAutocomplete(props) {
 
     // Restore the focus to the previous index.
     setHighlightedIndex({ index: highlightedIndexRef.current });
-    // Ignore filteredOptions (and options, isOptionEqualToValue, getOptionLabel) not to break the scroll position
+    // Ignore filteredOptions (and options, isOptionEqualToValue, getOptionLabel)
+    // not to break the scroll position
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     // Only sync the highlighted index when the option switch between empty and not
@@ -497,11 +501,13 @@ export default function useAutocomplete(props) {
       if (!inputRef.current || inputRef.current.nodeName !== 'INPUT') {
         console.error(
           [
-            `SivaSifr-UI: Unable to find the input element. It was resolved to ${inputRef.current} while an HTMLInputElement was expected.`,
+            `SivaSifr-UI: Unable to find the input element. It was resolved to ${inputRef.current}
+            while an HTMLInputElement was expected.`,
             `Instead, ${componentName} expects an input element.`,
             '',
             componentName === 'useAutocomplete'
-              ? 'Make sure you have binded getInputProps correctly and that the normal ref/effect resolutions order is guaranteed.'
+              ? 'Make sure you have binded getInputProps correctly and that the normal'
+                + ' ref/effectresolutions order is guaranteed.'
               : 'Make sure you have customized the input component correctly.',
           ].join('\n'),
         );

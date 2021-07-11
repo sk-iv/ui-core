@@ -1,24 +1,18 @@
-.icon-btn {
+.root {
   text-align: center;
   flex: 0 0 auto;
   font-size: 1em;
   border-radius: 50%;
   /*для того чтобы иконки не срезались*/
   overflow: visible;
-  color: #b9b9b9;
   transition: all 0.1s;
 }
 
-.icon-btn:hover {
-  background-color: hsla(var(--color-primary-txt), 1);
-  color: #ffffff;
-  /* // Reset on touch devices; it doesnt add specificity */
-  /* @media (hover: none): {
-    backgroundColor: transparent;
-  }; */
+.root:hover {
+  color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
 }
 
-.icon-btn.icon-btn-disabled {
+.disabled {
   background-color: transparent;
   color: #dadada;
 }

@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/ButtonProps",
+    "definitions": {
+        "ButtonProps": {
+            "type": "object",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "enum": [
+                        "default",
+                        "primary",
+                        "secondary",
+                        "accent"
+                    ],
+                    "description": "Цвет кнопки"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Заблокированное состояние",
+                    "default": false
+                },
+                "disableFocusRipple": {
+                    "type": "boolean",
+                    "description": "If `true`, the  keyboard focus ripple is disabled.",
+                    "default": false
+                },
+                "fullWidth": {
+                    "type": "boolean",
+                    "description": "На всю длину родительского контейнера",
+                    "default": false
+                },
+                "href": {
+                    "type": "string",
+                    "description": "The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node."
+                },
+                "size": {
+                    "type": "string",
+                    "enum": [
+                        "md",
+                        "sm",
+                        "lg"
+                    ],
+                    "description": "The size of the button. `small` is equivalent to the dense button styling."
+                },
+                "variant": {
+                    "type": "string",
+                    "enum": [
+                        "contained",
+                        "outlined"
+                    ],
+                    "description": "Призрачная или обычная кнопка"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

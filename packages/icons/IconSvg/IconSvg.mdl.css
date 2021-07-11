@@ -8,6 +8,8 @@
   overflow: visible;
   vertical-align: middle;
   transition: all 0.3s ease 0s;
+  stroke-width: 2px;
+  stroke-linecap: round;
 }
 
 .icon-hover:hover {
@@ -15,23 +17,18 @@
   cursor: pointer;
 }
 
-.icon96 {
+.lg-size {
   font-size: 96px;
-  stroke-width: 2px;
 }
 
-.icon24 {
+.md-size {
   font-size: 24px;
   fill: none;
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
 }
 
-.icon18 {
-  font-size: 18px;
+.sm-size {
+  font-size: 16px;
   fill: none;
-  stroke-width: 2.5;
-  vector-effect: non-scaling-stroke;
 }
 
 .link-icon {
@@ -42,6 +39,26 @@
   --color-stroke: hsla(0 100% 0%, 1);
 }
 
-.icon-outline {
-  filter: drop-shadow(0 0px 1px hsl(var(--color-primary-txt)));
+.fill {
+  stroke: none;
+}
+
+.fill-current {
+  fill: currentColor;
+}
+
+.fill-primary {
+  fill: hsl(var(--huePrimary), var(--saturationPrimary), var(--lightnessPrimary));
+}
+
+.fill-accent2 {
+  fill: hsla(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent), 0.7);
+}
+
+.fill-secondary {
+  fill: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+}
+
+.fill-accent {
+  fill: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
 }

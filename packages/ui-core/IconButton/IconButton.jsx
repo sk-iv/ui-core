@@ -3,7 +3,6 @@ import React from 'react'
 import clsx from 'clsx'
 import Clickable from '../Clickable'
 import capitalize from '../utils/capitalize'
-import { chainPropTypes } from '../utils/chainPropTypes'
 import styles from './IconButton.mdl.css'
 
 /**
@@ -25,10 +24,10 @@ const IconButton = React.forwardRef((props, ref) => {
   return (
     <Clickable
       className={clsx(
-        styles['icon-btn'],
+        styles.root,
         {
-          [styles[`icon-btn-color${capitalize(color)}`]]: color !== 'default',
-          [styles['icon-btn-disabled']]: disabled,
+          [styles[`color${capitalize(color)}`]]: color !== 'default',
+          [styles.disabled]: disabled,
           [styles[`icon-btn-size${capitalize(size)}`]]: size !== 'medium',
           [styles['icon-btn-edgeStart']]: edge === 'start',
           [styles['icon-btn-edgeEnd']]: edge === 'end',
@@ -41,7 +40,7 @@ const IconButton = React.forwardRef((props, ref) => {
       ref={ref}
       {...other}
     >
-      <span className={styles['icon-btn-label']}>{ children }</span>
+      <span className={styles.label}>{children}</span>
     </Clickable>
   )
 })
@@ -58,7 +57,7 @@ IconButton.propTypes = {
   //   if (found) {
   //     return new Error(
   //       [
-  //         'Material-UI: you are providing an onClick event listener ' +
+  //         'SivaSifr-UI: you are providing an onClick event listener ' +
   //           'to a child of a button element.',
   //         'Firefox will never trigger the event.',
   //         'You should move the onClick listener to the parent button element.',

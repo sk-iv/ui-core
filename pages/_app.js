@@ -1,39 +1,20 @@
 import * as React from 'react'
-import Pagination, { Proportion } from '@sivasifr/ui-carousel/Pagination'
-import { Button } from '@sivasifr/ui-core/Button'
-import { Carousel, CarouselContextProvider } from '@sivasifr/ui-carousel/Carousel'
-import { AppBar } from '@sivasifr/ui-core/AppBar'
-import List, { ListItem } from '@sivasifr/ui-core/List'
-import IconSvg from '@sivasifr/icons/IconSvg'
-import { Buttress } from '@sivasifr/ui-core/Buttress'
-import { Drawer } from '@sivasifr/ui-core/Drawer'
-import { Typography, Vignette } from '@sivasifr/ui-core/Typography'
-import Paper from '@sivasifr/ui-core/Paper'
-import Link from '@sivasifr/ui-core/Link'
-import { Collapse } from '@sivasifr/ui-core/Collapse'
-import TextField from '@sivasifr/ui-core/TextField'
-import ComboboxField from '@sivasifr/ui-core/ComboboxField'
-
-const menu = [
-  'Образование',
-  'Просвещение',
-]
-
-// const options = [
-//   { value: 'chocolate', label: 'Chocolate' },
-//   { value: 'strawberry', label: 'Strawberry' },
-//   { value: 'vanilla', label: 'Vanilla' },
-// ]
-
-const options = [
-  'Chocolate2',
-  'Strawberry2',
-  'Vanilla2',
-]
+import { MDXProvider } from '@mdx-js/react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom'
+import PropsControlContext from '../docs/layout/PropsControlContext'
+import CodeBlock from '../docs/layout/CodeBlock'
+import IconSvgStory from '../docs/components/iconSvg.mdx'
+import ComboboxFieldStory from '../docs/components/comboboxField.mdx'
+import CheckboxStory from '../docs/components/checkbox.mdx'
+import ButtonStory from '../docs/components/button.mdx'
 
 const initialState = {
-  value: '',
-  options: [options[0]],
+  fields: {},
 }
 
 const reducer = (state = initialState, action) => {
@@ -41,153 +22,119 @@ const reducer = (state = initialState, action) => {
     case 'CHANGE_VALUE':
       return {
         ...state,
-        value: action.payload,
-      }
-    case 'CHANGE_OPTIONS':
-      return {
-        ...state,
-        options: action.payload,
+        fields: {
+          ...state.fields,
+          ...action.payload,
+        },
       }
     default:
       return state
   }
 }
 
-const App = () => {
-  const [open, setOpen] = React.useState(false)
-  const [checked, setChecked] = React.useState(false)
-  const [state, dispatch] = React.useReducer(reducer, initialState)
-  const handler = (e) => {
-    setOpen(true)
-  }
-  const handleChange = () => {
-    setChecked(!checked)
-  }
+const routes = [
+  {
+    path: '/icon',
+    component: IconSvgStory,
+    label: 'IconSvg',
+  },
+  {
+    path: '/combobox',
+    component: ComboboxFieldStory,
+    label: 'Combobox',
+  },
+  {
+    path: '/checkbox',
+    component: CheckboxStory,
+    label: 'Checkbox',
+  },
+  {
+    path: '/button',
+    component: ButtonStory,
+    label: 'Button',
+  },
+]
 
-  const handleChangeSelect2 = (e, newValue, reason, details) => {
-    console.log('newValue', newValue, reason)
-    if (reason === 'selectOption') {
-      dispatch({ type: 'CHANGE_OPTIONS', payload: newValue })
-      dispatch({ type: 'CHANGE_VALUE', payload: '' })
-    }
-    if (reason === 'input') {
-      dispatch({ type: 'CHANGE_VALUE', payload: newValue })
-    }
-    if (reason === 'clear') {
-      dispatch({ type: 'CHANGE_OPTIONS', payload: [] })
-      dispatch({ type: 'CHANGE_VALUE', payload: '' })
-    }
-    if (reason === 'removeOption') {
-      dispatch({ type: 'CHANGE_OPTIONS', payload: newValue })
-    }
-  }
+// A special wrapper for <Route> that knows how to
+// handle "sub"-routes by passing them in a `routes`
+// prop to the component it renders.
+function RouteWithSubRoutes(route) {
   return (
-    <>
-      <AppBar>
-        <List>
-          {menu.map((item) => (<ListItem key={item} button>{item}</ListItem>))}
-        </List>
-        <Button onClick={handler}><IconSvg name="plus" /></Button>
-      </AppBar>
-      <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-        <div>ffggf</div>
-      </Drawer>
-      <Paper style={{ width: 400 }}>
-        <Buttress
-          aspectRatio={16 / 9}
-          background="center / cover no-repeat url('https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg')"
-        >
-          <Typography
-            component="h2"
-            size="sm"
-            outline
-          >
-            Образование Образование Образование
-            <br />
-            <Vignette name="wave" />
-          </Typography>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
-          numquam porro quam tempora temporibus unde veritatis.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
-        </Buttress>
-      </Paper>
-      <CarouselContextProvider>
-        <Pagination
-          arrowNext={<Button><IconSvg name="arrow-left" /></Button>}
-          arrowPrev={<Button><IconSvg name="arrow-right" /></Button>}
-        />
-        <Proportion separator="|" />
-        <div style={{ width: 400, backgroundColor: '#ccc', position: 'relative' }}>
+    <Route
+      path={route.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
 
-          <Carousel containerWidth={400}>
-            {
-              [
-                'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
-                'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
-                'https://www.belanta.vet/vet-blog/wp-content/uploads/2020/01/1-13.jpg',
-                'https://hsto.org/getpro/geektimes/post_images/672/881/5cd/6728815cd7397e71fec8dda79879e375.jpg',
-              ].map((item, i) => (
-                <div key={i}>
-                  <Link href={`#${i}`} color="dark">JJjhJH</Link>
-                  <img
-                    key={item}
-                    src={item}
-                    alt=""
-                    height={300}
-                    width={770}
-                  />
-                </div>
-              ))
-            }
-          </Carousel>
+const components = {
+  h1: (props) => <h1 className="text-2xl font-bold mt-4" {...props}>{ props.children }</h1>,
+  h2: (props) => <h2 className="text-xl mt-4" {...props}>{ props.children }</h2>,
+  pre: (props) => <div {...props} />,
+  code: (props) => <CodeBlock {...props} />,
+}
 
+const getValue = (e) => {
+  switch (e.target.type) {
+    case 'text':
+      return e.target.value
+    case 'checkbox':
+      return e.target.checked
+    case 'select-one':
+      return e.target.options[e.target?.selectedIndex].value
+    default:
+      return e.target.value
+  }
+}
+
+export default (props) => {
+  const [fields, setFields] = React.useReducer(reducer, initialState)
+  const onChange = React.useCallback((e) => {
+    setFields({
+      type: 'CHANGE_VALUE',
+      payload: { [e.target.name]: getValue(e) },
+    })
+  }, [])
+  const setBatch = React.useCallback((batch) => {
+    setFields({
+      type: 'CHANGE_VALUE',
+      payload: batch,
+    })
+  }, [])
+  return (
+    <MDXProvider components={components}>
+      <Router>
+        <div className="wrapper bg-gray-100">
+          <header className="main-head">Documentation</header>
+          <nav className="main-nav ml-4">
+            <ul>
+              {
+            routes.map((route) => (
+              <li>
+                <Link to={route.path}>{route.label}</Link>
+              </li>
+            ))
+          }
+            </ul>
+          </nav>
+          <main className="content bg-white p-3">
+            <Switch>
+              <div className="container mx-auto">
+                <PropsControlContext.Provider value={[fields, onChange, setBatch]}>
+                  {routes.map((route, i) => (
+                    <RouteWithSubRoutes key={i} {...route} {...props} />
+                  ))}
+                </PropsControlContext.Provider>
+              </div>
+            </Switch>
+          </main>
+          <aside className="side" />
+          <footer className="main-footer">The footer</footer>
         </div>
-      </CarouselContextProvider>
-
-      <Paper style={{ width: 400 }}>
-        <Typography
-          component="h2"
-          size="lg"
-          font="display2"
-        >
-          Образование Образование Образование
-          <br />
-          <Vignette name="line" />
-        </Typography>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
-        numquam porro quam tempora temporibus unde veritatis.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
-      </Paper>
-      <TextField
-        label="Standard"
-      />
-      <ComboboxField
-        name="Combobox2"
-        label="Combobox2"
-        options={options}
-        value={state.options}
-        inputValue={state.value}
-        onChange={handleChangeSelect2}
-        fullWidth
-        multiple
-      />
-      {/* <ComboboxField
-        name="Combobox"
-        label="Combobox"
-        options={options}
-        value={valSel}
-        onChange={handleChangeSelect}
-        fullWidth
-        isSearchable={false}
-      /> */}
-      <Button onClick={handleChange}><IconSvg name="arrow-left" /></Button>
-      <Collapse in={checked}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
-        numquam porro quam tempora temporibus unde veritatis.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et harum illum modi nam
-      </Collapse>
-
-    </>
+      </Router>
+    </MDXProvider>
   )
 }
-export default App

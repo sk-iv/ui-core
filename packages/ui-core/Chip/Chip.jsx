@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
-import { IconButton } from '../IconButton'
+import IconButton from '../IconButton'
 import IconSvg from '@sivasifr/icons/IconSvg'
 import useForkRef from '../utils/useForkRef'
 import unsupportedProp from '../utils/unsupportedProp'
@@ -172,8 +172,10 @@ const Chip = React.forwardRef((props, ref) => {
       </span>
       {deleteIcon}
     </Component>
-  );
-});
+  )
+})
+
+Chip.displayName = 'Chip'
 
 Chip.propTypes = {
   /**

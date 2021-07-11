@@ -1,0 +1,55 @@
+import Canvas from '../layout/Canvas'
+import ArgsTable from '../layout/ArgsTable'
+import Code from '!!raw-loader!./IconSvg.usecase.js'
+import IconSvg from '@sivasifr/icons/IconSvg'
+import icons24 from '@sivasifr/icons/glyphs/24/icons24.json'
+import icons96 from '@sivasifr/icons/glyphs/96/icons96.json'
+import IconSvgUsecase from './IconSvg.usecase.js'
+import IconSvgSchema from './IconSvg.schema.json'
+
+# IconSvg
+
+## Icon 24
+
+<div className="flex flex-wrap">
+{Object.keys(icons24).map((icon) => (
+    <div
+    key={icon}
+    className="w-24 text-center p-3"
+    >
+    <IconSvg name={icon} />
+    <div className="text-sm text-gray-500">
+        {icon}
+    </div>
+    </div>
+))}
+</div>
+
+## Icon 96
+
+<div className="flex flex-wrap">
+  {Object.keys(icons96).map((icon) => (
+    <div
+    key={icon}
+    className="text-center p-3"
+    >
+    <IconSvg 
+      name={icon}
+      size="lg"
+      isFilled
+    />
+    <div className="text-sm text-gray-500">
+      {icon}
+    </div>
+    </div>
+  ))}
+</div>
+
+## Пример кода
+
+<Canvas
+  code={Code}
+  usecase={<IconSvgUsecase />}
+/>
+
+<ArgsTable of={IconSvgSchema.definitions.IconSvgProps} />

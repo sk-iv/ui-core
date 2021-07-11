@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/CheckboxProps",
+    "definitions": {
+        "CheckboxProps": {
+            "type": "object",
+            "properties": {
+                "checked": {
+                    "type": [
+                        "boolean",
+                        "string"
+                    ],
+                    "enum": [
+                        true,
+                        false,
+                        "true",
+                        "false"
+                    ],
+                    "description": "Выбранное состояние"
+                },
+                "className": {
+                    "type": "string",
+                    "description": "Кастомные классы для изменения позиции или цвета компонента"
+                },
+                "error": {
+                    "type": "boolean",
+                    "description": "Состояние ошибки"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Заблокированное состояние"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Идентификатор элемента"
+                },
+                "indeterminate": {
+                    "type": "boolean",
+                    "description": "Состояние неопределенности"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Поле обязательно для выбора"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Значение поля"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}
