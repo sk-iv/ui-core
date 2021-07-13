@@ -29,14 +29,14 @@ const FormLabel = React.forwardRef((props, ref) => {
   return (
     <Component
       className={clsx(
-        styles['form-label'],
-        styles[`form-label-color-${fcs.color || 'primary'}`],
+        styles.root,
+        styles[`color-${fcs.color || 'primary'}`],
         {
-          [styles['form-label-disabled']]: fcs.disabled,
-          [styles['form-label-error']]: fcs.error,
-          [styles['form-label-filled']]: fcs.filled,
-          [styles['form-label-focused']]: fcs.focused,
-          [styles['form-label-required']]: fcs.required,
+          [styles.disabled]: fcs.disabled,
+          [styles.error]: fcs.error,
+          [styles.filled]: fcs.filled,
+          [styles.focused]: fcs.focused,
+          [styles.required]: fcs.required,
         },
         className,
       )}
@@ -44,18 +44,8 @@ const FormLabel = React.forwardRef((props, ref) => {
       {...other}
     >
       {children}
-      {fcs.required && (
-        <span
-          className={clsx(styles['form-label-asterisk'], {
-            [styles['form-label-error']]: fcs.error,
-          })}
-        >
-          &thinsp;
-          *
-        </span>
-      )}
     </Component>
-  );
+  )
 })
 
 FormLabel.displayName = 'FormLabel'

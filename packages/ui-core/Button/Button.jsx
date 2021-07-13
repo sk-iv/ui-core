@@ -3,6 +3,7 @@ import clsx from 'clsx'
 
 import Clickable from '../Clickable'
 import capitalize from '../utils/capitalize'
+import IconSvg from '@sivasifr/icons/IconSvg'
 import styles from './Button.mdl.css'
 
 const Button = React.forwardRef((props, ref) => {
@@ -19,6 +20,7 @@ const Button = React.forwardRef((props, ref) => {
     size = 'md',
     startIcon: startIconProp,
     type = 'button',
+    loading,
     variant = 'contained',
     ...other
   } = props
@@ -55,7 +57,9 @@ const Button = React.forwardRef((props, ref) => {
       type={type}
       {...other}
     >
-      {children}
+      {loading 
+      ? <IconSvg name="circle" className="path" />
+      :children}
     </Clickable>
   )
 })

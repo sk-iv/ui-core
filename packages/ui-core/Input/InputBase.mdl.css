@@ -34,7 +34,7 @@
 }
 
 .form-control {
-  padding: 19px 0 16px 5px;
+  padding: calc(var(--input-btn-padding-y) * 2) 0 calc(var(--input-btn-padding-y) * 2) 5px;
 }
 
 .input::selection {
@@ -96,6 +96,10 @@
   background-size: 5px 1px;
 }
 
+.error.underline:before {
+  background-color: hsl(var(--hueError), 100%, 50%);
+}
+
 .underline::after {
   background-color: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
   left: 0;
@@ -111,6 +115,10 @@
 
 .full-width {
   width: 100%;
+}
+
+.error {
+  color: hsl(var(--hueError), 100%, 50%);
 }
 
 .underline.focused::after {

@@ -57,3 +57,16 @@
 	80% { transform: translate(8px); }
 	100% { transform: translate(0px); }
 }
+
+.path {
+  --looping-percent: 80;
+  --looping-length: calc((var(--looping-percent) * var(--total-length)) / 100);
+  stroke-dasharray: var(--looping-length), calc(var(--total-length) - var(--looping-length));
+  stroke-dashoffset: 10;
+  animation: loading-loop 1.5s linear infinite;
+}
+
+@keyframes loading-loop {
+	from { stroke-dashoffset: var(--total-length); }
+	to   { stroke-dashoffset: 0; }
+}

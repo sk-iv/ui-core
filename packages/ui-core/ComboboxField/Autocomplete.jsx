@@ -33,6 +33,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
     disabledItemsFocusable = false,
     disableListWrap = false,
     disablePortal = false,
+    error,
     filterOptions,
     filterSelectedOptions = false,
     forcePopupIcon = 'auto',
@@ -44,6 +45,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
     isOptionEqualToValue,
     groupBy,
     handleHomeEndKeys = !props.freeSolo,
+    helperText,
     id: idProp,
     includeInputInList = false,
     inputValue: inputValueProp,
@@ -71,6 +73,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
     renderInput,
     renderOption: renderOptionProp,
     renderTags,
+    required,
     selectOnFocus = !props.freeSolo,
     size = 'medium',
     value: valueProp,
@@ -175,9 +178,13 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
       >
         {renderInput({
           id,
+          error,
           disabled,
           focused,
-          fullWidth: true,
+          fullWidth,
+          required,
+          helperText,
+          className: styles.control,
           size: size === 'small' ? 'small' : undefined,
           InputLabelProps: getInputLabelProps(),
           InputProps: {
@@ -217,6 +224,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(props, ref) {
             className: clsx(styles.input),
             disabled,
             name,
+            required,
             ...getInputProps(),
           },
         })}

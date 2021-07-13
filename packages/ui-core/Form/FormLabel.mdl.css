@@ -1,4 +1,4 @@
-.form-label {
+.root {
   color: currentColor;
   font-size: 16px;
   line-height: 1;
@@ -10,13 +10,14 @@
 }
 
 .error {
-  color: #ddd;
+  color: hsl(var(--hueError), 100%, 50%);
 }
 
 .disabled {
   color: #ddd;
 }
 
-.error.asterisk:after {
-  content: "*"
+.required::after {
+  content: '*';
+  color: tomato;
 }

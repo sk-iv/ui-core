@@ -14,6 +14,13 @@ const IconSvg = ({
   name,
   size = 'md',
 }) => {
+  const refStroke = React.useRef()
+  const [length, setLength] = React.useState(0)
+  React.useEffect(() => {
+    if (refStroke.current) {
+      setLength(refStroke.current.getTotalLength())
+    }
+  }, [])
   const type = {
     sm: {
       size: 16,
@@ -52,6 +59,7 @@ const IconSvg = ({
         className,
         styles[`${size}Size`]
       )}
+      style={{"--total-length": length}}
       viewBox={`0 0 ${type[size].viewBox} ${type[size].viewBox}`}
       aria-hidden={ariaHidden}
       aria-labelledby={ariaLabelledby}
@@ -72,6 +80,7 @@ const IconSvg = ({
           return ([
             ...acc,
             <path
+              ref={refStroke}
               key={key}
               d={value}
               vectorEffect="non-scaling-stroke"

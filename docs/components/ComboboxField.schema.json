@@ -7,52 +7,40 @@
             "properties": {
                 "clearText": {
                     "type": "string",
-                    "description": "Override the default text for the *clear* icon button.\n\nFor localization purposes, you can use the provided [translations](/guides/localization/)."
+                    "description": "Заменяет дефолтный текст иконки крестик"
                 },
                 "closeText": {
                     "type": "string",
-                    "description": "Override the default text for the *close popup* icon button.\n\nFor localization purposes, you can use the provided [translations](/guides/localization/)."
+                    "description": "Заменяет дефолтный текст иконки шеврон"
                 },
                 "disabled": {
                     "type": "boolean",
-                    "description": "If `true`, the component is disabled.",
+                    "description": "Заблокированное состояние",
                     "default": false
                 },
-                "disablePortal": {
+                "error": {
                     "type": "boolean",
-                    "description": "If `true`, the `Popper` content will be under the DOM hierarchy of the parent component.",
+                    "description": "Состояние ошибки",
                     "default": false
-                },
-                "forcePopupIcon": {
-                    "type": [
-                        "boolean",
-                        "string"
-                    ],
-                    "enum": [
-                        true,
-                        false,
-                        "auto"
-                    ],
-                    "description": "Force the visibility display of the popup icon."
                 },
                 "fullWidth": {
                     "type": "boolean",
-                    "description": "If `true`, the input will take up the full width of its container.",
+                    "description": "На всю ширину родительского контейнера",
                     "default": false
+                },
+                "helperText": {
+                    "type": "string",
+                    "description": "Вспомогательный текст"
                 },
                 "loading": {
                     "type": "boolean",
-                    "description": "If `true`, the component is in a loading state.",
+                    "description": "Состояние загрузки",
                     "default": false
                 },
-                "limitTags": {
-                    "type": "number",
-                    "description": "The maximum number of tags that will be visible when not focused. Set `-1` to disable the limit.",
-                    "default": -1
-                },
-                "openText": {
-                    "type": "string",
-                    "description": "Override the default text for the *open popup* icon button.\n\nFor localization purposes, you can use the provided [translations](/guides/localization/)."
+                "required": {
+                    "type": "boolean",
+                    "description": "Поле обязательно для выбора",
+                    "default": false
                 }
             },
             "additionalProperties": false

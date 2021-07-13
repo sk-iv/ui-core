@@ -12,6 +12,7 @@ import IconSvgStory from '../docs/components/iconSvg.mdx'
 import ComboboxFieldStory from '../docs/components/comboboxField.mdx'
 import CheckboxStory from '../docs/components/checkbox.mdx'
 import ButtonStory from '../docs/components/button.mdx'
+import InfiniteScrollStory from '../docs/patterns/infiniteScroll.mdx'
 
 const initialState = {
   fields: {},
@@ -52,6 +53,11 @@ const routes = [
     path: '/button',
     component: ButtonStory,
     label: 'Button',
+  },
+  {
+    path: '/infinite-scroll',
+    component: InfiniteScrollStory,
+    label: 'InfiniteScroll',
   },
 ]
 

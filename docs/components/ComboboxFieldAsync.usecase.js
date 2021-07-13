@@ -1,23 +1,12 @@
 import React from 'react'
 import ComboboxField from '@sivasifr/ui-core/ComboboxField'
 import throttle from 'lodash.throttle'
-import deities from '../mocks/deities.json'
-
-const getDeities = (request) => new Promise((resolve) => {
-  setTimeout(() => {
-    if (!request.input) {
-      resolve([])
-    }
-    const retult = deities.filter((item) => item.name.includes(request.input))
-    resolve(retult)
-  }, 1000)
-})
+import useFetchMock from '../mocks/useFetchMock'
 
 const initialState = {
   value: '',
   options: [],
   selectedOptions: '',
-  isLoading: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -37,57 +26,32 @@ const reducer = (state = initialState, action) => {
         ...state,
         options: action.payload,
       }
-    case 'IS_LOADING':
-      return {
-        ...state,
-        isLoading: action.payload,
-      }
-    case 'ERROR':
-      return {
-        ...state,
-        error: action.payload,
-      }
     default:
       return state
   }
 }
 
-export default () => {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+export default (props) => {
+  const { state, getSucceeded } = useFetchMock()
+  const [st, dispatch] = React.useReducer(reducer, initialState)
 
   const fetch = React.useMemo(
-    () => throttle((request) => getDeities(request), 200),
+    () => throttle((request) => getSucceeded(request), 200),
     [],
   )
 
   React.useEffect(() => {
-    let active = true
-    const fetchData = async () => {
-      dispatch({ type: 'IS_LOADING', payload: true })
+    fetch({ input: st.value })
+  }, [st.value, fetch])
 
-      try {
-        const results = await fetch({ input: state.value })
-        if (active) {
-          let newOptions = [];
+  React.useEffect(() => {
+    let newOptions = [];
 
-          if (results.length > 0) {
-            newOptions = [...newOptions, ...results];
-          }
-          dispatch({ type: 'CHANGE_OPTIONS', payload: newOptions })
-        }
-      } catch (e) {
-        dispatch({ type: 'ERROR', payload: false })
-      } finally {
-        dispatch({ type: 'IS_LOADING', payload: false })
-      }
+    if (state.data.entries.length > 0) {
+      newOptions = [...newOptions, ...state.data.entries];
     }
-
-    fetchData()
-
-    return () => {
-      active = false
-    }
-  }, [state.value, fetch])
+    dispatch({ type: 'CHANGE_OPTIONS', payload: newOptions })
+  }, [state.data.entries])
 
   const handleChange = (e, newValue, reason) => {
     if (reason === 'selectOption') {
@@ -111,16 +75,20 @@ export default () => {
 
   return (
     <ComboboxField
-      fullWidth
+      fullWidth={props?.fullWidth}
       getOptionLabel={(option) => (typeof option === 'string' ? option : option.name)}
-      inputValue={state.value}
+      inputValue={st.value}
       label="Греческое божество"
-      loading={state.isLoading}
+      loading={state.status === 'loading'}
       name="deitiesAsync"
       onChange={handleChange}
-      options={state.options}
-      value={state.selectedOptions ? state.selectedOptions : null}
+      options={st.options}
+      value={st.selectedOptions ? st.selectedOptions : null}
       isOptionEqualToValue={(option, value) => option.name === value.name}
+      required={props?.required}
+      error={props?.error}
+      helperText={props?.helperText}
+      disabled={props?.disabled}
     />
   )
 }

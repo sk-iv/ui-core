@@ -16,7 +16,8 @@
   top: 0;
   z-index: 1;
   /*небольшое изменение интервала спецификации для соответствия визуальному результату*/
-  transform: translate(5px, 15px) scale(1);
+  transform: translate(5px, 18px) scale(1);
+  white-space: nowrap;
 }
 
 .shrink {

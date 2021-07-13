@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 export interface ButtonProps {
+    className?: string;
     /**
      * Цвет кнопки
      * @default 'primary'
@@ -11,18 +12,13 @@ export interface ButtonProps {
      * @default false
      */
     disabled?: boolean;
-    // /**
-    //  * If `true`, no elevation is used.
-    //  * @default false
-    //  */
-    // disableElevation?: boolean;
     /**
      * убрать пульсацию фокуса
      * @default false
      */
     disableFocusRipple?: boolean;
     // /**
-    //  * Element placed after the children.
+    //  * Элемент после children
     //  */
     // endIcon?: React.ReactNode;
     /**
@@ -35,12 +31,17 @@ export interface ButtonProps {
      */
     href?: string;
     /**
+     * Состояние загрузки
+     * @default 'md'
+     */
+    loading?: boolean;
+    /**
      * Высота кнопки
      * @default 'md'
      */
     size?: 'md' | 'sm' | 'lg';
     // /**
-    //  * Element placed before the children.
+    //  * Элемент до children
     //  */
     // startIcon?: React.ReactNode;
     /**

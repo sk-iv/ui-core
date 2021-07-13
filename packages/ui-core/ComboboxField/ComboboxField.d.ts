@@ -7,36 +7,37 @@ export interface ComboboxFieldProps {
   //  */
   // clearIcon?: React.ReactNode;
   /**
-   * Override the default text for the *clear* icon button.
-   *
-   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   * Заменяет дефолтный текст иконки крестик
    * @default 'Clear'
    */
   clearText?: string;
   /**
-   * Override the default text for the *close popup* icon button.
-   *
-   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   * Заменяет дефолтный текст иконки шеврон
    * @default 'Close'
    */
   closeText?: string;
   /**
-   * If `true`, the component is disabled.
+   * Заблокированное состояние
    * @default false
    */
   disabled?: boolean;
+  // /**
+  //  * If `true`, the `Popper` content will be under the DOM hierarchy of the parent component.
+  //  * @default false
+  //  */
+  // disablePortal?: boolean;
   /**
-   * If `true`, the `Popper` content will be under the DOM hierarchy of the parent component.
+   * Состояние ошибки
    * @default false
    */
-  disablePortal?: boolean;
+  error?: boolean;
+  // /**
+  //  * Force the visibility display of the popup icon.
+  //  * @default 'auto'
+  //  */
+  // forcePopupIcon?:  'auto' | true | false ;
   /**
-   * Force the visibility display of the popup icon.
-   * @default 'auto'
-   */
-  forcePopupIcon?: true | false | 'auto';
-  /**
-   * If `true`, the input will take up the full width of its container.
+   * На всю ширину родительского контейнера
    * @default false
    */
   fullWidth?: boolean;
@@ -53,9 +54,12 @@ export interface ComboboxFieldProps {
   //  * @default 'ul'
   //  */
   // ListboxComponent?: React.JSXElementConstructor<React.HTMLAttributes<HTMLElement>>;
-
   /**
-   * If `true`, the component is in a loading state.
+   * Вспомогательный текст
+   */
+  helperText?: string;
+  /**
+   * Состояние загрузки
    * @default false
    */
   loading?: boolean;
@@ -66,12 +70,12 @@ export interface ComboboxFieldProps {
   //  * @default 'Loading…'
   //  */
   // loadingText?: React.ReactNode;
-  /**
-   * The maximum number of tags that will be visible when not focused.
-   * Set `-1` to disable the limit.
-   * @default -1
-   */
-  limitTags?: number;
+  // /**
+  //  * The maximum number of tags that will be visible when not focused.
+  //  * Set `-1` to disable the limit.
+  //  * @default -1
+  //  */
+  // limitTags?: number;
   // /**
   //  * Text to display when there are no options.
   //  *
@@ -79,19 +83,23 @@ export interface ComboboxFieldProps {
   //  * @default 'No options'
   //  */
   // noOptionsText?: React.ReactNode;
-  /**
-   * Override the default text for the *open popup* icon button.
-   *
-   * For localization purposes, you can use the provided [translations](/guides/localization/).
-   * @default 'Open'
-   */
-  openText?: string;
+  // /**
+  //  * Override the default text for the *open popup* icon button.
+  //  *
+  //  * For localization purposes, you can use the provided [translations](/guides/localization/).
+  //  * @default 'Open'
+  //  */
+  // openText?: string;
   // /**
   //  * The component used to render the body of the popup.
   //  * @default Paper
   //  */
   // PaperComponent?: React.JSXElementConstructor<React.HTMLAttributes<HTMLElement>>;
-
+  /**
+   * Поле обязательно для выбора
+   * @default false
+   */
+   required?: boolean;
   // /**
   //  * The icon to display in place of the default popup icon.
   //  * @default <ArrowDropDownIcon />

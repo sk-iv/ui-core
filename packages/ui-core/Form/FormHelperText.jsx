@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
+import useFormControl from './useFormControl'
 import styles from './FormHelperText.mdl.css'
 
-function FormHelperText(props, context) {
+const FormHelperText = (props) => {
   const {
     children,
     classes,
@@ -12,12 +13,12 @@ function FormHelperText(props, context) {
     error: errorProp,
     margin: marginProp,
     ...other
-  } = props;
-  const { muiFormControl } = context;
+  } = props
+  const muiFormControl = useFormControl()
 
-  let disabled = disabledProp;
-  let error = errorProp;
-  let margin = marginProp;
+  let disabled = disabledProp
+  let error = errorProp
+  let margin = marginProp
 
   if (muiFormControl) {
     if (typeof disabled === 'undefined') {
@@ -34,11 +35,11 @@ function FormHelperText(props, context) {
   }
 
   const className = clsx(
-    'form-helper-text',
+    styles.root,
     {
-      'form-helper-text--disabled': disabled,
-      'form-helper-text--error': error,
-      'form-helper-text--dense': margin === 'dense',
+      [styles.disabled]: disabled,
+      [styles.error]: error,
+      [styles.dense]: margin === 'dense',
     },
     classNameProp,
   );

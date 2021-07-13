@@ -10,6 +10,7 @@ export default (props) => (
     fullWidth={props?.fullWidth}
     href={props?.href}
     className={props?.className}
+    loading={props?.loading}
   >
     Кнопка
   </Button>

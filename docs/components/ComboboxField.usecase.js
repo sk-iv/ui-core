@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default () => {
+export default (props) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
 
   const handleChangeSelect = (e, newValue, reason) => {
@@ -46,7 +46,7 @@ export default () => {
   return (
     <ComboboxField
       className="mb-3"
-      fullWidth
+      fullWidth={props?.fullWidth}
       getOptionLabel={(option) => option.name}
       inputValue={state.value}
       label="Греческое божество"
@@ -55,6 +55,10 @@ export default () => {
       onChange={handleChangeSelect}
       options={deities}
       value={state.options}
+      required={props?.required}
+      error={props?.error}
+      helperText={props?.helperText}
+      disabled={props?.disabled}
     />
   )
 }

@@ -17,6 +17,9 @@ const ComboboxField = (props) => {
     onChange = () => {},
     options,
     value,
+    required,
+    error,
+    helperText,
   } = props
 
   const handleChange = React.useCallback((e, newValue, reason, details) => {
@@ -36,8 +39,11 @@ const ComboboxField = (props) => {
       onChange={handleChange}
       onInputChange={handleChange}
       options={options}
+      required={required}
       renderInput={(params) => <TextField {...params} label={label} />}
       value={value}
+      error={error}
+      helperText={helperText}
     />
   )
 }

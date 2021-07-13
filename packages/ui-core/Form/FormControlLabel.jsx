@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import clsx from 'clsx';
-import refType from '../utils/refType';
+import PropTypes from 'prop-types'
+import React from 'react'
+import clsx from 'clsx'
+import refType from '../utils/refType'
 import useFormControl from './useFormControl'
 import styles from './FormControlLabel.mdl.css'
 

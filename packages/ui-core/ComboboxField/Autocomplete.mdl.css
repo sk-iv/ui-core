@@ -1,5 +1,5 @@
 .root {
-  width: 300px;
+
 }
 
 .popper {
@@ -55,4 +55,8 @@
 .loading, .no-options, .option {
   padding: 6px 16px;
   min-height: 40px;
+}
+
+.control {
+  min-width: 190px !important;
 }

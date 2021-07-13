@@ -5,6 +5,9 @@
         "ButtonProps": {
             "type": "object",
             "properties": {
+                "className": {
+                    "type": "string"
+                },
                 "color": {
                     "type": "string",
                     "enum": [
@@ -22,7 +25,7 @@
                 },
                 "disableFocusRipple": {
                     "type": "boolean",
-                    "description": "If `true`, the  keyboard focus ripple is disabled.",
+                    "description": "убрать пульсацию фокуса",
                     "default": false
                 },
                 "fullWidth": {
@@ -32,7 +35,11 @@
                 },
                 "href": {
                     "type": "string",
-                    "description": "The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node."
+                    "description": "URL в ситуации, когда кнопка должна быть ссылкой"
+                },
+                "loading": {
+                    "type": "boolean",
+                    "description": "Состояние загрузки"
                 },
                 "size": {
                     "type": "string",
@@ -41,7 +48,7 @@
                         "sm",
                         "lg"
                     ],
-                    "description": "The size of the button. `small` is equivalent to the dense button styling."
+                    "description": "Высота кнопки"
                 },
                 "variant": {
                     "type": "string",

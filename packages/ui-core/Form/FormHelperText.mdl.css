@@ -1,5 +1,5 @@
-.form-helper-text {
-  color: #ccc;
+.root {
+  color: #797979;
   font-size: 12px;
   text-align: left;
   margin-top: 2px;
@@ -7,14 +7,14 @@
   min-height: 1em;
 }
 
-.text--dense {
+.dense {
   margin-top: 2px;
 }
 
-.text--error {
-  color: hsl(var(--error-hue), 100%, 52%);
+.error {
+  color: hsl(var(--hueError), 100%, 52%);
 }
 
-.text--disabled {
+.disabled {
   color: hsl(0, 50%, 42%);
 }

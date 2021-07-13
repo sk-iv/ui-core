@@ -1,0 +1,13 @@
+import Canvas from '../layout/Canvas'
+import ArgsTable from '../layout/ArgsTable'
+import InfiniteScrollUsecase from './InfiniteScroll.usecase.js'
+import Code from '!!raw-loader!./InfiniteScroll.usecase.js'
+
+# InfiniteScroll
+
+Это механика, позволяющая пользователям просматривать массивный поток контента как единое целое, без видимой финишной черты. Приложение просто подгружает новые данные, по мере того, как пользователь прокручивает страницу вниз.
+
+<Canvas
+  code={Code}
+  usecase={<InfiniteScrollUsecase />}
+/>
