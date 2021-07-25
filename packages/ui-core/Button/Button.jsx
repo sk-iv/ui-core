@@ -26,12 +26,12 @@ const Button = React.forwardRef((props, ref) => {
   } = props
 
   const startIcon = startIconProp && (
-    <span className={clsx('startIcon', `iconSize-${capitalize(size)}`)}>
+    <span className={clsx('startIcon', `iconSize${capitalize(size)}`)}>
       {startIconProp}
     </span>
   )
   const endIcon = endIconProp && (
-    <span className={clsx('endIcon', `iconSize-${capitalize(size)}`)}>
+    <span className={clsx('endIcon', `iconSize${capitalize(size)}`)}>
       {endIconProp}
     </span>
   )
@@ -58,8 +58,8 @@ const Button = React.forwardRef((props, ref) => {
       {...other}
     >
       {loading 
-      ? <IconSvg name="circle" className="path" />
-      :children}
+      ? <IconSvg name="circle" className="offset-path" />
+      : <span className={styles.label}>{children}</span>}
     </Clickable>
   )
 })

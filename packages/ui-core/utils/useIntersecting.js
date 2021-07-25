@@ -1,11 +1,12 @@
 import React from 'react'
 
-const useIntersecting = (refs, threshold = 0, rootMargin = '0px') => {
-  const [intersecting, setIntersecting] = React.useState(false);
+const useIntersecting = (refs, options = {}) => {
+  const { threshold = 0, rootMargin = '0px' } = options
+  const [intersecting, setIntersecting] = React.useState(false)
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      setIntersecting(entry.isIntersecting ? entry.target : null);
+      setIntersecting(entry.isIntersecting ? entry.target : null)
     },
     {
       rootMargin,
@@ -14,7 +15,7 @@ const useIntersecting = (refs, threshold = 0, rootMargin = '0px') => {
 
     let elements = [];
 
-    if (refs.current) {
+    if (refs.current instanceof HTMLElement) {
       elements = [refs.current];
     }
     // NodeList в обычный массив

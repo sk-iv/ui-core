@@ -9,22 +9,30 @@
   user-select: none;
   border-width: 2px;
   border-style: solid;
-  border-color: transparent;
   border-radius: calc(var(--btn-border-radius) * (var(--input-btn-padding-y) * 2 + var(--input-btn-line-height)));
   transition: all 0.3s ease 0s;
   padding-left: 10px;
   padding-right: 10px;
-  border-color: hsla(0, 0%, 0%, 0.25);
-  /*for ripple-effect*/
-  position: relative;
+  border-color: hsla(0, 0%, 80%, 0.8);
   text-transform: uppercase;
   letter-spacing: .07em;
   display: inline-flex;
   justify-content: center;
+  /*for ripple-effect*/
+  position: relative;
 }
 
 .fab.btn:before {
   border-radius: 50%;
+}
+
+.contained {
+  color: hsla(0, 0%, 0%, 0.7);
+  background: hsla(0, 0%, 80%, 0.8);
+}
+
+.contained:hover {
+  background: hsla(0, 0%, 0%, 0.2);
 }
 
 .color-primary {
@@ -75,15 +83,6 @@
   background: hsla(0, 0%, 80%, 0.8);
 }
 
-.contained {
-  color: hsla(0, 0%, 0%, 0.7);
-  background: hsla(0, 0%, 80%, 0.8);
-}
-
-.contained:hover {
-  background: hsla(0, 0%, 0%, 0.2);
-}
-
 .disabled {
   filter: grayscale(100%) contrast(0.15) brightness(1.6);
   cursor: not-allowed !important;
@@ -119,8 +118,8 @@
   filter: hue-rotate(110deg);
 }
 
-.fab .label {
-  padding: 0;
+.label {
+  z-index: 2;
 }
 
 .fab.btn--sm {

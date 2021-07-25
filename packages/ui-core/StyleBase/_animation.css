@@ -58,7 +58,7 @@
 	100% { transform: translate(0px); }
 }
 
-.path {
+.offset-path {
   --looping-percent: 80;
   --looping-length: calc((var(--looping-percent) * var(--total-length)) / 100);
   stroke-dasharray: var(--looping-length), calc(var(--total-length) - var(--looping-length));

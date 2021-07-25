@@ -45,12 +45,19 @@ const Clickable = React.forwardRef((props, ref) => {
   }
 
   const rippleRef = React.useRef(null)
+  const [diameter, setDiameter] = React.useState(10)
+  const [ripple, setRipple] = React.useState(false)
+  const [pulsated, setPulsated] = React.useState(false)
 
   const [focusVisible, setFocusVisible] = React.useState(false)
   if (disabled && focusVisible) {
     setFocusVisible(false)
   }
   const { isFocusVisible, onBlurVisible, ref: focusVisibleRef } = useIsFocusVisible()
+
+  const handleUserRef = useForkRef(buttonRefProp, ref)
+  const handleOwnRef = useForkRef(focusVisibleRef, buttonRef)
+  const handleRef = useForkRef(handleUserRef, handleOwnRef)
 
   React.useImperativeHandle(
     action,
@@ -65,7 +72,7 @@ const Clickable = React.forwardRef((props, ref) => {
 
   React.useEffect(() => {
     if (focusVisible && focusRipple && !disableRipple) {
-      rippleRef.current.pulsate()
+      setPulsated(true)
     }
   }, [disableRipple, focusRipple, focusVisible])
 
@@ -75,14 +82,17 @@ const Clickable = React.forwardRef((props, ref) => {
         eventCallback(event)
       }
 
-      const ignore = skipRippleAction
-      if (!ignore && rippleRef.current) {
-        rippleRef.current[rippleAction](event)
-      }
-
       return true
     })
   }
+
+  React.useEffect (() => {
+        
+    if(buttonRef.current){
+      setDiameter(Math.max(buttonRef.current.offsetWidth, buttonRef.current.offsetHeight))
+    }
+    
+}, [buttonRef])
 
   const handleMouseDown = useRippleHandler('start', onMouseDown)
   const handleDragLeave = useRippleHandler('stop', onDragLeave)
@@ -146,14 +156,10 @@ const Clickable = React.forwardRef((props, ref) => {
       focusRipple
       && !keydownRef.current
       && focusVisible
-      && rippleRef.current
       && event.key === ' '
     ) {
       keydownRef.current = true
       event.persist()
-      rippleRef.current.stop(event, () => {
-        rippleRef.current.start(event)
-      })
     }
 
     if (event.target === event.currentTarget && isNonNativeButton() && event.key === ' ') {
@@ -184,15 +190,11 @@ const Clickable = React.forwardRef((props, ref) => {
     if (
       focusRipple
       && event.key === ' '
-      && rippleRef.current
       && focusVisible
       && !event.defaultPrevented
     ) {
       keydownRef.current = false
       event.persist()
-      rippleRef.current.stop(event, () => {
-        rippleRef.current.pulsate(event)
-      })
     }
     if (onKeyUp) {
       onKeyUp(event)
@@ -209,6 +211,17 @@ const Clickable = React.forwardRef((props, ref) => {
       onClick(event)
     }
   })
+
+  const handleClick = useEventCallback((event) => {
+    setRipple(true)
+    if (onClick) {
+      onClick(event)
+    }
+  })
+
+  const handleAnimationEnd = () => {
+    setRipple(false)
+  }
 
   let ComponentProp = component
 
@@ -227,10 +240,6 @@ const Clickable = React.forwardRef((props, ref) => {
     buttonProps['aria-disabled'] = disabled
   }
 
-  const handleUserRef = useForkRef(buttonRefProp, ref)
-  const handleOwnRef = useForkRef(focusVisibleRef, buttonRef)
-  const handleRef = useForkRef(handleUserRef, handleOwnRef)
-
   const [mountedState, setMountedState] = React.useState(false)
 
   React.useEffect(() => {
@@ -239,33 +248,23 @@ const Clickable = React.forwardRef((props, ref) => {
 
   const enableTouchRipple = mountedState && !disableRipple && !disabled
 
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useEffect(() => {
-      if (enableTouchRipple && !rippleRef.current) {
-        console.error(
-          [
-            'SivaSifr-UI: the `component` prop provided to ButtonBase is invalid.',
-            'Please make sure the children prop is rendered in this custom component.',
-          ].join('\n'),
-        )
-      }
-    }, [enableTouchRipple])
-  }
-
   return (
     <ComponentProp
       className={clsx(
         styles.clickable,
         {
+          [styles.active]: enableTouchRipple,
           [styles.disabled]: disabled,
           [styles.focusVisible]: focusVisible,
           [focusVisibleClassName]: focusVisible,
+          [styles.ripple]: ripple,
+          [styles.pulsate]: pulsated,
         },
         className,
       )}
+      style={{"--height": `${diameter}px`, "--width": `${diameter}px`, "--duration": `${diameter/0.2}ms`}}
       onBlur={handleBlur}
-      onClick={onClick}
+      onClick={handleClick}
       onFocus={handleFocus}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
@@ -276,16 +275,13 @@ const Clickable = React.forwardRef((props, ref) => {
       onTouchEnd={handleTouchEnd}
       onTouchMove={handleTouchMove}
       onTouchStart={handleTouchStart}
+      onAnimationEnd={handleAnimationEnd}
       ref={handleRef}
       tabIndex={disabled ? -1 : tabIndex}
       {...buttonProps}
       {...other}
     >
       {children}
-      {enableTouchRipple ? (
-        /* TouchRipple is only needed client-side, x2 boost on the server. */
-        <TouchRipple ref={rippleRef} center={centerRipple} {...TouchRippleProps} />
-      ) : null}
     </ComponentProp>
   )
 })

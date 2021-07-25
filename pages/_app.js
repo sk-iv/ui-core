@@ -13,6 +13,7 @@ import ComboboxFieldStory from '../docs/components/comboboxField.mdx'
 import CheckboxStory from '../docs/components/checkbox.mdx'
 import ButtonStory from '../docs/components/button.mdx'
 import InfiniteScrollStory from '../docs/patterns/infiniteScroll.mdx'
+import MainPage from '../docs/mainPage.mdx'
 
 const initialState = {
   fields: {},
@@ -33,7 +34,18 @@ const reducer = (state = initialState, action) => {
   }
 }
 
+const date = new Date(Date.now()).toLocaleString('ru', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+})
+
 const routes = [
+  {
+    path: '/',
+    component: MainPage,
+    label: 'Главная',
+  },
   {
     path: '/icon',
     component: IconSvgStory,
@@ -138,7 +150,7 @@ export default (props) => {
             </Switch>
           </main>
           <aside className="side" />
-          <footer className="main-footer">The footer</footer>
+          <footer className="main-footer">{date}</footer>
         </div>
       </Router>
     </MDXProvider>

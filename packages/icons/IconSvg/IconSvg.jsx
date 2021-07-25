@@ -40,7 +40,9 @@ const IconSvg = ({
   }
 
   if (!name || !type[size].set[name]) {
-    console.error('❌ `IconSvg`: идентификатор иконки отсутствует или содержит неправильный идентификатор')
+    console.error([
+      '❌ `IconSvg`: идентификатор иконки отсутствует или содержит неправильный идентификатор'
+    ].join('\n'))
     return (
       <svg
         className={clsx(
