@@ -1,2 +1,5 @@
-export { default } from './Modal';
-export { default as Portal } from './Portal';
+import Modal from './Modal'
+import Portal from './Portal'
+
+export default Modal
+export { Portal }

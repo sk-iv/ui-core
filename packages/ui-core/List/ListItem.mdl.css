@@ -1,4 +1,4 @@
-.list-item {
+.root {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -11,9 +11,10 @@
 .container {
    position: relative;
  }
-.keyboardFocused {
+.keyboard-focused {
    background: #ccc;
  }
+
 .default {
    padding-top: 8px;
    padding-bottom: 8px;
@@ -32,7 +33,7 @@
    padding-left: 1rem;
    padding-right: 1rem;
  }
-.list-item.list-item--selected {
+.selected {
    text-decoration: none;
    background-color: #ddd;
  }
@@ -44,7 +45,7 @@
 .button:hover .disabled {
    background-color: transparent;
  }
-.secondaryAction {
+.secondary-action {
    padding-right: 16px;
    display: inline-flex;
    position: absolute;
@@ -55,10 +56,10 @@
    padding-top: 4px;
    padding-bottom: 4px;
  }
-.hasSecondaryAction{
+.has-secondary-action{
    padding-right: 48px;
  }
-.secondaryActionStart {
+.secondary-action-start {
    padding-left: 16px;
    position: absolute;
    left: 0;
@@ -84,9 +85,14 @@
  }
 .text-secondary {
    color: var(--text-muted);
-   padding-top: 5px;
    font-size: 0.85rem;
  }
-.textDense {
+
+.text-dense {
    font-size: inherit;
  }
+
+.text-multiline {
+  margin-top: 0;
+  margin-bottom: 0;
+}

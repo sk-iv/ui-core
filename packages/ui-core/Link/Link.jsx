@@ -13,10 +13,11 @@ const Link = React.forwardRef((props, ref) => {
     component = 'a',
     onBlur,
     onFocus,
+    onClick,
     href = '#',
-    underline = 'hover',
+    underline = 'always',
     variant = 'solid',
-    ...other
+    children,
   } = props;
 
   const { isFocusVisible, onBlurVisible, ref: focusVisibleRef } = useIsFocusVisible()
@@ -52,13 +53,15 @@ const Link = React.forwardRef((props, ref) => {
       className={clsx(
         styles.link,
         styles[`color${capitalize(color)}`],
-        styles[`variant${capitalize(variant)}`],
+        styles[`${variant}Variant`],
+        {[styles[`${underline}Underline`]]: underline !== 'none'},
         className,
       )}
       onBlur={handleBlur}
       onFocus={handleFocus}
+      onClick={onClick}
+      children={children}
       {...linkProps}
-      {...other}
     />
   )
 })
@@ -98,18 +101,6 @@ Link.propTypes = {
    * @ignore
    */
   onFocus: PropTypes.func,
-  /**
-   * `classes` prop applied to the [`Typography`](/api/typography/) element.
-   */
-  TypographyClasses: PropTypes.object,
-  /**
-   * Controls when the link should have an underline.
-   */
-  underline: PropTypes.oneOf(['none', 'hover', 'always']),
-  /**
-   * Applies the theme typography styles.
-   */
-  variant: PropTypes.string,
-};
+}
 
-export default Link;
+export default Link

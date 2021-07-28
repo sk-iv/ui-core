@@ -1,0 +1,14 @@
+import ArgsTable from '../layout/ArgsTable'
+import Canvas from '../layout/Canvas'
+//import Code from '!!raw-loader!./Link.usecase.js'
+import LinkUsecase from './Link.usecase.js'
+import LinkSchema from './Link.schema.json'
+
+# Link
+
+<Canvas
+  //code={Code}
+  usecase={<LinkUsecase />}
+/>
+
+<ArgsTable of={LinkSchema.definitions.LinkProps} />

@@ -28,19 +28,19 @@
 }
 
 /* Styles applied to the `Paper` component if `anchor="left"`. */
-.paper-anchor-left {
+.left {
   left: 0;
   right: auto;
 }
 
 /* Styles applied to the `Paper` component if `anchor="right"`. */
-.paper-anchor-right {
+.right {
   left: auto;
   right: 0;
 }
 
 /* Styles applied to the `Paper` component if `anchor="top"`. */
-.paper-anchor-top {
+.top {
   top: 0;
   left: 0;
   bottom: auto;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
 import ListContext from './ListContext'
-import styles from './List.mdl.css'
+import styles from './ListItem.mdl.css'
 
 const ListItemText = React.forwardRef((props, ref) => {
   const {
@@ -16,9 +16,9 @@ const ListItemText = React.forwardRef((props, ref) => {
     secondaryTypographyProps,
     ...other
   } = props;
-  const { dense } = React.useContext(ListContext);
+  const { dense } = React.useContext(ListContext)
 
-  let primary = primaryProp != null ? primaryProp : children;
+  let primary = primaryProp != null ? primaryProp : children
   if (primary != null) {
     primary = (
       <span
@@ -34,7 +34,7 @@ const ListItemText = React.forwardRef((props, ref) => {
   if (secondary != null) {
     secondary = (
       <div
-        className={styles['list-item--text-secondary']}
+        className={styles.textSecondary}
       >
         {secondary}
       </div>
@@ -44,11 +44,11 @@ const ListItemText = React.forwardRef((props, ref) => {
   return (
     <div
       className={clsx(
-        styles['list-item-text'],
+        styles.text,
         {
-          [styles['list-item--text-dense']]: dense,
-          [styles['list-item--text-inset']]: inset,
-          [styles['list-item--text-multiline']]: primary && secondary,
+          [styles.textDense]: dense,
+          [styles.textInset]: inset,
+          [styles.textMultiline]: primary && secondary,
         },
         className,
       )}

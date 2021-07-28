@@ -1,9 +1,9 @@
 import React from 'react'
 import clsx from 'clsx'
+import IconSvg from '@sivasifr/icons/IconSvg'
 
 import Clickable from '../Clickable'
 import capitalize from '../utils/capitalize'
-import IconSvg from '@sivasifr/icons/IconSvg'
 import styles from './Button.mdl.css'
 
 const Button = React.forwardRef((props, ref) => {
@@ -26,12 +26,12 @@ const Button = React.forwardRef((props, ref) => {
   } = props
 
   const startIcon = startIconProp && (
-    <span className={clsx('startIcon', `iconSize${capitalize(size)}`)}>
+    <span className={clsx(styles.startIcon, `iconSize${capitalize(size)}`)}>
       {startIconProp}
     </span>
   )
   const endIcon = endIconProp && (
-    <span className={clsx('endIcon', `iconSize${capitalize(size)}`)}>
+    <span className={clsx(styles.endIcon, `iconSize${capitalize(size)}`)}>
       {endIconProp}
     </span>
   )

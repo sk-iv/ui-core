@@ -13,7 +13,6 @@ const ListItemAvatar = React.forwardRef((props, ref) => {
   return (
     <div
       className={clsx(
-        'mr-3',
         className,
       )}
       ref={ref}

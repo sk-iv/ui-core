@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import clsx from 'clsx';
+import PropTypes from 'prop-types'
+import React from 'react'
+import clsx from 'clsx'
+import styles from './ListItem.mdl.css'
 
 const ListItemSecondaryAction = React.forwardRef((props, ref) => {
   const { className, ...other } = props;
 
-  return <div className={clsx('list-item--secondaryAction', className)} ref={ref} {...other} />;
+  return <div className={clsx(styles.secondaryAction, className)} ref={ref} {...other} />
 });
 
 ListItemSecondaryAction.propTypes = {

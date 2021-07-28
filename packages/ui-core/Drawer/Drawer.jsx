@@ -132,6 +132,7 @@ const Drawer = React.forwardRef((props, ref) => {
       className={clsx(
         styles.drawer,
         styles.drawerModal,
+        styles[anchor],
         className,
       )}
       open={open}

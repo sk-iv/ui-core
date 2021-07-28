@@ -12,8 +12,12 @@ import IconSvgStory from '../docs/components/iconSvg.mdx'
 import ComboboxFieldStory from '../docs/components/comboboxField.mdx'
 import CheckboxStory from '../docs/components/checkbox.mdx'
 import ButtonStory from '../docs/components/button.mdx'
+import ListStory from '../docs/components/list.mdx'
 import InfiniteScrollStory from '../docs/patterns/infiniteScroll.mdx'
 import MainPage from '../docs/mainPage.mdx'
+import DrawerStory from '../docs/components/drawer.mdx'
+import ChipStory from '../docs/components/chip.mdx'
+import LinkStory from '../docs/components/link.mdx'
 
 const initialState = {
   fields: {},
@@ -45,6 +49,7 @@ const routes = [
     path: '/',
     component: MainPage,
     label: 'Главная',
+    exact: true,
   },
   {
     path: '/icon',
@@ -62,10 +67,31 @@ const routes = [
     label: 'Checkbox',
   },
   {
+    path: '/drawer',
+    component: DrawerStory,
+    label: 'Drawer',
+  },
+  {
     path: '/button',
     component: ButtonStory,
     label: 'Button',
   },
+  {
+    path: '/chip',
+    component: ChipStory,
+    label: 'Chip',
+  },
+  {
+    path: '/list',
+    component: ListStory,
+    label: 'List',
+  },
+  {
+    path: '/link',
+    component: LinkStory,
+    label: 'Link',
+  },
+
   {
     path: '/infinite-scroll',
     component: InfiniteScrollStory,
@@ -79,6 +105,7 @@ const routes = [
 function RouteWithSubRoutes(route) {
   return (
     <Route
+      exact={route.exact}
       path={route.path}
       render={(props) => (
         // pass the sub-routes down to keep nesting

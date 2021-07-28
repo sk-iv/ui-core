@@ -1,6 +1,4 @@
 .link {
-  border-bottom-width: 1px;
-  border-bottom-color: currentColor;
   text-decoration: none;
   transition: opacity 0.3s ease 0s;
 }
@@ -39,10 +37,15 @@
   align-items: center;
 }
 
-.variant-solid {
+.solid-variant {
   border-bottom-style: solid;
 }
 
-.variant-dashed {
+.dashed-variant {
   border-bottom-style: dashed;
+}
+
+.always-underline, .hover-underline:hover {
+  border-bottom-width: 1px;
+  border-bottom-color: currentColor;
 }

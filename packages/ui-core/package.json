@@ -1,9 +1,9 @@
 {
   "name": "@sivasifr/ui-core",
-  "version": "1.0.31",
+  "version": "1.0.34",
   "private": false,
   "author": "Svetlana Ivannikova",
-  "main": "./src/index.js",
+  "main": "./index.js",
   "description": "React ui components",
   "keywords": [
     "react",
@@ -44,8 +44,7 @@
     "prop-types": "^15.7.2",
     "react-is": "^16.8.0 || ^17.0.0",
     "react-transition-group": "^4.4.0",
-    "@sivasifr/icons": "^1.0.0",
-    "react-select": "^4.3.1"
+    "@sivasifr/icons": "^1.0.13"
   },
   "devDependencies": {},
   "sideEffects": false,

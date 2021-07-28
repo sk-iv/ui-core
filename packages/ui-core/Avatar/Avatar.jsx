@@ -19,9 +19,9 @@ const Avatar = (props) => {
   } = props;
 
   const className = clsx(
-    'avatar',
+    styles.avatar,
     {
-      'avatar--colorDefault': childrenProp && !src && !srcSet,
+      [styles.colorDefault]: childrenProp && !src && !srcSet,
     },
     classNameProp,
   );

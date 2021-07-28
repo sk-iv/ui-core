@@ -1,2 +1,4 @@
-export { default as Slide } from './Slide';
-export { default as Fade } from './Fade';
+import Slide from './Slide'
+import Fade from './Fade'
+
+export { Slide, Fade }

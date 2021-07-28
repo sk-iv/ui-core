@@ -7,7 +7,7 @@ import { isMuiElement } from '../utils/reactHelpers'
 import useForkRef from '../utils/useForkRef'
 import ListContext from './ListContext'
 import chainPropTypes from '../utils/chainPropTypes'
-import styles from './List.mdl.css'
+import styles from './ListItem.mdl.css'
 
 const useEnhancedEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect
 
@@ -62,16 +62,16 @@ const ListItem = React.forwardRef((props, ref) => {
 
   const componentProps = {
     className: clsx(
-      styles['list-item'],
+      styles.root,
       {
-        [styles['list-item--dense']]: childContext.dense,
-        [styles['list-item--gutters']]: !disableGutters,
-        [styles['list-item--divider']]: divider,
-        [styles['list-item--disabled']]: disabled,
-        [styles['list-item--button']]: button,
-        [styles['list-item--alignItemsFlexStart']]: alignItems === 'flex-start',
-        [styles['list-item-hasSecondaryAction']]: hasSecondaryAction,
-        [styles['list-item--selected']]: selected,
+        [styles.dense]: childContext.dense,
+        [styles.gutters]: !disableGutters,
+        [styles.divider]: divider,
+        [styles.disabled]: disabled,
+        [styles.button]: button,
+        [styles.alignItemsFlexStart]: alignItems === 'flex-start',
+        [styles.hasSecondaryAction]: hasSecondaryAction,
+        [styles.selected]: selected,
       },
       className,
     ),
@@ -82,7 +82,7 @@ const ListItem = React.forwardRef((props, ref) => {
 
   if (button) {
     componentProps.component = componentProp || 'div'
-    componentProps.focusVisibleClassName = clsx(styles['list-item--focusVisible'], focusVisibleClassName)
+    componentProps.focusVisibleClassName = clsx(styles.focusVisible, focusVisibleClassName)
     Component = ButtonBase
   }
 
@@ -102,7 +102,7 @@ const ListItem = React.forwardRef((props, ref) => {
     return (
       <ListContext.Provider value={childContext}>
         <ContainerComponent
-          className={clsx('list-item--container', ContainerClassName)}
+          className={clsx(styles.container, ContainerClassName)}
           ref={handleRef}
           {...ContainerProps}
         >

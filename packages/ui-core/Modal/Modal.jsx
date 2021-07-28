@@ -211,10 +211,11 @@ const Modal = React.forwardRef((props, ref) => {
     root: {
       position: 'fixed',
       zIndex: 2000,
-      right: 0,
-      bottom: 0,
-      top: 0,
-      left: 0,
+      // переопределяет в drawer
+      // right: 0,
+      // bottom: 0,
+      // top: 0,
+      // left: 0,
     },
     /* Styles applied to the root element if the `Modal` has exited. */
     hidden: {
@@ -376,6 +377,8 @@ Modal.propTypes = {
    * If `true`, the modal is open.
    */
   open: PropTypes.bool.isRequired,
-};
+}
 
-export default Modal;
+Modal.displayName = 'Modal'
+
+export default Modal

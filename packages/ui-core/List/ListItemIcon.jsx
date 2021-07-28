@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
-import styles from './List.mdl.css'
+import styles from './ListItem.mdl.css'
 
 /**
  * A simple wrapper to apply `List` styles to an `Icon` or `SvgIcon`.
@@ -12,7 +12,7 @@ function ListItemIcon(props) {
   } = props;
 
   return React.cloneElement(children, {
-    className: clsx(styles['list-item--icon'], classNameProp, children.props.className),
+    className: clsx(styles.icon, classNameProp, children.props.className),
     ...other,
   })
 }

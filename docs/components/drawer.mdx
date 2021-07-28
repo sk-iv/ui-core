@@ -1,0 +1,14 @@
+import ArgsTable from '../layout/ArgsTable'
+import Canvas from '../layout/Canvas'
+//import Code from '!!raw-loader!./Drawer.usecase.js'
+import DrawerUsecase from './Drawer.usecase.js'
+import DrawerSchema from './Drawer.schema.json'
+
+# Drawer
+
+<Canvas
+  //code={Code}
+  usecase={<DrawerUsecase />}
+/>
+
+<ArgsTable of={DrawerSchema.definitions.DrawerProps} />

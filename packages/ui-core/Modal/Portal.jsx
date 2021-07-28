@@ -26,30 +26,30 @@ const Portal = React.forwardRef((props, ref) => {
     if (!disablePortal) {
       setMountNode(getContainer(container) || document.body);
     }
-  }, [container, disablePortal]);
+  }, [container, disablePortal])
 
   useEnhancedEffect(() => {
     if (mountNode && !disablePortal) {
-      setRef(ref, mountNode);
+      setRef(ref, mountNode)
       return () => {
-        setRef(ref, null);
+        setRef(ref, null)
       };
     }
 
     return undefined;
-  }, [ref, mountNode, disablePortal]);
+  }, [ref, mountNode, disablePortal])
 
   useEnhancedEffect(() => {
     if (onRendered && (mountNode || disablePortal)) {
-      onRendered();
+      onRendered()
     }
-  }, [onRendered, mountNode, disablePortal]);
+  }, [onRendered, mountNode, disablePortal])
 
   if (disablePortal) {
     React.Children.only(children);
     return React.cloneElement(children, {
       ref: handleRef,
-    });
+    })
   }
 
   return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;

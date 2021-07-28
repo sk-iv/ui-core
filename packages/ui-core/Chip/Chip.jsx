@@ -99,7 +99,7 @@ const Chip = React.forwardRef((props, ref) => {
       })
     ) : (
       <IconButton
-        className={clsx('chip--deleteIcon', customClasses)}
+        className={clsx(styles.deleteIcon, customClasses)}
         onClick={handleDeleteIconClick}
       >
         <IconSvg name="times" />
@@ -110,9 +110,9 @@ const Chip = React.forwardRef((props, ref) => {
   let avatar = null;
   if (avatarProp && React.isValidElement(avatarProp)) {
     avatar = React.cloneElement(avatarProp, {
-      className: clsx('chip--avatar', avatarProp.props.className, {
-        'chip--avatarSmall': small,
-        [`chip--avatarColor${capitalize(color)}`]: color !== 'default',
+      className: clsx(styles.avatar, avatarProp.props.className, {
+        [styles.avatarSmall]: small,
+        [styles[`avatarColor${capitalize(color)}`]]: color !== 'default',
       }),
     });
   }
@@ -120,9 +120,9 @@ const Chip = React.forwardRef((props, ref) => {
   let icon = null;
   if (iconProp && React.isValidElement(iconProp)) {
     icon = React.cloneElement(iconProp, {
-      className: clsx('chip--icon', iconProp.props.className, {
-        'chip--iconSmall': small,
-        [`chip--iconColor${capitalize(color)}`]: color !== 'default',
+      className: clsx(styles.icon, iconProp.props.className, {
+        [styles.iconSmall]: small,
+        [styles[`iconColor${capitalize(color)}`]]: color !== 'default',
       }),
     });
   }

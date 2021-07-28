@@ -15,6 +15,8 @@
   border: none; /* Remove `button` border*/
   padding: 0; /* Remove `button` padding*/
   height: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .clickable {
@@ -44,8 +46,6 @@
   user-select: none;
   white-space: nowrap;
   cursor: inherit;
-  padding-left: 12px;
-  padding-right: 12px;
 }
 
 .delete-icon {
@@ -73,4 +73,8 @@
 
 .color-secondary {
   background-color: hsl(var(--hueSecondary), var(--saturationSecondary), var(--lightnessSecondary));
+}
+
+.icon {
+  margin-right: 4px;
 }

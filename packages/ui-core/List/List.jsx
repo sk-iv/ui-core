@@ -13,7 +13,6 @@ const List = React.forwardRef((props, ref) => {
     dense = false,
     disablePadding = false,
     subheader,
-    direction,
     ...other
   } = props
 
@@ -25,10 +24,8 @@ const List = React.forwardRef((props, ref) => {
         className={clsx(
           styles.list,
           {
-            [styles['list--dense']]: dense,
-            [styles['list--padding']]: !disablePadding,
-            [styles['list--subheader']]: subheader,
-            [styles.directionX]: direction === 'x',
+            [styles.dense]: dense,
+            [styles.subheader]: !!subheader,
           },
           className,
         )}
