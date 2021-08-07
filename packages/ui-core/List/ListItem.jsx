@@ -81,7 +81,7 @@ const ListItem = React.forwardRef((props, ref) => {
   let Component = componentProp || 'li'
 
   if (button) {
-    componentProps.component = componentProp || 'div'
+    componentProps.component = componentProp || 'li'
     componentProps.focusVisibleClassName = clsx(styles.focusVisible, focusVisibleClassName)
     Component = ButtonBase
   }

@@ -12,22 +12,27 @@
   background: transparent;
 }
 
-.root {
+/* .root {
   position: relative;
   width: 100%;
-}
+} */
 
 .shadow {
   resize: none;
-  /*// Overflow also needed to here to remove the extra row
-  // added to textareas in Firefox.*/
+
+  /* Overflow also needed to here to remove the extra row
+  added to textareas in Firefox.
+  */
   overflow: hidden;
-  /*// Visibility needed to hide the extra text area on ipads*/
+
+  /* Visibility needed to hide the extra text area on ipads */
   visibility: hidden;
   position: absolute;
   white-space: pre-wrap;
-  height: 0px;
-  top: 0px;
-  left: 0px;
-  transform: translateZ(0px);
+  height: 0;
+  top: 0;
+  left: 0;
+  transform: translateZ(0);
+  padding: 0;
+  box-sizing: border-box;
 }

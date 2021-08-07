@@ -2,7 +2,7 @@ import React from 'react'
 import Chip from '@sivasifr/ui-core/Chip'
 import IconSvg from '@sivasifr/icons/IconSvg'
 
-export default () => {
+export default (props) => {
   const handleClick = () => {
     console.info('You clicked the Chip.');
   }
@@ -12,6 +12,9 @@ export default () => {
         color="default"
         label="default"
         onClick={handleClick}
+        clickable={props.clickable}
+        component="a"
+        href="/hghg"
       />
       <Chip color="primary" label="primary" />
       <Chip color="secondary" label="secondary" />

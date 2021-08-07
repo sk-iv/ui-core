@@ -10,7 +10,7 @@ const createUniqueIdGenerator = (generatorIdentifier) => {
   const uniqIds = getGeneratorData(generatorIdentifier);
 
   const generateNextId = incstr.idGenerator({
-    alphabet: 'abcefghijklmnopqrstuvwxyzABCEFGHJKLMNOPQRSTUVWXYZ',
+    alphabet: 'abcdefghijklmnopqrstuvwxyz0123456789',
   });
 
   return (name) => {

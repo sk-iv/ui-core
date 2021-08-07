@@ -33,56 +33,56 @@ const Chip = React.forwardRef((props, ref) => {
     ...other
   } = props;
 
-  const chipRef = React.useRef(null);
-  const handleRef = useForkRef(chipRef, ref);
+  const chipRef = React.useRef(null)
+  const handleRef = useForkRef(chipRef, ref)
 
   const handleDeleteIconClick = (event) => {
     // Stop the event from bubbling up to the `Chip`
-    event.stopPropagation();
+    event.stopPropagation()
     if (onDelete) {
-      onDelete(event);
+      onDelete(event)
     }
   };
 
   const handleKeyDown = (event) => {
     if (onKeyDown) {
-      onKeyDown(event);
+      onKeyDown(event)
     }
 
     // Ignore events from children of `Chip`.
     if (event.currentTarget !== event.target) {
-      return;
+      return
     }
 
     if ([' ', 'Enter', 'Backspace', 'Delete', 'Escape'].indexOf(event.key) !== -1) {
-      event.preventDefault();
+      event.preventDefault()
     }
   };
 
   const handleKeyUp = (event) => {
     if (onKeyUp) {
-      onKeyUp(event);
+      onKeyUp(event)
     }
 
     // Ignore events from children of `Chip`.
     if (event.currentTarget !== event.target) {
-      return;
+      return
     }
 
-    const { key } = event;
+    const { key } = event
     if (onClick && (key === ' ' || key === 'Enter')) {
-      onClick(event);
+      onClick(event)
     } else if (onDelete && (key === 'Backspace' || key === 'Delete')) {
-      onDelete(event);
+      onDelete(event)
     } else if (key === 'Escape' && chipRef.current) {
-      chipRef.current.blur();
+      chipRef.current.blur()
     }
-  };
+  }
 
-  const clickable = clickableProp !== false && onClick ? true : clickableProp;
-  const small = size === 'small';
+  const clickable = clickableProp !== false && onClick ? true : clickableProp
+  const small = size === 'small'
 
-  let deleteIcon = null;
+  let deleteIcon = null
   if (onDelete) {
     const customClasses = clsx({
       [styles.deleteIconSmall]: small,
@@ -114,7 +114,7 @@ const Chip = React.forwardRef((props, ref) => {
         [styles.avatarSmall]: small,
         [styles[`avatarColor${capitalize(color)}`]]: color !== 'default',
       }),
-    });
+    })
   }
 
   let icon = null;
@@ -124,7 +124,7 @@ const Chip = React.forwardRef((props, ref) => {
         [styles.iconSmall]: small,
         [styles[`iconColor${capitalize(color)}`]]: color !== 'default',
       }),
-    });
+    })
   }
 
   if (process.env.NODE_ENV !== 'production') {
@@ -140,7 +140,7 @@ const Chip = React.forwardRef((props, ref) => {
     <Component
       role={clickable || onDelete ? 'button' : undefined}
       className={clsx(
-        styles.chip,
+        styles.root,
         {
           [styles.disabled]: disabled,
           [styles.sizeSmall]: small,
@@ -175,7 +175,10 @@ const Chip = React.forwardRef((props, ref) => {
   )
 })
 
-Chip.displayName = 'Chip'
+
+if (process.env.NODE_ENV !== 'production') {
+  Chip.displayName = 'Chip'
+}
 
 Chip.propTypes = {
   /**

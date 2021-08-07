@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import clsx from 'clsx'
 
 import Input, { InputLabel } from '../Input'
@@ -68,7 +67,7 @@ const TextField = React.forwardRef((props, ref) => {
     readOnly,
     required = false,
     rows,
-    rowsMax,
+    maxRows,
     select = false,
     SelectProps,
     spellCheck,
@@ -80,13 +79,6 @@ const TextField = React.forwardRef((props, ref) => {
 
   const [labelWidth, setLabelWidth] = React.useState(0);
   const labelRef = React.useRef(null);
-  React.useEffect(() => {
-    if (variant === 'outlined') {
-      // #StrictMode ready
-      const labelNode = ReactDOM.findDOMNode(labelRef.current);
-      setLabelWidth(labelNode != null ? labelNode.offsetWidth : 0);
-    }
-  }, [variant, required]);
 
   if (!select && Boolean(children)) {
     console.error(
@@ -109,7 +101,7 @@ const TextField = React.forwardRef((props, ref) => {
       multiline={multiline}
       name={name}
       rows={rows}
-      rowsMax={rowsMax}
+      maxRows={maxRows}
       spellCheck={spellCheck}
       type={type}
       value={value}
@@ -275,7 +267,7 @@ TextField.propTypes = {
   /**
    * Maximum number of rows to display when multiline option is set to true.
    */
-  rowsMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxRows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Render a [`Select`](/api/select/) element while passing the Input element to `Select` as `input` parameter.
    * If this option is set you must pass the options of the select as children.

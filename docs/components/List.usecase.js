@@ -13,6 +13,7 @@ export default () => (
     {
       [0, 1, 2].map((value) => (
         <ListItem
+          key={value}
           button
           selected={value === 2}
         >

@@ -1,4 +1,4 @@
-.chip {
+.root {
   font-size: 13px;
   display: inline-flex;
   align-items: center;
@@ -17,6 +17,7 @@
   height: 24px;
   padding-left: 8px;
   padding-right: 8px;
+  text-decoration: none; /*Для случаев, когда компонент является ссылкой*/
 }
 
 .clickable {

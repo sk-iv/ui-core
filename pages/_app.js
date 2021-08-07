@@ -1,10 +1,9 @@
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
   Link,
+  useLocation,
 } from 'react-router-dom'
 import PropsControlContext from '../docs/layout/PropsControlContext'
 import CodeBlock from '../docs/layout/CodeBlock'
@@ -18,6 +17,8 @@ import MainPage from '../docs/mainPage.mdx'
 import DrawerStory from '../docs/components/drawer.mdx'
 import ChipStory from '../docs/components/chip.mdx'
 import LinkStory from '../docs/components/link.mdx'
+import TabsStory from '../docs/components/tabs.mdx'
+import TextFieldStory from '../docs/components/TextField/textField.mdx'
 
 const initialState = {
   fields: {},
@@ -44,75 +45,68 @@ const date = new Date(Date.now()).toLocaleString('ru', {
   day: 'numeric',
 })
 
-const routes = [
-  {
+const routes = {
+  main: {
     path: '/',
     component: MainPage,
     label: 'Главная',
     exact: true,
   },
-  {
+  icon: {
     path: '/icon',
     component: IconSvgStory,
     label: 'IconSvg',
   },
-  {
+  combobox: {
     path: '/combobox',
     component: ComboboxFieldStory,
     label: 'Combobox',
   },
-  {
+  checkbox: {
     path: '/checkbox',
     component: CheckboxStory,
     label: 'Checkbox',
   },
-  {
+  drawer: {
     path: '/drawer',
     component: DrawerStory,
     label: 'Drawer',
   },
-  {
+  button: {
     path: '/button',
     component: ButtonStory,
     label: 'Button',
   },
-  {
+  chip: {
     path: '/chip',
     component: ChipStory,
     label: 'Chip',
   },
-  {
+  list: {
     path: '/list',
     component: ListStory,
     label: 'List',
   },
-  {
+  link: {
     path: '/link',
     component: LinkStory,
     label: 'Link',
   },
-
-  {
+  tabs: {
+    path: '/tabs',
+    component: TabsStory,
+    label: 'Tabs',
+  },
+  'text-field': {
+    path: '/text-field',
+    component: TextFieldStory,
+    label: 'TextField',
+  },
+  'infinite-scroll': {
     path: '/infinite-scroll',
     component: InfiniteScrollStory,
     label: 'InfiniteScroll',
   },
-]
-
-// A special wrapper for <Route> that knows how to
-// handle "sub"-routes by passing them in a `routes`
-// prop to the component it renders.
-function RouteWithSubRoutes(route) {
-  return (
-    <Route
-      exact={route.exact}
-      path={route.path}
-      render={(props) => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
-      )}
-    />
-  );
 }
 
 const components = {
@@ -135,8 +129,17 @@ const getValue = (e) => {
   }
 }
 
-export default (props) => {
+export default () => {
   const [fields, setFields] = React.useReducer(reducer, initialState)
+  const location = useLocation()
+
+  useEffect(() => {
+    window.addEventListener('popstate', listenToPopstate);
+    return () => {
+      window.removeEventListener('popstate', listenToPopstate);
+    }
+  }, [])
+
   const onChange = React.useCallback((e) => {
     setFields({
       type: 'CHANGE_VALUE',
@@ -149,37 +152,48 @@ export default (props) => {
       payload: batch,
     })
   }, [])
+
+  const listenToPopstate = () => {
+
+  };
+  const route = location.pathname.substring(1)
+  const loc = route || 'main'
+
   return (
     <MDXProvider components={components}>
-      <Router>
-        <div className="wrapper bg-gray-100">
-          <header className="main-head">Documentation</header>
-          <nav className="main-nav ml-4">
-            <ul>
-              {
-            routes.map((route) => (
-              <li>
-                <Link to={route.path}>{route.label}</Link>
+
+      <div className="wrapper bg-gray-100">
+        <header className="main-head">Documentation</header>
+        <nav className="main-nav ml-4">
+          <ul>
+            {
+            Object.entries(routes).map(([key, rout]) => (
+              <li key={key}>
+                <Link to={rout.path}>{rout.label}</Link>
               </li>
             ))
           }
-            </ul>
-          </nav>
-          <main className="content bg-white p-3">
-            <Switch>
-              <div className="container mx-auto">
-                <PropsControlContext.Provider value={[fields, onChange, setBatch]}>
-                  {routes.map((route, i) => (
-                    <RouteWithSubRoutes key={i} {...route} {...props} />
-                  ))}
-                </PropsControlContext.Provider>
-              </div>
-            </Switch>
-          </main>
-          <aside className="side" />
-          <footer className="main-footer">{date}</footer>
-        </div>
-      </Router>
+          </ul>
+        </nav>
+        <main className="content bg-white p-3">
+          <div className="container mx-auto">
+            <PropsControlContext.Provider value={[fields, onChange, setBatch]}>
+              <Route
+                exact={routes[loc].exact}
+                path={routes[loc].path}
+                render={(props) => {
+                  const Component = routes[loc].component
+                  return (
+                    <Component {...props} />
+                  )
+                }}
+              />
+            </PropsControlContext.Provider>
+          </div>
+        </main>
+        <aside className="side" />
+        <footer className="main-footer">{date}</footer>
+      </div>
     </MDXProvider>
   )
 }

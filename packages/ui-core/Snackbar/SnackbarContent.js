@@ -20,7 +20,6 @@ function SnackbarContent(props) {
       className={classNames('snackbar-content', className)}
       elevation={6}
       role="alertdialog"
-      square
       {...other}
     >
       <div className="snackbar-content--message">

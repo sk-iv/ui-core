@@ -66,7 +66,6 @@ const Drawer = React.forwardRef((props, ref) => {
   const drawer = (
     <Paper
       elevation={variant === 'temporary' ? elevation : 0}
-      square
       className={clsx(
         styles.paper,
         styles[`paperAnchor-${anchor}`],

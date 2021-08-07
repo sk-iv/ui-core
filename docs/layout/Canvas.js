@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import CodeBlock from './CodeBlock'
 import usePropsControl from './usePropsControl'
 
@@ -7,7 +7,7 @@ export default ({
   usecase,
 }) => {
   const [props] = usePropsControl()
-  const element = React.cloneElement(usecase, props.fields)
+  const element = useMemo(() => React.cloneElement(usecase, props.fields), [usecase, props])
   return (
     <>
       <div className="bg-gray-50 p-3 border mt-3">

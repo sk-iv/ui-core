@@ -2,6 +2,7 @@ import ArgsTable from '../layout/ArgsTable'
 import Canvas from '../layout/Canvas'
 //import Code from '!!raw-loader!./Chip.usecase.js'
 import ChipUsecase from './Chip.usecase.js'
+import ChipSchema from './Chip.schema.json'
 
 # Chip
 
@@ -9,3 +10,5 @@ import ChipUsecase from './Chip.usecase.js'
   //code={Code}
   usecase={<ChipUsecase />}
 />
+
+<ArgsTable of={ChipSchema.definitions.ChipProps} />

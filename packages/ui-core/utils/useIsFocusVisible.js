@@ -1,6 +1,5 @@
 // based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
 let hadKeyboardEvent = true;
 let hadFocusVisibleRecently = false;
@@ -27,7 +26,7 @@ const inputTypesWhitelist = {
  * `focus-visible` class being added, i.e. whether it should always match
  * `:focus-visible` when focused.
  * @param {Element} node
- * @return {boolean}
+ * @returns {boolean}
  */
 function focusTriggersKeyboardModality(node) {
   const { type, tagName } = node;
@@ -105,44 +104,68 @@ function isFocusVisible(event) {
   try {
     return target.matches(':focus-visible');
   } catch (error) {
-    // browsers not implementing :focus-visible will throw a SyntaxError
-    // we use our own heuristic for those browsers
-    // rethrow might be better if it's not the expected error but do we really
+    // Browsers not implementing :focus-visible will throw a SyntaxError.
+    // We use our own heuristic for those browsers.
+    // Rethrow might be better if it's not the expected error but do we really
     // want to crash if focus-visible malfunctioned?
   }
 
-  // no need for validFocusTarget check. the user does that by attaching it to
-  // focusable events only
+  // No need for validFocusTarget check. The user does that by attaching it to
+  // focusable events only.
   return hadKeyboardEvent || focusTriggersKeyboardModality(target);
 }
 
-/**
- * Should be called if a blur event is fired on a focus-visible element
- */
-function handleBlurVisible() {
-  // To detect a tab/window switch, we look for a blur event followed
-  // rapidly by a visibility change.
-  // If we don't see a visibility change within 100ms, it's probably a
-  // regular focus change.
-  hadFocusVisibleRecently = true;
-  window.clearTimeout(hadFocusVisibleRecentlyTimeout);
-  hadFocusVisibleRecentlyTimeout = window.setTimeout(() => {
-    hadFocusVisibleRecently = false;
-  }, 100);
-}
-
 export default function useIsFocusVisible() {
-  const ref = React.useCallback((instance) => {
-    const node = ReactDOM.findDOMNode(instance);
+  const ref = React.useCallback((node) => {
     if (node != null) {
       prepare(node.ownerDocument);
     }
   }, []);
 
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useDebugValue(isFocusVisible);
+  const isFocusVisibleRef = React.useRef(false);
+
+  /**
+   * Should be called if a blur event is fired
+   */
+  function handleBlurVisible() {
+    // checking against potential state variable does not suffice
+    // if we focus and blur synchronously.
+    // React wouldn't have time to trigger a re-render so `focusVisible` would be stale.
+    // Ideally we would adjust `isFocusVisible(event)` to look at `relatedTarget` for blur events.
+    // This doesn't work in IE11 due to https://github.com/facebook/react/issues/3751
+    // TODO: check again if React releases their internal changes to focus event
+    // handling (https://github.com/facebook/react/pull/19186).
+    if (isFocusVisibleRef.current) {
+      // To detect a tab/window switch, we look for a blur event followed
+      // rapidly by a visibility change.
+      // If we don't see a visibility change within 100ms, it's probably a
+      // regular focus change.
+      hadFocusVisibleRecently = true;
+      window.clearTimeout(hadFocusVisibleRecentlyTimeout);
+      hadFocusVisibleRecentlyTimeout = window.setTimeout(() => {
+        hadFocusVisibleRecently = false;
+      }, 100);
+
+      isFocusVisibleRef.current = false;
+
+      return true;
+    }
+
+    return false;
   }
 
-  return { isFocusVisible, onBlurVisible: handleBlurVisible, ref };
+  /**
+   * Should be called if a blur event is fired
+   */
+  function handleFocusVisible(event) {
+    if (isFocusVisible(event)) {
+      isFocusVisibleRef.current = true;
+      return true;
+    }
+    return false;
+  }
+
+  return {
+    isFocusVisibleRef, onFocus: handleFocusVisible, onBlur: handleBlurVisible, ref,
+  };
 }

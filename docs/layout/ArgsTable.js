@@ -28,7 +28,7 @@ export default ({
         </thead>
         <tbody>
           {Object.entries(of.properties).map(([key, value]) => (
-            <tr>
+            <tr key={key}>
               <td className="border border-gray-200">
                 <span
                   className={clsx({
@@ -46,7 +46,7 @@ export default ({
                 {value.type === 'string' && value.enum && (
                   <select name={key} onChange={onChange}>
                     {value.enum.map((option) => (
-                      <option value={option} selected={value.default === option}>
+                      <option key={option} value={option} defaultValue={value.default === option}>
                         {option}
                       </option>
                     ))}

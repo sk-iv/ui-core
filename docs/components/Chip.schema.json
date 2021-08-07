@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/ChipProps",
+    "definitions": {
+        "ChipProps": {
+            "type": "object",
+            "properties": {
+                "className": {
+                    "type": "string"
+                },
+                "clickable": {
+                    "type": "boolean",
+                    "description": "Если `true`, чип будет кликабельным",
+                    "default": false
+                },
+                "color": {
+                    "type": "string",
+                    "enum": [
+                        "default",
+                        "primary",
+                        "secondary",
+                        "accent"
+                    ]
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Заблокированное состояние",
+                    "default": false
+                },
+                "size": {
+                    "type": "string",
+                    "enum": [
+                        "sm",
+                        "md"
+                    ],
+                    "description": "Высота чипа"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

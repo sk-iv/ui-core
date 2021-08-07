@@ -53,18 +53,23 @@ const Clickable = React.forwardRef((props, ref) => {
   if (disabled && focusVisible) {
     setFocusVisible(false)
   }
-  const { isFocusVisible, onBlurVisible, ref: focusVisibleRef } = useIsFocusVisible()
+  const {
+    isFocusVisibleRef,
+    onBlur: handleBlurVisible,
+    onFocus: handleFocusVisible,
+    ref: focusVisibleRef
+  } = useIsFocusVisible()
 
-  const handleUserRef = useForkRef(buttonRefProp, ref)
-  const handleOwnRef = useForkRef(focusVisibleRef, buttonRef)
-  const handleRef = useForkRef(handleUserRef, handleOwnRef)
+  React.useEffect(() => {
+    isFocusVisibleRef.current = focusVisible;
+  }, [focusVisible, isFocusVisibleRef])
 
   React.useImperativeHandle(
     action,
     () => ({
       focusVisible: () => {
-        setFocusVisible(true)
-        buttonRef.current.focus()
+        setFocusVisible(true);
+        buttonRef.current.focus();
       },
     }),
     [],
@@ -86,13 +91,13 @@ const Clickable = React.forwardRef((props, ref) => {
     })
   }
 
-  React.useEffect (() => {
-        
-    if(buttonRef.current){
+  React.useEffect(() => {
+
+    if (buttonRef.current) {
       setDiameter(Math.max(buttonRef.current.offsetWidth, buttonRef.current.offsetHeight))
     }
-    
-}, [buttonRef])
+
+  }, [buttonRef])
 
   const handleMouseDown = useRippleHandler('start', onMouseDown)
   const handleDragLeave = useRippleHandler('stop', onDragLeave)
@@ -112,8 +117,9 @@ const Clickable = React.forwardRef((props, ref) => {
     'stop',
     (event) => {
       if (focusVisible) {
-        onBlurVisible(event)
+        handleBlurVisible(event)
         setFocusVisible(false)
+        setPulsated(false)
       }
       if (onBlur) {
         onBlur(event)
@@ -127,8 +133,8 @@ const Clickable = React.forwardRef((props, ref) => {
     if (!buttonRef.current) {
       buttonRef.current = event.currentTarget
     }
-
-    if (isFocusVisible(event)) {
+    handleFocusVisible(event)
+    if (isFocusVisibleRef.current === true) {
       setFocusVisible(true)
 
       if (onFocusVisible) {
@@ -223,6 +229,9 @@ const Clickable = React.forwardRef((props, ref) => {
     setRipple(false)
   }
 
+  const handleOwnRef = useForkRef(focusVisibleRef, buttonRef);
+  const handleRef = useForkRef(ref, handleOwnRef);
+
   let ComponentProp = component
 
   if (ComponentProp === 'button' && other.href) {
@@ -262,7 +271,7 @@ const Clickable = React.forwardRef((props, ref) => {
         },
         className,
       )}
-      style={{"--height": `${diameter}px`, "--width": `${diameter}px`, "--duration": `${diameter/0.2}ms`}}
+      style={{ "--height": `${diameter}px`, "--width": `${diameter}px`, "--duration": `${diameter / 0.2}ms` }}
       onBlur={handleBlur}
       onClick={handleClick}
       onFocus={handleFocus}
@@ -288,7 +297,7 @@ const Clickable = React.forwardRef((props, ref) => {
 
 Clickable.displayName = 'Clickable'
 
-  Clickable.propTypes = {
+Clickable.propTypes = {
   /**
    * Infinite animation shine to attract attention.
    */
