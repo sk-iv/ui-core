@@ -48,7 +48,7 @@ const InputBase = React.forwardRef((props, ref) => {
     readOnly,
     renderSuffix,
     rows,
-    rowsMax,
+    maxRows,
     select = false,
     spellCheck,
     startAdornment,
@@ -175,8 +175,8 @@ const InputBase = React.forwardRef((props, ref) => {
       if (element == null) {
         throw new TypeError(
           'SivaSifr-UI: Expected valid input target. '
-            + 'Did you use a custom `inputComponent` and forget to forward refs? '
-            + 'See https://material-ui.com/r/input-component-ref-interface for more info.',
+          + 'Did you use a custom `inputComponent` and forget to forward refs? '
+          + 'See https://material-ui.com/r/input-component-ref-interface for more info.',
         )
       }
 
@@ -219,12 +219,12 @@ const InputBase = React.forwardRef((props, ref) => {
       ref: null,
     };
   } else if (multiline) {
-    if (rows && !rowsMax) {
+    if (rows && !maxRows) {
       InputComponent = 'textarea';
     } else {
       inputProps = {
         rows,
-        rowsMax,
+        maxRows,
         ...inputProps,
       }
       InputComponent = TextareaAutosize
@@ -265,41 +265,41 @@ const InputBase = React.forwardRef((props, ref) => {
     >
       {startAdornment}
 
-        {children || (
-        <InputComponent
-          aria-invalid={fcs.error}
-          aria-describedby={ariaDescribedby}
-          autoComplete={autoComplete}
-          autoFocus={autoFocus}
-          className={clsx(
-            styles.input,
-            {
-              [styles.inputSearch]: type === 'search',
-              [styles.multiline]: multiline,
-              [styles.inputSelect]: select,
-              [styles.inputDense]: fcs.margin === 'dense',
-            },
-            inputPropsClassName,
-          )}
-          defaultValue={defaultValue}
-          disabled={fcs.disabled}
-          id={id}
-          name={name}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onKeyDown={onKeyDown}
-          onKeyUp={onKeyUp}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          required={fcs.required}
-          rows={rows}
-          spellCheck={spellCheck}
-          value={value}
-          {...inputProps}
-        />
+
+      <InputComponent
+        aria-invalid={fcs.error}
+        aria-describedby={ariaDescribedby}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
+        className={clsx(
+          styles.input,
+          {
+            [styles.inputSearch]: type === 'search',
+            [styles.multiline]: multiline,
+            [styles.inputSelect]: select,
+            [styles.inputDense]: fcs.margin === 'dense',
+          },
+          inputPropsClassName,
         )}
-     
+        defaultValue={defaultValue}
+        disabled={fcs.disabled}
+        id={id}
+        name={name}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        required={fcs.required}
+        rows={rows}
+        spellCheck={spellCheck}
+        value={value}
+        {...inputProps}
+      />
+
+
       {endAdornment}
       {renderSuffix
         ? renderSuffix({
@@ -436,7 +436,7 @@ InputBase.propTypes = {
   /**
    * Maximum number of rows to display when multiline option is set to true.
    */
-  rowsMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxRows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Should be `true` when the component hosts a select.
    */

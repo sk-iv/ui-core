@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import StepIcon from '../StepIcon';
-
-if (process.env.WEBPACK) {
-  require('./step-label.css');
-}
+import clsx from 'clsx'
+import StepperContext from './StepperContext'
+import StepContext from './StepContext'
+import StepIcon from './StepIcon'
+import styles from './StepLabel.mdl.css'
 
 const StepLabel = React.forwardRef((props, ref) => {
   const {
-    active = false,
-    alternativeLabel = false,
     children,
     className: classNameProp,
-    completed = false,
-    disabled = false,
     error = false,
-    icon,
+    icon: iconProp,
     last,
     optional,
     orientation = 'horizontal',
@@ -25,21 +20,24 @@ const StepLabel = React.forwardRef((props, ref) => {
     ...other
   } = props;
 
+  const { alternativeLabel } = React.useContext(StepperContext);
+  const { active, disabled, completed, icon: iconContext } = React.useContext(StepContext);
+  const icon = iconProp || iconContext;
+
   let StepIconComponent = StepIconComponentProp;
 
   if (icon && !StepIconComponent) {
-    StepIconComponent = StepIcon;
+    StepIconComponent = StepIcon
   }
 
   return (
-    <span
+    <div
       className={clsx(
-        'step-label-root',
-        `step-label-${orientation}`,
+        styles.root,
         {
-          'step-label-disabled': disabled,
-          'step-label-alternativeLabel': alternativeLabel,
-          'step-label-error': error,
+          [styles.disabled]: disabled,
+          [styles.alternativeLabel]: alternativeLabel,
+          [styles.error]: error,
         },
         classNameProp,
       )}
@@ -48,7 +46,7 @@ const StepLabel = React.forwardRef((props, ref) => {
     >
       {icon || StepIconComponent ? (
         <span
-          className={clsx('step-label-iconContainer', {
+          className={clsx(styles.iconContainer, {
             'step-label-alternativeLabel': alternativeLabel,
           })}
         >
@@ -61,22 +59,20 @@ const StepLabel = React.forwardRef((props, ref) => {
           />
         </span>
       ) : null}
-      <span className="step-label-labelContainer">
+      <span className={styles.labelContainer}>
         <span
-          variant="body2"
-          className={clsx('step-label-label', {
-            'step-label-alternativeLabel': alternativeLabel,
-            'step-label-completed': completed,
-            'step-label-active': active,
-            'step-label-error': error,
+          className={clsx(styles.label, {
+            [styles.alternativeLabel]: alternativeLabel,
+            [styles.completed]: completed,
+            [styles.active]: active,
+            [styles.error]: error,
           })}
-          display="block"
         >
           {children}
         </span>
         {optional}
       </span>
-    </span>
+    </div>
   );
 });
 

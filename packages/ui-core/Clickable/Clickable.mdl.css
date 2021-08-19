@@ -1,22 +1,25 @@
-.clickable {
+.root {
   display: inline-flex;
   align-items: center;
   position: relative;
-  /*Remove grey highlight*/
+  box-sizing: border-box;
+
+  /* Remove grey highlight */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: transparent; /* Reset default value*/
+  background: transparent; /* Reset default value */
   outline: none;
   border: 0;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
   overflow: hidden;
-  /*So we take precedent over the style of a native <a /> element.*/
+
+  /* So we take precedent over the style of a native <a /> element. */
   color: inherit;
 }
 
-.disabled {
-  pointer-events: none; /* Disable link interactions*/
+.root[disabled] {
+  pointer-events: none; /* Disable link interactions */
   cursor: not-allowed;
 }
 
@@ -30,10 +33,9 @@
   transform: translateX(-100%);
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
 }
 
-.attention:after {
+.attention::after {
   content: '';
   width: 50px;
   height: 100%;
@@ -45,9 +47,11 @@
   0% {
     transform: translateX(-100%);
   }
+
   40% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -80,14 +84,15 @@
   0% {
     transform: scale(0.9);
   }
+
   50% {
     transform: scale(0.8);
   }
+
   100% {
     transform: scale(0.9);
   }
 }
-
 
 @keyframes ripple {
   to {
@@ -95,4 +100,3 @@
     opacity: 0;
   }
 }
-

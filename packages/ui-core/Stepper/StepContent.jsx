@@ -1,17 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { Collapse } from '../Collapse'
+import Collapse from '../Collapse'
+import StepContext from './StepContext'
 import styles from './StepContent.mdl.css'
 
 const StepContent = React.forwardRef((props, ref) => {
   const {
-    active,
     alternativeLabel,
     children,
     className,
     completed,
-    last,
     optional,
     orientation,
     TransitionComponent = Collapse,
@@ -19,6 +18,8 @@ const StepContent = React.forwardRef((props, ref) => {
     TransitionProps,
     ...other
   } = props;
+
+  const { active, last, expanded } = React.useContext(StepContext)
 
   if (process.env.NODE_ENV !== 'production') {
     if (orientation !== 'vertical') {
@@ -35,7 +36,7 @@ const StepContent = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div className={clsx(styles.stepContentRoot, { [styles.stepContentLast]: last }, className)} ref={ref} {...other}>
+    <div className={clsx(styles.root, { [styles.last]: last }, className)} ref={ref} {...other}>
       <TransitionComponent
         in={active}
         className={styles.stepContentTransition}

@@ -1,0 +1,20 @@
+.root {
+  display: block;
+  font-size: 24px;
+  width: 1em;
+  fill: #ccc;
+}
+
+.active {
+  fill: hsl(var(--hueAccent), var(--saturationAccent), var(--lightnessAccent));
+}
+
+.text {
+  fill: #000;
+  font-size: 16px;
+}
+
+.active .text {
+  fill: #ccc;
+  font-size: 16px;
+}

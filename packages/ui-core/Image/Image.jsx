@@ -13,7 +13,7 @@ const Image = ({
     <picture>
       <source srcset={srcset} sizes={sizes} />
       <img
-        className={clsx({
+        className={clsx(st.root, {
           [st.absolute]: isBackground,
         })}
         src={src}

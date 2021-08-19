@@ -9,8 +9,14 @@ const createUniqueIdGenerator = (generatorIdentifier) => {
   // Восстанавливаем сохраненные данные
   const uniqIds = getGeneratorData(generatorIdentifier);
 
+  // нельзя начинать название селектора с цифры
+  const alphabets = {
+    componentName: 'abcdefghijklmnopqrstuvwxyz',
+    localName: 'abcdefghijklmnopqrstuvwxyz0123456789',
+  }
+
   const generateNextId = incstr.idGenerator({
-    alphabet: 'abcdefghijklmnopqrstuvwxyz0123456789',
+    alphabet: alphabets[generatorIdentifier],
   });
 
   return (name) => {

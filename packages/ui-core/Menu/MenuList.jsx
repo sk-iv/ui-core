@@ -2,10 +2,10 @@ import React from 'react';
 import { isFragment } from 'react-is';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import ownerDocument from '../utils/ownerDocument';
-import { List } from '../List';
-import getScrollbarSize from '../utils/getScrollbarSize';
-import useForkRef from '../utils/useForkRef';
+import ownerDocument from '../utils/ownerDocument'
+import List from '../List'
+import getScrollbarSize from '../utils/getScrollbarSize'
+import useForkRef from '../utils/useForkRef'
 
 function nextItem(list, item, disableListWrap) {
   if (list === item) {
@@ -112,14 +112,14 @@ const MenuList = React.forwardRef((props, ref) => {
   React.useImperativeHandle(
     actions,
     () => ({
-      adjustStyleForScrollbar: (containerElement, theme) => {
+      adjustStyleForScrollbar: (containerElement) => {
         // Let's ignore that piece of logic if users are already overriding the width
         // of the menu.
         const noExplicitWidth = !listRef.current.style.width;
         if (containerElement.clientHeight < listRef.current.clientHeight && noExplicitWidth) {
           const scrollbarSize = `${getScrollbarSize(true)}px`;
           listRef.current.style[
-            theme.direction === 'rtl' ? 'paddingLeft' : 'paddingRight'
+            'paddingLeft'
           ] = scrollbarSize;
           listRef.current.style.width = `calc(100% + ${scrollbarSize})`;
         }

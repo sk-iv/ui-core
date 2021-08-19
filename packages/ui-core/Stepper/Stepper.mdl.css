@@ -1,0 +1,8 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.alternative-label {
+  align-items: flex-start;
+}

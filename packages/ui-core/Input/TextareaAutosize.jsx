@@ -13,7 +13,7 @@ function getStyleValue(computedStyle, property) {
 const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
 const TextareaAutosize = React.forwardRef(function TextareaAutosize(props, ref) {
-  const { onChange, maxRows, minRows = 1, style, value, ...other } = props
+  const { onChange, maxRows, minRows = 1, style, className, value, ...other } = props
 
   const { current: isControlled } = React.useRef(value != null)
   const inputRef = React.useRef(null)
@@ -140,6 +140,7 @@ const TextareaAutosize = React.forwardRef(function TextareaAutosize(props, ref) 
     <React.Fragment>
       <textarea
         value={value}
+        className={st.textarea}
         onChange={handleChange}
         ref={handleRef}
         // Apply the rows prop to get a "correct" first SSR paint
@@ -159,9 +160,9 @@ const TextareaAutosize = React.forwardRef(function TextareaAutosize(props, ref) 
         readOnly
         ref={shadowRef}
         tabIndex={-1}
-        style={{
-          ...style,
-        }}
+      // style={{
+      //   ...style,
+      // }}
       />
     </React.Fragment>
   )

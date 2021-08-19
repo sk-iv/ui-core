@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import MenuList from './MenuList'
 import Popover from '../Popover'
+import Paper from '../Paper'
 import setRef from '../utils/setRef'
 import styles from './Menu.mdl.css'
 
@@ -24,6 +25,7 @@ const Menu = React.forwardRef((props, ref) => {
     MenuListProps = {},
     onClose,
     open,
+    className,
     PaperProps = {},
     PopoverClasses,
     transitionDuration = 'auto',
@@ -108,15 +110,21 @@ const Menu = React.forwardRef((props, ref) => {
 
   return (
     <Popover
-      getContentAnchorEl={getContentAnchorEl}
-      classes={PopoverClasses}
       onClose={onClose}
-      anchorOrigin={LTR_ORIGIN}
-      transformOrigin={LTR_ORIGIN}
-      PaperProps={{
-        ...PaperProps,
-        className: styles.menu,
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
       }}
+      transformOrigin={RTL_ORIGIN}
+      PaperProps={{
+        component: Paper,
+        ...PaperProps,
+        classes: {
+          ...PaperProps.classes,
+          root: styles.paper,
+        },
+      }}
+      className={styles.root}
       open={open}
       ref={ref}
       transitionDuration={transitionDuration}

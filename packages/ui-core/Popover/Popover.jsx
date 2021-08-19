@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import clsx from 'clsx';
-import Grow from '../Transition/Grow';
-import Modal from '../Modal';
-import {Paper} from '../Paper'
+import PropTypes from 'prop-types'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import clsx from 'clsx'
+import Grow from '../Transition/Grow'
+import Modal from '../Modal'
+import Paper from '../Paper'
 import createChainedFunction from '../utils/createChainedFunction'
-import debounce from '../utils/debounce';
-import elementTypeAcceptingRef from '../utils/elementTypeAcceptingRef';
-import ownerDocument from '../utils/ownerDocument';
-import ownerWindow from '../utils/ownerWindow';
-import refType from '../utils/refType';
+import debounce from '../utils/debounce'
+import elementTypeAcceptingRef from '../utils/elementTypeAcceptingRef'
+import ownerDocument from '../utils/ownerDocument'
+import ownerWindow from '../utils/ownerWindow'
+import refType from '../utils/refType'
 
 export function getOffsetTop(rect, vertical) {
   let offset = 0;
@@ -90,6 +90,7 @@ const Popover = React.forwardRef((props, ref) => {
     anchorPosition,
     anchorReference = 'anchorEl',
     children,
+    className,
     container: containerProp,
     elevation = 8,
     getContentAnchorEl,
@@ -122,7 +123,7 @@ const Popover = React.forwardRef((props, ref) => {
         console.error(
           anchorPosition,
           'SivaSifr-UI: you need to provide a `anchorPosition` prop when using '
-            + '<Popover anchorReference="anchorPosition" />.',
+          + '<Popover anchorReference="anchorPosition" />.',
         );
         return anchorPosition;
       }
@@ -162,11 +163,11 @@ const Popover = React.forwardRef((props, ref) => {
         console.error(
           anchorOrigin.vertical === 'top',
           [
-            'SivaSifr-UI: you can not change the default `anchorOrigin.vertical` value ',
+            'Popover: you can not change the default `anchorOrigin.vertical` value ',
             'when also providing the `getContentAnchorEl` prop to the popover component.',
             'Only use one of the two props.',
             'Set `getContentAnchorEl` to `null | undefined`'
-              + ' or leave `anchorOrigin.vertical` unchanged.',
+            + ' or leave `anchorOrigin.vertical` unchanged.',
           ].join('\n'),
         );
       }
@@ -236,7 +237,7 @@ const Popover = React.forwardRef((props, ref) => {
       console.error(
         elemRect.height <= heightThreshold || !elemRect.height || !heightThreshold,
         [
-          'SivaSifr-UI: the popover component is too tall.',
+          'Popover: the popover component is too tall.',
           `Some part of it can not be seen on the screen (${elemRect.height - heightThreshold}px).`,
           'Please consider adding a `max-height` to improve the user-experience.',
         ].join('\n'),
@@ -337,12 +338,12 @@ const Popover = React.forwardRef((props, ref) => {
 
   return (
     <Modal
-      classes={ModalClasses}
+      BackdropProps={{ invisible: true }}
+      className={clsx(className)}
       container={container}
       open={open}
       ref={ref}
-      BackdropProps={{ invisible: true }}
-      hideBackdrop
+      style={{ top: 0, left: 0, transformOrigin: 0 }}
       {...other}
     >
       <TransitionComponent

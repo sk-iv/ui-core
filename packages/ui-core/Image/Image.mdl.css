@@ -1,3 +1,9 @@
+.root {
+  object-fit: cover;
+  object-position: 50% 50%;
+  vertical-align: bottom;
+}
+
 .absolute {
   overflow: auto;
   position: absolute;

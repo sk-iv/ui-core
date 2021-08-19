@@ -332,11 +332,11 @@ const Tooltip = React.forwardRef(function Tooltip(props, ref) {
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    childrenProps['data-mui-internal-clone-element'] = true;
+    childrenProps['data-ui-internal-clone-element'] = true;
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
-      if (childNode && !childNode.getAttribute('data-mui-internal-clone-element')) {
+      if (childNode && !childNode.getAttribute('data-ui-internal-clone-element')) {
         console.error(
           [
             'Tooltip: The `children` component of the Tooltip is not forwarding its props correctly.',

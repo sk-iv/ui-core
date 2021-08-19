@@ -1,12 +1,11 @@
-.step-content-root {
+.root {
   margin-top: 8px;
   margin-left: 12px;
   padding-left: 20px;
   padding-right: 8px;
   border-left: 1px solid #ccc;
-
 }
 
-.step-content-last {
+.last {
   border-left: none;
 }

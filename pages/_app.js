@@ -19,6 +19,8 @@ import ChipStory from '../docs/components/chip.mdx'
 import LinkStory from '../docs/components/link.mdx'
 import TabsStory from '../docs/components/tabs.mdx'
 import TextFieldStory from '../docs/components/TextField/textField.mdx'
+import MenuStory from '../docs/components/Menu/menu.mdx'
+import StepperStory from '../docs/components/Stepper/stepper.mdx'
 
 const initialState = {
   fields: {},
@@ -92,6 +94,16 @@ const routes = {
     component: LinkStory,
     label: 'Link',
   },
+  menu: {
+    path: '/menu',
+    component: MenuStory,
+    label: 'Menu',
+  },
+  stepper: {
+    path: '/stepper',
+    component: StepperStory,
+    label: 'Stepper',
+  },
   tabs: {
     path: '/tabs',
     component: TabsStory,
@@ -110,8 +122,8 @@ const routes = {
 }
 
 const components = {
-  h1: (props) => <h1 className="text-2xl font-bold mt-4" {...props}>{ props.children }</h1>,
-  h2: (props) => <h2 className="text-xl mt-4" {...props}>{ props.children }</h2>,
+  h1: (props) => <h1 className="text-2xl font-bold mt-4" {...props}>{props.children}</h1>,
+  h2: (props) => <h2 className="text-xl mt-4" {...props}>{props.children}</h2>,
   pre: (props) => <div {...props} />,
   code: (props) => <CodeBlock {...props} />,
 }
@@ -167,12 +179,12 @@ export default () => {
         <nav className="main-nav ml-4">
           <ul>
             {
-            Object.entries(routes).map(([key, rout]) => (
-              <li key={key}>
-                <Link to={rout.path}>{rout.label}</Link>
-              </li>
-            ))
-          }
+              Object.entries(routes).map(([key, rout]) => (
+                <li key={key}>
+                  <Link to={rout.path}>{rout.label}</Link>
+                </li>
+              ))
+            }
           </ul>
         </nav>
         <main className="content bg-white p-3">

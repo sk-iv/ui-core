@@ -18,6 +18,7 @@ export default () => {
         label="Ответ"
         type="text"
         value={answer}
+        fullWidth
         spellCheck={false}
         autoFocus
         multiline

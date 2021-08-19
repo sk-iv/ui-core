@@ -40,6 +40,7 @@ import { FormControl, FormHelperText } from '../Form'
  */
 const TextField = React.forwardRef((props, ref) => {
   const {
+    'aria-hidden': ariaHidden,
     autoComplete,
     autoFocus,
     children,
@@ -94,6 +95,7 @@ const TextField = React.forwardRef((props, ref) => {
   const InputElement = (
     <InputComponent
       aria-describedby={helperTextId}
+      aria-hidden={ariaHidden}
       autoComplete={autoComplete}
       autoFocus={autoFocus}
       defaultValue={defaultValue}

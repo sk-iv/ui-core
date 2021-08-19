@@ -32,6 +32,7 @@ const Clickable = React.forwardRef((props, ref) => {
     onTouchMove,
     onTouchStart,
     onDragLeave,
+    selected,
     tabIndex = 0,
     TouchRippleProps,
     type = 'button',
@@ -259,11 +260,11 @@ const Clickable = React.forwardRef((props, ref) => {
 
   return (
     <ComponentProp
+      aria-selected={selected}
       className={clsx(
-        styles.clickable,
+        styles.root,
         {
           [styles.active]: enableTouchRipple,
-          [styles.disabled]: disabled,
           [styles.focusVisible]: focusVisible,
           [focusVisibleClassName]: focusVisible,
           [styles.ripple]: ripple,

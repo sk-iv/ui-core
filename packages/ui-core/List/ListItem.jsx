@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
 import ReactDOM from 'react-dom'
-import ButtonBase from '../Clickable'
+import Clickable from '../Clickable'
 import { isMuiElement } from '../utils/reactHelpers'
 import useForkRef from '../utils/useForkRef'
 import ListContext from './ListContext'
@@ -52,7 +52,8 @@ const ListItem = React.forwardRef((props, ref) => {
   }, [autoFocus])
 
   const children = React.Children.toArray(childrenProp)
-  const hasSecondaryAction = children.length && isMuiElement(children[children.length - 1], ['ListItemSecondaryAction'])
+  const hasSecondaryAction = children.length
+    && isMuiElement(children[children.length - 1], ['ListItemSecondaryAction'])
 
   const handleOwnRef = React.useCallback((instance) => {
     // #StrictMode ready
@@ -67,58 +68,36 @@ const ListItem = React.forwardRef((props, ref) => {
         [styles.dense]: childContext.dense,
         [styles.gutters]: !disableGutters,
         [styles.divider]: divider,
-        [styles.disabled]: disabled,
         [styles.button]: button,
         [styles.alignItemsFlexStart]: alignItems === 'flex-start',
         [styles.hasSecondaryAction]: hasSecondaryAction,
-        [styles.selected]: selected,
       },
       className,
     ),
+    selected,
     disabled,
     ...other,
   }
   let Component = componentProp || 'li'
 
   if (button) {
-    componentProps.component = componentProp || 'li'
+    componentProps.component = componentProp || 'button'
     componentProps.focusVisibleClassName = clsx(styles.focusVisible, focusVisibleClassName)
-    Component = ButtonBase
-  }
-
-  if (hasSecondaryAction) {
-    // Use div by default.
-    Component = !componentProps.component && !componentProp ? 'div' : Component
-
-    // Avoid nesting of li > li.
-    if (ContainerComponent === 'li') {
-      if (Component === 'li') {
-        Component = 'div'
-      } else if (componentProps.component === 'li') {
-        componentProps.component = 'div'
-      }
-    }
-
-    return (
-      <ListContext.Provider value={childContext}>
-        <ContainerComponent
-          className={clsx(styles.container, ContainerClassName)}
-          ref={handleRef}
-          {...ContainerProps}
-        >
-          <Component {...componentProps}>{children}</Component>
-          {children.pop()}
-        </ContainerComponent>
-      </ListContext.Provider>
-    )
+    Component = Clickable
   }
 
   return (
     <ListContext.Provider value={childContext}>
-      <Component ref={handleRef} {...componentProps}>
-        {children}
-      </Component>
-    </ListContext.Provider>
+      <ContainerComponent
+        className={clsx(styles.container, ContainerClassName)}
+        ref={handleRef}
+        {...ContainerProps}
+      >
+        <Component {...componentProps}>
+          {children}
+        </Component>
+      </ContainerComponent>
+    </ListContext.Provider >
   )
 })
 
@@ -135,8 +114,8 @@ ListItem.propTypes = {
    */
   autoFocus: PropTypes.bool,
   /**
-   * If `true`, the list item will be a button (using `ButtonBase`). Props intended
-   * for `ButtonBase` can then be applied to `ListItem`.
+   * If `true`, the list item will be a button (using `Clickable`). Props intended
+   * for `Clickable` can then be applied to `ListItem`.
    */
   button: PropTypes.bool,
   /**
@@ -160,8 +139,8 @@ ListItem.propTypes = {
     if (secondaryActionIndex !== -1 && secondaryActionIndex !== children.length - 1) {
       return new Error(
         'SivaSifr-UI: you used an element after ListItemSecondaryAction. '
-          + 'For ListItem to detect that it has a secondary action '
-          + 'you must pass it as the last child to ListItem.',
+        + 'For ListItem to detect that it has a secondary action '
+        + 'you must pass it as the last child to ListItem.',
       )
     }
 
